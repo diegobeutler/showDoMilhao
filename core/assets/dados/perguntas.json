@@ -1,0 +1,524 @@
+{
+  "facil": [ json[facil][1F][],
+    { "dificuldade": "facil", "key": "1F", "pergunta": "Em que estado brasileiro nasceu a apresentadora Xuxa?", "respostas": [
+      {"resposta":"RIO DE JANEIRO", "correta": false},
+      {"resposta":"RIO GRANDE DO SUL", "correta": true},
+      {"resposta":"SANTA CATARINA", "correta": false},
+      {"resposta":"GOIÁS", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "Qual é o nome dado ao estado da água em forma de gelo?", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": true},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "3F", "pergunta": "Qual era o apelido da cantora Elis Regina?", "respostas": [
+      {"resposta":"GAUCHINHA", "correta": false},
+      {"resposta":"PAULISTINHA", "correta": false},
+      {"resposta":"PIMENTINHA", "correta": true},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "4F", "pergunta": "Quem é a namorada do Mickey?", "respostas": [
+      {"resposta":"MARGARIDA", "correta": false},
+      {"resposta":"MINNIE", "correta": true},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "5F", "pergunta": "Qual é o personagem do folclore brasileiro que tem uma perna só?", "respostas": [
+      {"resposta":"CUCA", "correta": false},
+      {"resposta":"NEGRINHO DO PASTOREIO", "correta": false},
+      {"resposta":"BOITATÁ", "correta": false},
+      {"resposta":"SACI-PERERÊ", "correta": true}
+    ] },
+    { "dificuldade": "facil", "key": "6F", "pergunta": "Fidel Castro nasceu em que país?", "respostas": [
+      {"resposta":"JAMAICA", "correta": false},
+      {"resposta":"CUBA", "correta": true},
+      {"resposta":"EL SALVADOR", "correta": false},
+      {"resposta":"MÉXICO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "7F", "pergunta": "Quem proclamou a república no Brasil em 1889?", "respostas": [
+      {"resposta":"DUQUE DE CAXIAS", "correta": false},
+      {"resposta":"MARECHAL RONDON", "correta": false},
+      {"resposta":"DOM PEDRO II", "correta": false},
+      {"resposta":"MARECHAL DEODORO", "correta": true}
+    ] },
+    { "dificuldade": "facil", "key": "8F", "pergunta": "Quem é o patrono do exército brasileiro?", "respostas": [
+      {"resposta":"MARECHAL DEODORO", "correta": false},
+      {"resposta":"BARÃO DE MAUÁ", "correta": false},
+      {"resposta":"DUQUE DE CAXIAS", "correta": true},
+      {"resposta":"MARQUÊS DE POMBAL", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "9F", "pergunta": "Quem era o apresentador que reprovava os calouros tocando uma buzina?", "respostas": [
+      {"resposta":"RAUL GIL", "correta": false},
+      {"resposta":"BOLINHA", "correta": false},
+      {"resposta":"FLÁVIO CAVALCANTI", "correta": false},
+      {"resposta":"CHACRINHA", "correta": true}
+    ] },
+    { "dificuldade": "facil", "key": "10F", "pergunta": "O que era Frankenstein, de Mary Shelley?", "respostas": [
+      {"resposta":"MONSTRO", "correta": true},
+      {"resposta":"GORILA", "correta": false},
+      {"resposta":"PRÍNCIPE", "correta": false},
+      {"resposta":"SAPO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "11F", "pergunta": "Qual é o signo do zodíaco de quem nasce no dia do ano-novo?", "respostas": [
+      {"resposta":"VIRGEM", "correta": false},
+      {"resposta":"AQUÁRIO", "correta": false},
+      {"resposta":"CAPRICÓRNIO", "correta": true},
+      {"resposta":"ÁRIES", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "12F", "pergunta": "Quem fundou uma fábrica de automóveis Ford?", "respostas": [
+      {"resposta":"HARRISON FORD", "correta": false},
+      {"resposta":"GERALD FORD", "correta": false},
+      {"resposta":"HENRY FORD", "correta": true},
+      {"resposta":"ANNA FORD", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "13F", "pergunta": "Qual é a cor que se associa com os grupos ecológicos?", "respostas": [
+      {"resposta":"PRETA", "correta": false},
+      {"resposta":"VERMELHA", "correta": false},
+      {"resposta":"AZUL", "correta": false},
+      {"resposta":"VERDE", "correta": true}
+    ] },
+    { "dificuldade": "facil", "key": "14F", "pergunta": "Uma água ferve a quantos graus centígrados?", "respostas": [
+      {"resposta":"200", "correta": false},
+      {"resposta":"100", "correta": true},
+      {"resposta":"170", "correta": false},
+      {"resposta":"220", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "15F", "pergunta": "Quando é comemorado o dia da independência do Brasil?", "respostas": [
+      {"resposta":"21 DE ABRIL", "correta": false},
+      {"resposta":"12 DE OUTUBRO", "correta": false},
+      {"resposta":"7 DE SETEMBRO", "correta": true},
+      {"resposta":"25 DE DEZEMBRO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "16F", "pergunta": "Qual lugar é também chamado de Santa Sé?", "respostas": [
+      {"resposta":"VENEZA", "correta": false},
+      {"resposta":"VITÓRIA", "correta": false},
+      {"resposta":"VANCOUVER", "correta": false},
+      {"resposta":"VATICANO", "correta": true}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] },
+    { "dificuldade": "facil", "key": "2F", "pergunta": "", "respostas": [
+      {"resposta":"LÍQUIDO", "correta": false},
+      {"resposta":"SÓLIDO", "correta": false},
+      {"resposta":"GASOSO", "correta": false},
+      {"resposta":"VAPOROSO", "correta": false}
+    ] }
+  ],
+  "medio": [
+    { "cat": "labios", "key": "1A", "path": "videos/labios/1.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Manter os lábios projetados fazendo bico" },
+    { "cat": "labios", "key": "2A", "path": "videos/labios/2.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Bico intermitente" },
+    { "cat": "labios", "key": "3A", "path": "videos/labios/3.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Estiramento máximo de lábios" },
+    { "cat": "labios", "key": "4A", "path": "videos/labios/4.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Estiramento dos lábios intermitentemente" },
+    { "cat": "labios", "key": "5A", "path": "videos/labios/5.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Estalo de lábios" },
+    { "cat": "labios", "key": "6A", "path": "videos/labios/6.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Lateralização de lábios para direita (bico à direita)" },
+    { "cat": "labios", "key": "7A", "path": "videos/labios/7.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Lateralização de lábios para a esquerda (bico à esquerda)" },
+    { "cat": "labios", "key": "8A", "path": "videos/labios/8.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Lateralização de lábios para direita e esquerda" },
+    { "cat": "labios", "key": "9A", "path": "videos/labios/9.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Resistência dos lábios para não sair da postura de bico" },
+    { "cat": "labios", "key": "10A", "path": "videos/labios/10.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Estirar lábios em oposição à força da mão que visa a projeção de lábios (formação do bico)" },
+    { "cat": "labios", "key": "11A", "path": "videos/labios/11.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Mordedura de lábio superior" },
+    { "cat": "labios", "key": "12A", "path": "videos/labios/12.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Mordedura de lábio inferior" },
+    { "cat": "labios", "key": "13A", "path": "videos/labios/13.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Mordedura alternada de lábios" },
+    { "cat": "labios", "key": "14A", "path": "videos/labios/14.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Mordedura de lábio superior, anterior e lados direito e esquerdo" },
+    { "cat": "labios", "key": "15A", "path": "videos/labios/15.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Bigode de gato" },
+    { "cat": "labios", "key": "16A", "path": "videos/labios/16.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Segurar espátula entre os lábios" },
+    { "cat": "labios", "key": "17A", "path": "videos/labios/17.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Inflar lábios alternadamente" }
+  ],
+  "dificil": [
+    { "cat": "lingua", "key": "1L", "path": "videos/lingua/1.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Língua em ponta para fora" },
+    { "cat": "lingua", "key": "2L", "path": "videos/lingua/2.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Anteriorização e posteriorização de língua" },
+    { "cat": "lingua", "key": "3L", "path": "videos/lingua/3.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Elevar e abaixar a ponta de língua" },
+    { "cat": "lingua", "key": "4L", "path": "videos/lingua/4.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Lateralização de língua" },
+    { "cat": "lingua", "key": "5L", "path": "videos/lingua/5.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Afilar e alargar a língua" },
+    { "cat": "lingua", "key": "6L", "path": "videos/lingua/6.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Pressionamento da papila com a ponta da língua" },
+    { "cat": "lingua", "key": "7L", "path": "videos/lingua/7.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Espátula sobre a língua" },
+    { "cat": "lingua", "key": "8L", "path": "videos/lingua/8.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Estalo de língua" },
+    { "cat": "lingua", "key": "9L", "path": "videos/lingua/9.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Abrir e fechar a boca com língua sugada" },
+    { "cat": "lingua", "key": "10L", "path": "videos/lingua/10.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Permanecer de boca aberta sugando a língua" },
+    { "cat": "lingua", "key": "11L", "path": "videos/lingua/11.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Retirar o elástico ortodôntico da língua" },
+    { "cat": "lingua", "key": "12L", "path": "videos/lingua/12.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Movimentar a língua transversalmente para direita e para esquerda" },
+    { "cat": "lingua", "key": "13L", "path": "videos/lingua/13.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Pressionar as bochechas com a língua" },
+    { "cat": "lingua", "key": "14L", "path": "videos/lingua/14.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Estalo de língua mantendo a ponta na papila" },
+    { "cat": "lingua", "key": "15L", "path": "videos/lingua/15.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Vibração de língua" },
+    { "cat": "lingua", "key": "16L", "path": "videos/lingua/16.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Varredura de palato com ponta de língua e boca fechada" },
+    { "cat": "lingua", "key": "17L", "path": "videos/lingua/17.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Posteriorização de Ponta de Língua" },
+    { "cat": "lingua", "key": "18L", "path": "videos/lingua/18.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Braço de ferro: espátula x língua" },
+    { "cat": "lingua", "key": "19L", "path": "videos/lingua/19.mp4", "miniatura": "videos/miniaturas/1b.png", "nome": "Elevação de língua tendo espátula como guia" }
+  ]
+}
