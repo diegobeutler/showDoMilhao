@@ -358,7 +358,7 @@
       {"resposta":"TS ELLIOT", "correta": false},
       {"resposta":"JAMES JOYCE", "correta": true}
     ] },
-    { "dificuldade": "dificil", "key": "1D", "pergunta": "Qual o símbolo químico do radônio?", "respostas": [
+    { "dificuldade": "dificil", "key": "20D", "pergunta": "Qual o símbolo químico do radônio?", "respostas": [
       {"resposta":"Rr", "correta": false},
       {"resposta":"Rd", "correta": false},
       {"resposta":"Rn", "correta": true},
