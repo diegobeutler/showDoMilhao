@@ -15,7 +15,7 @@ public class ShowDoMilhao extends ApplicationAdapter {
 	Texture img;
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("show-do-milhao.jpg");
+		img = new Texture("imagens\\show-do-milhao.jpg");
 	}
 
 	@Override
