@@ -19,18 +19,14 @@ public class MainScreen implements Screen {
 
     public void show () {
 		batch = new SpriteBatch();
-//		sound.play(1f);
+        assetManager.get("sons/abertura.wav", Sound.class).play(1f);
 		img = new Texture("imagens\\show-do-milhao.jpg");
-
-//		assetManager.setS
-
     }
 
     @Override
     public void render (float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
-//        assetManager.get("sons\\abertura.wav", Sound.class);
         batch.draw(img, 0, 0);
         batch.end();
     }
