@@ -20,20 +20,28 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class MainScreen implements Screen {
+    private static MainScreen mainScreen;
     private AssetManager assetManager;
     SpriteBatch batch;
     Texture img;
     ShowDoMilhao showDoMilhao;
     TextureAtlas mAtlas;
-
+    public static MainScreen ref;
     private Stage stage;
     private Label outputLabel;
-
+    public Moeda moeda;
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
 
+    public MainScreen() {
+
+    }
+
     public void show () {
+
+
+
         batch = new SpriteBatch();
         assetManager.get("sons/abertura.wav", Sound.class).play(1f);
         img = new Texture("imagens\\show-do-milhao.jpg");
@@ -44,8 +52,10 @@ public class MainScreen implements Screen {
         int Help_Guides = 12;
         int row_height = Gdx.graphics.getWidth() / 12;
         int col_width = Gdx.graphics.getWidth() / 12;
+        ref = this;
+        new BulletController();
 
-
+        moeda = new Moeda();
         Skin mySkin = new Skin(Gdx.files.internal("skin/neon-ui.json"));
         ImageTextButton button4 = new ImageTextButton("Jogar", mySkin);
         button4.setSize(100, 50);
@@ -83,9 +93,13 @@ public class MainScreen implements Screen {
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
         batch.draw(img, 0, 0);
-        batch.end();
+
         stage.act();
         stage.draw();
+        moeda.draw(batch, delta);
+        BulletController.ref.draw(batch, delta);
+
+        batch.end();
     }
 
     @Override
