@@ -20,7 +20,7 @@ public class ShowDoMilhao extends Game {
         }
         multiplexer.addProcessor(inputProcessor);
     }
-    public  AssetManager getAssetManager(){return assetManager;}
+    public AssetManager getAssetManager(){return assetManager;}
     public void setGameScreen(){this.setScreen(new MainScreen());}
 
     public void create() {
