@@ -50,10 +50,10 @@ public class MainScreen implements Screen {
 
         int row_height = Gdx.graphics.getWidth() / 12;
 
-        Skin mySkin = new Skin(Gdx.files.internal("skin/neon-ui.json"));
+        Skin mySkin = assetManager.get("skin/neon-ui.json", Skin.class);
         ImageTextButton button4 = new ImageTextButton("Jogar", mySkin);
         button4.setSize(100, 50);
-        button4.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
+        button4.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(assetManager.get("imagens/jogar.png", Texture.class)));
         button4.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
         button4.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
 
