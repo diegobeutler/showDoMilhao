@@ -54,7 +54,7 @@ public class MainScreen implements Screen {
         ImageTextButton button4 = new ImageTextButton("Jogar", mySkin);
         button4.setSize(100, 50);
         button4.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(assetManager.get("imagens/jogar.png", Texture.class)));
-        button4.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
+        button4.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(assetManager.get("imagens/jogar.png", Texture.class)));
         button4.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
 
         button4.addListener(new InputListener() {
