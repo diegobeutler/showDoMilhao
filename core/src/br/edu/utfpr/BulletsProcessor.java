@@ -8,6 +8,7 @@ public class BulletsProcessor implements InputProcessor {
     }
     @Override
     public boolean keyDown(int keycode) {
+        BulletController.ref.addNewBullet(MainScreen.ref.moeda.getX()+150,MainScreen.ref.moeda.getY()+40);
         return false;
     }
 
@@ -23,7 +24,6 @@ public class BulletsProcessor implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        BulletController.ref.addNewBullet(MainScreen.ref.moeda.getX()+120,MainScreen.ref.moeda.getY()+60);
         return false;
     }
 

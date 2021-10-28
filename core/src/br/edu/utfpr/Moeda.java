@@ -9,8 +9,7 @@ public class Moeda extends Sprite {
     private MoedaProcessor moedaProcessor;
 
     Moeda(){
-
-        super(ShowDoMilhao.game.getAssetManager().get("imagens/goldbar.png",  Texture.class));
+        super(ShowDoMilhao.game.getAssetManager().get("imagens/sacodemoeda.png",  Texture.class));
         this.setSize(this.getWidth()/3, this.getHeight()/3);
         moedaProcessor = new MoedaProcessor();
         ShowDoMilhao.addInputProcessor(moedaProcessor);
@@ -28,7 +27,6 @@ public class Moeda extends Sprite {
     public void draw (SpriteBatch batch, float delta){
         update(delta);
         super.draw(batch);
-
     }
 
     public float getCenterX(){

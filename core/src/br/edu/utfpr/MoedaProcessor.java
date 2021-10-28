@@ -5,6 +5,9 @@ import com.badlogic.gdx.InputProcessor;
 
 public class MoedaProcessor implements InputProcessor {
     public boolean isSPressed = false, isWPressed=false;
+    MoedaProcessor() {
+        ShowDoMilhao.addInputProcessor(this);
+    }
     @Override
     public boolean keyDown(int keycode) {
         if(keycode == Input.Keys.S){

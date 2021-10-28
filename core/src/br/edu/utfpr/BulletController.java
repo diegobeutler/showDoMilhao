@@ -10,13 +10,11 @@ public class BulletController {
     private HashMap<Integer, Bullet> bullets, deadBullets;
 
     BulletController() {
-
         ref = this;
         init();
     }
 
     public void init() {
-
         if (bullets == null) {
             bullets = new HashMap<Integer, Bullet>(40);
             deadBullets = new HashMap<Integer, Bullet>(40);
@@ -29,25 +27,19 @@ public class BulletController {
     public void addNewBullet(float x, float y) {
         if (deadBullets.size() > 0) {
             deadBullets.get(0).setPosition(x, y);
-            //bullets.add(deadBullets.remove(0));
             int id = deadBullets.keySet().iterator().next();
             Bullet b = deadBullets.get(id);
             bullets.put(id, b);
         } else {
             Bullet b = new Bullet();
             b.setPosition(x, y);
-
             bullets.put(count, b);
             count++;
-
-
-
         }
     }
 
     public void draw(final SpriteBatch batch, float delta) {
         for (final int id : bullets.keySet()) {
-
             final Bullet b = bullets.get(id);
             b.draw(batch, delta);
             Gdx.app.postRunnable(new Runnable() {
