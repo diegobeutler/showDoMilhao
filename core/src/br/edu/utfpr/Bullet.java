@@ -10,7 +10,7 @@ public class Bullet extends Sprite {
 
     public Bullet() {
         super(ShowDoMilhao.game.getAssetManager().get("imagens/moeda.png", Texture.class));
-        this.setSize(this.getWidth()/4, this.getHeight()/4);
+        this.setSize(this.getWidth()/8, this.getHeight()/8);
     }
 
     public float getCenterX(){

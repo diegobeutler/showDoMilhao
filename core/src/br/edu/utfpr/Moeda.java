@@ -10,7 +10,7 @@ public class Moeda extends Sprite {
 
     Moeda(){
         super(ShowDoMilhao.game.getAssetManager().get("imagens/sacodemoeda.png",  Texture.class));
-        this.setSize(this.getWidth()/3, this.getHeight()/3);
+        this.setSize(this.getWidth()/4, this.getHeight()/4);
         moedaProcessor = new MoedaProcessor();
         ShowDoMilhao.addInputProcessor(moedaProcessor);
     }
