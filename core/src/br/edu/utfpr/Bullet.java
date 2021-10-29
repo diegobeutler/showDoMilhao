@@ -30,7 +30,4 @@ public class Bullet extends Sprite {
             this.setX(this.getX() + 110 * delta);
      }
 
-
-
-
 }

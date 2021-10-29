@@ -6,7 +6,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.assets.AssetManager;
 
-
 public class ShowDoMilhao extends Game {
     public static ShowDoMilhao game;
     public AssetManager assetManager;
@@ -29,8 +28,6 @@ public class ShowDoMilhao extends Game {
         game = this;
     }
 
-
-
     public void setGameScrean() {
         this.setScreen(new MainScreen(assetManager));
     }
@@ -40,8 +37,6 @@ public class ShowDoMilhao extends Game {
 
     @Override
     public void dispose() {
-//		batch.dispose();
-//		img.dispose();
     }
 
 }
