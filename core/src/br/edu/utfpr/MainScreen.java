@@ -1,6 +1,7 @@
 package br.edu.utfpr;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
@@ -21,6 +22,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+
+import static br.edu.utfpr.ShowDoMilhao.multiplexer;
 
 public class MainScreen implements Screen {
 
@@ -46,18 +49,31 @@ public class MainScreen implements Screen {
         img = new Texture("imagens\\show-do-milhao.jpg");
 
         stage = new Stage(new ScreenViewport());
-        Gdx.input.setInputProcessor(stage);
+        ShowDoMilhao.addInputProcessor(stage);
 
         int row_height = Gdx.graphics.getWidth() / 12;
 
         Skin mySkin = assetManager.get("skin/neon-ui.json", Skin.class);
-        ImageTextButton button4 = new ImageTextButton("Jogar", mySkin);
-        button4.setSize(100, 50);
-        button4.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(assetManager.get("imagens/jogar.png", Texture.class)));
-        button4.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(assetManager.get("imagens/jogar.png", Texture.class)));
-        button4.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
+        //skin ->
+        //Um skin armazena recursos para os widgets da IU usarem (regiões de textura, ninepatches, fontes, cores, etc).
+        //Os recursos são nomeados e podem ser pesquisados  por nome e tipo. Os recursos podem ser descritos em JSON.
+        //O skin fornece conversões úteis, como permitir o acesso a regiões no atlas como nove manchas, sprites, drawables, etc
 
-        button4.addListener(new InputListener() {
+        outputLabel = new Label("Clique para comecar o jogo!", mySkin);
+        outputLabel.setSize(Gdx.graphics.getWidth(), row_height);
+        outputLabel.setPosition(0, row_height);
+        outputLabel.setAlignment(Align.center);
+        stage.addActor(outputLabel);
+
+        ImageTextButton botaoJogar = new ImageTextButton("Jogar", mySkin);
+        botaoJogar.setSize(100, 50);
+        botaoJogar.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
+        botaoJogar.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
+
+        //textureRegionDrawable -> Define uma área retangular de uma textura.
+        botaoJogar.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
+
+        botaoJogar.addListener(new InputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 outputLabel.setText("Clique para jogar!");
@@ -68,13 +84,8 @@ public class MainScreen implements Screen {
                 return true;
             }
         });
-        stage.addActor(button4);
+        stage.addActor(botaoJogar);
 
-        outputLabel = new Label("Clique para comecar o jogo!", mySkin);
-        outputLabel.setSize(Gdx.graphics.getWidth(), row_height);
-        outputLabel.setPosition(0, row_height);
-        outputLabel.setAlignment(Align.center);
-        stage.addActor(outputLabel);
 
         ref = this;
         new BulletController();
@@ -83,16 +94,14 @@ public class MainScreen implements Screen {
 
     @Override
     public void render (float delta) {
+        stage.act();
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
         batch.draw(img, 0, 0);
-
         moeda.draw(batch, delta);
         BulletController.ref.draw(batch, delta);
-
-        batch.end();
-        stage.act();
         stage.draw();
+        batch.end();
     }
 
     @Override
