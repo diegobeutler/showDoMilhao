@@ -54,10 +54,6 @@ public class LoadingScreen implements Screen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
-//        label = new Label("Clique para comecar o jogo!", new Skin());
-//        label.setSize(Gdx.graphics.getWidth(), 50);
-//        label.setPosition(0, 50);
-//        label.setAlignment(Align.center);
 
         float progress = showDoMilhao.getAssetManager().getProgress();
 
@@ -70,9 +66,9 @@ public class LoadingScreen implements Screen {
         batch.setPackedColor((float) 0.8);
         batch.draw(img, 0, 0);
         sprite.draw(batch);
-        NumberFormat formatarFloat= new DecimalFormat("0.00");
-        font.draw(batch, "Loading ... "+formatarFloat.format(progress * 100) +" %", 380, 320);
-        font.getData().setScale((float) 2, (float)2);
+        NumberFormat formatarFloat = new DecimalFormat("0.00");
+        font.draw(batch, "Loading ... " + formatarFloat.format(progress * 100) + " %", 380, 320);
+        font.getData().setScale((float) 2, (float) 2);
         batch.end();
     }
 
