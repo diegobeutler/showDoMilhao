@@ -4,54 +4,68 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.*;
+
+import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class LoadingScreen implements Screen {
     private Sprite sprite;
     private SpriteBatch batch;
     private float originalWidth;
     private ShowDoMilhao showDoMilhao;
-
+    private Label label;
+    private BitmapFont font = new BitmapFont();
 
 
     @Override
     public void show() {
-        sprite = new Sprite(new Texture("imagens\\barra_prog.png"));
+        sprite = new Sprite(new Texture("imagens/barra_prog.png"));
         sprite.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         batch = new SpriteBatch();
         originalWidth = sprite.getWidth();
         // load
         showDoMilhao.getAssetManager().load("imagens/moeda.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
-        showDoMilhao.getAssetManager().load("sons\\abertura.wav", Sound.class);
-        showDoMilhao.getAssetManager().load("sons\\boaSorte.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons\\certaResposta.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons\\estaCertoDisso.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/boaSorte.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/certaResposta.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/estaCertoDisso.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("1milhao.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons\\trilhaSuspense.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons\\vaiComecarOShowDoMilhao.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/trilhaSuspense.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/vaiComecarOShowDoMilhao.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("skin/neon-ui.json", Skin.class);
+//        showDoMilhao.getAssetManager().load("dados\\perguntas.json", Json.class ); todo não funciona
     }
 
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
+//        label = new Label("Clique para comecar o jogo!", new Skin());
+//        label.setSize(Gdx.graphics.getWidth(), 50);
+//        label.setPosition(0, 50);
+//        label.setAlignment(Align.center);
+
         float progress = showDoMilhao.getAssetManager().getProgress();
 
         if (showDoMilhao.getAssetManager().update()) {
             showDoMilhao.setGameScrean();
         }
-        sprite.setRegion(0,0, (int)(originalWidth*progress), (int)(sprite.getHeight()*progress));
-        sprite.setSize((int)(originalWidth*progress), (int)(sprite.getHeight()));
+        sprite.setRegion(0, 0, (int) (originalWidth * progress), (int) (sprite.getHeight() * progress));
+        sprite.setSize((int) (originalWidth * progress), (int) (sprite.getHeight()));
         batch.begin();
         sprite.draw(batch);
+        NumberFormat formatarFloat= new DecimalFormat("0.00");
+
+        font.draw(batch, formatarFloat.format(progress * 100) +" %", 440, 300);
         batch.end();
-
-
-
     }
 
     public LoadingScreen(ShowDoMilhao showDoMilhao) {

@@ -45,7 +45,7 @@ public class MainScreen implements Screen {
 
     public void show () {
         batch = new SpriteBatch();
-        assetManager.get("sons/abertura.wav", Sound.class).play(0.3f);
+        assetManager.get("sons/abertura.wav", Sound.class).play(1f);
         img = new Texture("imagens\\show-do-milhao.jpg");
 
         stage = new Stage(new ScreenViewport());
@@ -53,7 +53,7 @@ public class MainScreen implements Screen {
 
         int row_height = Gdx.graphics.getWidth() / 12;
 
-        Skin mySkin = new Skin(Gdx.files.internal("skin/neon-ui.json"));
+        Skin mySkin = assetManager.get("skin/neon-ui.json", Skin.class);
         //skin ->
         //Um skin armazena recursos para os widgets da IU usarem (regiões de textura, ninepatches, fontes, cores, etc).
         //Os recursos são nomeados e podem ser pesquisados  por nome e tipo. Os recursos podem ser descritos em JSON.
@@ -64,10 +64,6 @@ public class MainScreen implements Screen {
         outputLabel.setPosition(0, row_height);
         outputLabel.setAlignment(Align.center);
         stage.addActor(outputLabel);
-
-
-
-
 
         ImageTextButton botaoJogar = new ImageTextButton("Jogar", mySkin);
         botaoJogar.setSize(100, 50);
