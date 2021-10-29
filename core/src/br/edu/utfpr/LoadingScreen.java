@@ -22,10 +22,13 @@ public class LoadingScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
     private Label label;
     private BitmapFont font = new BitmapFont();
+    Texture img;
 
 
     @Override
     public void show() {
+        img = new Texture("imagens\\show-do-milhao.jpg");
+
         sprite = new Sprite(new Texture("imagens/barra_prog.png"));
         sprite.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         batch = new SpriteBatch();
@@ -38,6 +41,8 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/boaSorte.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/certaResposta.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/estaCertoDisso.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/trilhaSonoraMeio.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/trilhaSonoraInicio.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("1milhao.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/trilhaSuspense.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/vaiComecarOShowDoMilhao.mp3", Sound.class);
@@ -61,10 +66,12 @@ public class LoadingScreen implements Screen {
         sprite.setRegion(0, 0, (int) (originalWidth * progress), (int) (sprite.getHeight() * progress));
         sprite.setSize((int) (originalWidth * progress), (int) (sprite.getHeight()));
         batch.begin();
+        batch.setPackedColor((float) 0.8);
+        batch.draw(img, 0, 0);
         sprite.draw(batch);
         NumberFormat formatarFloat= new DecimalFormat("0.00");
-
-        font.draw(batch, formatarFloat.format(progress * 100) +" %", 440, 300);
+        font.draw(batch, "Loading ... "+formatarFloat.format(progress * 100) +" %", 380, 320);
+        font.getData().setScale((float) 2, (float)2);
         batch.end();
     }
 
