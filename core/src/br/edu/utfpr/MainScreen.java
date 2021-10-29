@@ -23,6 +23,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import static br.edu.utfpr.ShowDoMilhao.game;
 import static br.edu.utfpr.ShowDoMilhao.multiplexer;
 
 public class MainScreen implements Screen {
@@ -80,14 +81,12 @@ public class MainScreen implements Screen {
             }
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                outputLabel.setText("Entrando...");
+                game.setGameScrean(new JogoScreen());
                 return true;
             }
         });
         stage.addActor(botaoJogar);
 
-
-        ref = this;
         new BulletController();
         moeda = new Moeda();
     }

@@ -1,10 +1,8 @@
 package br.edu.utfpr;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
+import java.util.*;
 
 public class ShowDoMilhao extends Game {
     public static ShowDoMilhao game;
@@ -20,7 +18,6 @@ public class ShowDoMilhao extends Game {
         multiplexer.addProcessor(inputProcessor);
     }
     public AssetManager getAssetManager(){return assetManager;}
-    public void setGameScreen(){this.setScreen(new MainScreen());}
 
     public void create() {
         assetManager = new AssetManager();
@@ -30,6 +27,10 @@ public class ShowDoMilhao extends Game {
 
     public void setGameScrean() {
         this.setScreen(new MainScreen(assetManager));
+    }
+
+    public void setGameScrean(Screen asdas) {
+        this.setScreen(asdas);
     }
 
 

@@ -35,6 +35,7 @@ public class LoadingScreen implements Screen {
         originalWidth = sprite.getWidth();
         // load
         showDoMilhao.getAssetManager().load("imagens/moeda.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);
