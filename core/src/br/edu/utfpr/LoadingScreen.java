@@ -53,10 +53,7 @@ public class LoadingScreen implements Screen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
-//        label = new Label("Clique para comecar o jogo!", new Skin());
-//        label.setSize(Gdx.graphics.getWidth(), 50);
-//        label.setPosition(0, 50);
-//        label.setAlignment(Align.center);
+
 
         float progress = showDoMilhao.getAssetManager().getProgress();
 

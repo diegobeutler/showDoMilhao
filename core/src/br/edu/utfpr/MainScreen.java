@@ -35,6 +35,7 @@ public class MainScreen implements Screen {
     private Stage stage;
     private Label outputLabel;
     public Moeda moeda;
+
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
