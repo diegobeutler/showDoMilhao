@@ -33,11 +33,9 @@ public class JogoScreen implements Screen {
     public JogoScreen() {
 
     }
-    private AssetManager assetManager;
 
-    public JogoScreen(AssetManager assetManager) {
-        this.assetManager = assetManager;
-    }
+
+
     public void show () {
         batch = new SpriteBatch();
 

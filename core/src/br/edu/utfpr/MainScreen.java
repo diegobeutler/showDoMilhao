@@ -29,7 +29,7 @@ import static br.edu.utfpr.ShowDoMilhao.multiplexer;
 
 public class MainScreen implements Screen {
 
-    private AssetManager assetManager;
+    public AssetManager assetManager;
     SpriteBatch batch;
     Texture img;
 
@@ -42,14 +42,11 @@ public class MainScreen implements Screen {
         this.assetManager = assetManager;
     }
 
-    public MainScreen() {
-
-    }
 
     public void show () {
         batch = new SpriteBatch();
 
-        assetManager.get("sons/abertura.wav", Sound.class).play();
+        assetManager.get("sons/abertura.wav", Sound.class).play(1f);;
         img = new Texture("imagens\\show-do-milhao.jpg");
 
         stage = new Stage(new ScreenViewport());
@@ -72,19 +69,13 @@ public class MainScreen implements Screen {
         ImageTextButton botaoJogar = new ImageTextButton("Jogar", mySkin);
         botaoJogar.setSize(100, 50);
         botaoJogar.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
-        botaoJogar.getStyle().imageDown = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
-
-        //textureRegionDrawable -> Define uma área retangular de uma textura.
+        //textureRegionDrawable ->  A região da textura deve ser definida antes do uso.
         botaoJogar.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
-
         final Sound sound =  assetManager.get("sons/abertura.wav", Sound.class);
-
         botaoJogar.addListener(new InputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 outputLabel.setText("Clique para jogar!");
-
-
             }
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -96,6 +87,7 @@ public class MainScreen implements Screen {
         });
         stage.addActor(botaoJogar);
 
+        ref = this;//nao tirar ESSE AQUI DIEGO, tinha parado de funcionar o bullet dps q tu tirou
         new BulletController();
         moeda = new Moeda();
     }
