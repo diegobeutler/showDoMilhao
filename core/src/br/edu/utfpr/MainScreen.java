@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -23,6 +24,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import static br.edu.utfpr.ShowDoMilhao.game;
 import static br.edu.utfpr.ShowDoMilhao.multiplexer;
 
 public class MainScreen implements Screen {
@@ -46,7 +48,8 @@ public class MainScreen implements Screen {
 
     public void show () {
         batch = new SpriteBatch();
-        assetManager.get("sons/abertura.wav", Sound.class).play(1f);
+
+        assetManager.get("sons/abertura.wav", Sound.class).play();
         img = new Texture("imagens\\show-do-milhao.jpg");
 
         stage = new Stage(new ScreenViewport());
@@ -74,21 +77,25 @@ public class MainScreen implements Screen {
         //textureRegionDrawable -> Define uma área retangular de uma textura.
         botaoJogar.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
 
+        final Sound sound =  assetManager.get("sons/abertura.wav", Sound.class);
+
         botaoJogar.addListener(new InputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 outputLabel.setText("Clique para jogar!");
+
+
             }
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                outputLabel.setText("Entrando...");
+                game.setGameScrean(new JogoScreen());
+                sound.stop();
+                assetManager.get("sons/vaiComecarOShowDoMilhao.mp3", Sound.class).play(1f);
                 return true;
             }
         });
         stage.addActor(botaoJogar);
 
-
-        ref = this;
         new BulletController();
         moeda = new Moeda();
     }

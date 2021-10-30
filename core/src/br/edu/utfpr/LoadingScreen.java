@@ -2,6 +2,7 @@ package br.edu.utfpr;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -35,6 +36,7 @@ public class LoadingScreen implements Screen {
         originalWidth = sprite.getWidth();
         // load
         showDoMilhao.getAssetManager().load("imagens/moeda.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);
@@ -60,15 +62,16 @@ public class LoadingScreen implements Screen {
         if (showDoMilhao.getAssetManager().update()) {
             showDoMilhao.setGameScrean();
         }
+
         sprite.setRegion(0, 0, (int) (originalWidth * progress), (int) (sprite.getHeight() * progress));
         sprite.setSize((int) (originalWidth * progress), (int) (sprite.getHeight()));
         batch.begin();
         batch.setPackedColor((float) 0.8);
         batch.draw(img, 0, 0);
         sprite.draw(batch);
-        NumberFormat formatarFloat= new DecimalFormat("0.00");
-        font.draw(batch, "Loading ... "+formatarFloat.format(progress * 100) +" %", 380, 320);
-        font.getData().setScale((float) 2, (float)2);
+        NumberFormat formatarFloat = new DecimalFormat("0.00");
+        font.draw(batch, "Loading ... " + formatarFloat.format(progress * 100) + " %", 380, 320);
+        font.getData().setScale((float) 2, (float) 2);
         batch.end();
     }
 
