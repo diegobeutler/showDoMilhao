@@ -19,29 +19,36 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class JogoScreen implements Screen {
+    private ShowDoMilhao showDoMilhao;
 
-    private AssetManager assetManager;
     SpriteBatch batch;
     Texture img;
 
     private Stage stage;
     private Label outputLabel;
     public Moeda moeda;
-    public JogoScreen(AssetManager assetManager) {
-        this.assetManager = assetManager;
-    }
+
+
 
     public JogoScreen() {
 
     }
 
-    public void show () {
 
+
+    public void show () {
+        batch = new SpriteBatch();
+
+        img = new Texture("imagens\\bg.jpg");
     }
 
     @Override
     public void render (float delta) {
+
         ScreenUtils.clear(0, 0, 0, 1);
+        batch.begin();
+        batch.draw(img, 0, 0);
+        batch.end();
 
     }
 

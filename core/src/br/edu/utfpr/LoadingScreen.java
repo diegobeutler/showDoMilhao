@@ -2,6 +2,7 @@ package br.edu.utfpr;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -55,11 +56,13 @@ public class LoadingScreen implements Screen {
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
 
+
         float progress = showDoMilhao.getAssetManager().getProgress();
 
         if (showDoMilhao.getAssetManager().update()) {
             showDoMilhao.setGameScrean();
         }
+
         sprite.setRegion(0, 0, (int) (originalWidth * progress), (int) (sprite.getHeight() * progress));
         sprite.setSize((int) (originalWidth * progress), (int) (sprite.getHeight()));
         batch.begin();
