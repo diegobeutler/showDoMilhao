@@ -139,12 +139,12 @@ public class JogoScreen implements Screen {
         font5.setColor(Color.GRAY);
         batch.end();
 
-        ShapeRenderer shape = new ShapeRenderer();
-        shape.setProjectionMatrix(camera.combined);
-        shape.begin(ShapeRenderer.ShapeType.Filled);
-        shape.setColor(Color.WHITE);
-        shape.rect(15, (Gdx.graphics.getHeight()/2)-15, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-        shape.end();
+//        ShapeRenderer shape = new ShapeRenderer();
+//        shape.setProjectionMatrix(camera.combined);
+//        shape.begin(ShapeRenderer.ShapeType.Filled);
+//        shape.setColor(Color.WHITE);
+//        shape.rect(15, (Gdx.graphics.getHeight()/2)-15, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+//        shape.end();
 
 //        ShapeRenderer shape2 = new ShapeRenderer();
 //        shape2.setProjectionMatrix(camera.combined);
