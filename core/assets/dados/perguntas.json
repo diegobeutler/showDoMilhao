@@ -1,5 +1,5 @@
 {
-  "facil": [
+  "faceis": [
     { "dificuldade": "facil", "key": "1F", "pergunta": "Em que estado brasileiro nasceu a apresentadora Xuxa?", "respostas": [
       {"resposta":"RIO DE JANEIRO", "correta": false},
       {"resposta":"RIO GRANDE DO SUL", "correta": true},
@@ -121,7 +121,7 @@
       {"resposta":"BAHIA", "correta": true}
     ] }
   ],
-  "medio": [
+  "medias": [
     { "dificuldade": "medio", "key": "1M", "pergunta": "Quantos jogadores um jogo de vôlei reúne na quadra?", "respostas": [
     {"resposta":"SEIS", "correta": false},
     {"resposta":"OITO", "correta": false},
@@ -243,7 +243,7 @@
       {"resposta":"CARLOS GALHARDO", "correta": false}
     ] }
   ],
-  "dificil": [
+  "dificeis": [
     { "dificuldade": "dificil", "key": "1D", "pergunta": "Em qual espécie o macho choca os ovos ea fêmea procura alimento?", "respostas": [
       {"resposta":"ANDORINHA", "correta": false},
       {"resposta":"PATO SELVAGEM", "correta": false},

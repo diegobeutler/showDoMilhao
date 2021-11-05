@@ -92,7 +92,7 @@ public class MainScreen implements Screen {
         });
         stage.addActor(botaoJogar);
 
-        ref = this;//nao tirar ESSE AQUI DIEGO, tinha parado de funcionar o bullet dps q tu tirou
+        ref = this;
         new BulletController();
         moeda = new Moeda();
 

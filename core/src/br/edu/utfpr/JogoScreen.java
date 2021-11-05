@@ -1,6 +1,9 @@
 package br.edu.utfpr;
 
-import com.badlogic.gdx.Gdx;
+import br.edu.utfpr.jogo.Jogo;
+import br.edu.utfpr.jogo.Rodada;
+import br.edu.utfpr.json.Dados;
+import br.edu.utfpr.json.Questao;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
@@ -12,12 +15,18 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static br.edu.utfpr.jogo.Jogo.getJogo;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -49,9 +58,22 @@ public class JogoScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
         img = new Texture("imagens\\bg.jpg");
+        try {
+            String url = System.getProperty("user.dir") +"\\core\\assets\\dados\\perguntas.json";
+            String json = String.join(" ",
+                    Files.readAllLines(
+                            Paths.get(url),
+                            StandardCharsets.UTF_8)
+            );
+            Dados dados = new Gson().fromJson(json, Dados.class);
+            Jogo jogo = getJogo();
+            Questao questao = dados.getQuestao(jogo.getDificuldade());
+            System.out.println(questao.getKey());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-
-        ref = this;//nao tirar ESSE AQUI DIEGO, tinha parado de funcionar o bullet dps q tu tirou
+        ref = this;
         new BulletController();
         moeda = new Moeda();
         moeda.setX((float) (Gdx.graphics.getWidth()/1.35));
@@ -67,7 +89,6 @@ public class JogoScreen implements Screen {
         stage.act();
 
         ScreenUtils.clear(0, 0, 0, 1);
-
         batch.begin();
         //camera
         batch.setProjectionMatrix(camera.combined);
@@ -90,12 +111,12 @@ public class JogoScreen implements Screen {
         shape.rect(15, (Gdx.graphics.getHeight()/2)-15, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
         shape.end();
 
-        ShapeRenderer shape2 = new ShapeRenderer();
-        shape2.setProjectionMatrix(camera.combined);
-        shape2.begin(ShapeRenderer.ShapeType.Filled);
-        shape2.setColor(Color.GRAY);
-        shape2.rect(2, 2, (Gdx.graphics.getWidth()/2)+30, Gdx.graphics.getHeight()/2);
-        shape2.end();
+//        ShapeRenderer shape2 = new ShapeRenderer();
+//        shape2.setProjectionMatrix(camera.combined);
+//        shape2.begin(ShapeRenderer.ShapeType.Filled);
+//        shape2.setColor(Color.GRAY);
+//        shape2.rect(2, 2, (Gdx.graphics.getWidth()/2)+30, Gdx.graphics.getHeight()/2);
+//        shape2.end();
 
     }
 
