@@ -1,32 +1,21 @@
 package br.edu.utfpr;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 public class MoedaProcessor implements InputProcessor {
-    public boolean isSPressed = false, isWPressed=false;
-    MoedaProcessor() {
+    MoedaProcessor(){
         ShowDoMilhao.addInputProcessor(this);
     }
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.S){
-            isSPressed=true;
-        }
-        if(keycode == Input.Keys.W){
-            isWPressed = true;
-        }
+        MoedaController.ref.addNewBullet(MainScreen.ref.sacoMoeda.getX()+150,MainScreen.ref.sacoMoeda.getY()+450);
+        MoedaController.ref.addNewBullet(MainScreen.ref.sacoMoeda.getX()+100,MainScreen.ref.sacoMoeda.getY()+150);
+        MoedaController.ref.addNewBullet(MainScreen.ref.sacoMoeda.getX()+50,MainScreen.ref.sacoMoeda.getY()+300);
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        if(keycode == Input.Keys.S){
-            isSPressed=false;
-        }
-        if(keycode == Input.Keys.W){
-            isWPressed = false;
-        }
         return false;
     }
 

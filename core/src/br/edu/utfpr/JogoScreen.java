@@ -32,9 +32,10 @@ public class JogoScreen implements Screen {
 
     private Stage stage;
     private Label outputLabel;
-    public Moeda moeda;
+    public SacoMoeda sacoMoeda;
     private OrthographicCamera camera;
     private Viewport viewport;
+    private Moeda moeda;
     private boolean emPergunta;
     Questao  questao;
     Dados dados;
@@ -74,9 +75,11 @@ public class JogoScreen implements Screen {
         }
 
         ref = this;
-        new BulletController();
-        moeda = new Moeda();
-        moeda.setX((float) (Gdx.graphics.getWidth()/1.35));
+        new MoedaController();
+        sacoMoeda = new SacoMoeda();
+
+        sacoMoeda.setX((float) (Gdx.graphics.getWidth()/1.35));
+
         camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
 
         camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
@@ -91,12 +94,16 @@ public class JogoScreen implements Screen {
 
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
+
+//        moeda.setY((float) moedaMeio.getY()+10);
+//        moeda.setY((float)  moedaMeio.getY()+10);
+
         //camera
         batch.setProjectionMatrix(camera.combined);
 
         batch.draw(img, 0, 0);
-        moeda.draw(batch, delta);
-        BulletController.ref.draw(batch, delta);
+        sacoMoeda.draw(batch, delta);
+        MoedaController.ref.draw(batch, delta);
 
         stage.draw();
 
@@ -132,8 +139,12 @@ public class JogoScreen implements Screen {
         font5.setColor(Color.GRAY);
         batch.end();
 
-
-
+        ShapeRenderer shape = new ShapeRenderer();
+        shape.setProjectionMatrix(camera.combined);
+        shape.begin(ShapeRenderer.ShapeType.Filled);
+        shape.setColor(Color.WHITE);
+        shape.rect(15, (Gdx.graphics.getHeight()/2)-15, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+        shape.end();
 
 //        ShapeRenderer shape2 = new ShapeRenderer();
 //        shape2.setProjectionMatrix(camera.combined);
