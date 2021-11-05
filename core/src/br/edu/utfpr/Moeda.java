@@ -22,6 +22,8 @@ public class Moeda extends Sprite {
         if(moedaProcessor.isSPressed){
             this.setY(this.getY()-100*delta);
         }
+
+
     }
 
     public void draw (SpriteBatch batch, float delta){

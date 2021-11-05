@@ -6,11 +6,14 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -22,7 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.*;
 
 import static br.edu.utfpr.ShowDoMilhao.game;
 import static br.edu.utfpr.ShowDoMilhao.multiplexer;
@@ -31,23 +34,25 @@ public class MainScreen implements Screen {
 
     public AssetManager assetManager;
     SpriteBatch batch;
-    Texture img;
+    Texture img, img2;
 
     public static MainScreen ref;
     private Stage stage;
     private Label outputLabel;
     public Moeda moeda;
-
+    private Viewport viewport;
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
-
+    private ShapeRenderer shapeRenderer;
+    private OrthographicCamera camera;
 
     public void show () {
         batch = new SpriteBatch();
 
-        assetManager.get("sons/abertura.wav", Sound.class).play(1f);;
+        assetManager.get("sons/abertura.wav", Sound.class).play(0.5f);
         img = new Texture("imagens\\show-do-milhao.jpg");
+        img2 = new Texture("imagens\\jogar.png");
 
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
@@ -90,23 +95,51 @@ public class MainScreen implements Screen {
         ref = this;
         new BulletController();
         moeda = new Moeda();
+
+
+
+
+        camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
+
+        camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
+        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+
+
     }
 
     @Override
     public void render (float delta) {
         stage.act();
+
         ScreenUtils.clear(0, 0, 0, 1);
+
         batch.begin();
+        //camera
+        batch.setProjectionMatrix(camera.combined);
+
         batch.draw(img, 0, 0);
         moeda.draw(batch, delta);
         BulletController.ref.draw(batch, delta);
+
         stage.draw();
+
+        //forma
+
+
         batch.end();
+
+        ShapeRenderer shape = new ShapeRenderer();
+        shape.setProjectionMatrix(camera.combined);
+        shape.begin(ShapeRenderer.ShapeType.Line);
+        shape.setColor(Color.GREEN);
+        shape.rect(0, Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+        shape.end();
+
     }
 
     @Override
     public void resize(int width, int height) {
-
+        viewport.update(width, height);
     }
 
     @Override
