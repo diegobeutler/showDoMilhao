@@ -1,34 +1,27 @@
 package br.edu.utfpr;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.*;
 
 import static br.edu.utfpr.ShowDoMilhao.game;
-import static br.edu.utfpr.ShowDoMilhao.multiplexer;
 
 public class MainScreen implements Screen {
 
@@ -39,7 +32,7 @@ public class MainScreen implements Screen {
     public static MainScreen ref;
     private Stage stage;
     private Label outputLabel;
-    public Moeda moeda;
+    public SacoMoeda sacoMoeda;
     private Viewport viewport;
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -72,7 +65,7 @@ public class MainScreen implements Screen {
         stage.addActor(outputLabel);
 
         ImageTextButton botaoJogar = new ImageTextButton("Jogar", mySkin);
-        botaoJogar.setSize(100, 50);
+        botaoJogar.setSize(150, 75);
         botaoJogar.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
         //textureRegionDrawable ->  A região da textura deve ser definida antes do uso.
         botaoJogar.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
@@ -93,8 +86,8 @@ public class MainScreen implements Screen {
         stage.addActor(botaoJogar);
 
         ref = this;
-        new BulletController();
-        moeda = new Moeda();
+        new MoedaController();
+        sacoMoeda = new SacoMoeda();
 
 
 
@@ -118,8 +111,8 @@ public class MainScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
 
         batch.draw(img, 0, 0);
-        moeda.draw(batch, delta);
-        BulletController.ref.draw(batch, delta);
+        sacoMoeda.draw(batch, delta);
+        MoedaController.ref.draw(batch, delta);
 
         stage.draw();
 
@@ -128,12 +121,12 @@ public class MainScreen implements Screen {
 
         batch.end();
 
-        ShapeRenderer shape = new ShapeRenderer();
-        shape.setProjectionMatrix(camera.combined);
-        shape.begin(ShapeRenderer.ShapeType.Line);
-        shape.setColor(Color.GREEN);
-        shape.rect(0, Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-        shape.end();
+//        ShapeRenderer shape = new ShapeRenderer();
+//        shape.setProjectionMatrix(camera.combined);
+//        shape.begin(ShapeRenderer.ShapeType.Line);
+//        shape.setColor(Color.GREEN);
+//        shape.rect(0, Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+//        shape.end();
 
     }
 

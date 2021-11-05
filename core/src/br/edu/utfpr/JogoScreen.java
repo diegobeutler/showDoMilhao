@@ -1,39 +1,28 @@
 package br.edu.utfpr;
 
 import br.edu.utfpr.jogo.Jogo;
-import br.edu.utfpr.jogo.Rodada;
 import br.edu.utfpr.json.Dados;
 import br.edu.utfpr.json.Questao;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
-
-import java.awt.*;
-
-import com.badlogic.gdx.graphics.Color;
 public class JogoScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
 
@@ -42,10 +31,10 @@ public class JogoScreen implements Screen {
 
     private Stage stage;
     private Label outputLabel;
-    public Moeda moeda;
+    public SacoMoeda sacoMoeda;
     private OrthographicCamera camera;
     private Viewport viewport;
-
+    private Moeda moeda;
     public static JogoScreen ref;
     public JogoScreen() {
 
@@ -74,9 +63,11 @@ public class JogoScreen implements Screen {
         }
 
         ref = this;
-        new BulletController();
-        moeda = new Moeda();
-        moeda.setX((float) (Gdx.graphics.getWidth()/1.35));
+        new MoedaController();
+        sacoMoeda = new SacoMoeda();
+
+        sacoMoeda.setX((float) (Gdx.graphics.getWidth()/1.35));
+
         camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
 
         camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
@@ -90,12 +81,16 @@ public class JogoScreen implements Screen {
 
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
+
+//        moeda.setY((float) moedaMeio.getY()+10);
+//        moeda.setY((float)  moedaMeio.getY()+10);
+
         //camera
         batch.setProjectionMatrix(camera.combined);
 
         batch.draw(img, 0, 0);
-        moeda.draw(batch, delta);
-        BulletController.ref.draw(batch, delta);
+        sacoMoeda.draw(batch, delta);
+        MoedaController.ref.draw(batch, delta);
 
         stage.draw();
 

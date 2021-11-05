@@ -5,21 +5,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import java.util.HashMap;
 
-public class BulletController {
-    public static BulletController ref;
-    private HashMap<Integer, Bullet> bullets, deadBullets;
+public class MoedaController {
+    public static MoedaController ref;
+    private HashMap<Integer, Moeda> bullets, deadBullets;
 
-    BulletController() {
+    MoedaController() {
         ref = this;
         init();
     }
 
     public void init() {
         if (bullets == null) {
-            bullets = new HashMap<Integer, Bullet>(40);
-            deadBullets = new HashMap<Integer, Bullet>(40);
+            bullets = new HashMap<Integer, Moeda>(40);
+            deadBullets = new HashMap<Integer, Moeda>(40);
         }
-        new BulletsProcessor();
+        new MoedaProcessor();
     }
 
     private int count = 0;
@@ -28,10 +28,10 @@ public class BulletController {
         if (deadBullets.size() > 0) {
             deadBullets.get(0).setPosition(x, y);
             int id = deadBullets.keySet().iterator().next();
-            Bullet b = deadBullets.get(id);
+            Moeda b = deadBullets.get(id);
             bullets.put(id, b);
         } else {
-            Bullet b = new Bullet();
+            Moeda b = new Moeda();
             b.setPosition(x, y);
             bullets.put(count, b);
             count++;
@@ -40,7 +40,7 @@ public class BulletController {
 
     public void draw(final SpriteBatch batch, float delta) {
         for (final int id : bullets.keySet()) {
-            final Bullet b = bullets.get(id);
+            final Moeda b = bullets.get(id);
             b.draw(batch, delta);
             Gdx.app.postRunnable(new Runnable() {
                 @Override
