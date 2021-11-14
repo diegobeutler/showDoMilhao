@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.*;
 
+import javax.swing.*;
 import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -37,11 +38,13 @@ public class LoadingScreen implements Screen {
         // load
         showDoMilhao.getAssetManager().load("imagens/animacaoMoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/goldbar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/boaSorte.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/certaResposta.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/quepenaErrou.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/estaCertoDisso.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/trilhaSonoraMeio.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/trilhaSonoraInicio.mp3", Sound.class);
@@ -49,7 +52,6 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/trilhaSuspense.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/vaiComecarOShowDoMilhao.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("skin/neon-ui.json", Skin.class);
-//        showDoMilhao.getAssetManager().load("dados\\perguntas.json", Json.class ); todo não funciona
     }
 
     @Override

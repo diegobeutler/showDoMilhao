@@ -3,64 +3,94 @@ package br.edu.utfpr;
 import br.edu.utfpr.jogo.Jogo;
 import br.edu.utfpr.json.Dados;
 import br.edu.utfpr.json.Questao;
+import br.edu.utfpr.json.Resposta;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.gson.Gson;
 
+import javax.swing.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
+
 public class JogoScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
+    private AssetManager assetManager;
 
     SpriteBatch batch;
     Texture img;
 
     private Stage stage;
+    private Stage stage2 = new Stage();
     private Label outputLabel;
     public SacoMoeda sacoMoeda;
     private OrthographicCamera camera;
-    private Viewport viewport;
+    //    private Viewport viewport;
     private Moeda moeda;
     private boolean emPergunta;
-    Questao  questao;
+    Questao questao;
     Dados dados;
     Jogo jogo;
     private BitmapFont font1 = new BitmapFont();
+    // botoes respostas
+    private Skin skinBotoesRespostas;
+    private TextButton resposta1;
+    private TextButton resposta2;
+    private TextButton resposta3;
+    private TextButton resposta4;
     private BitmapFont font2 = new BitmapFont();
     private BitmapFont font3 = new BitmapFont();
     private BitmapFont font4 = new BitmapFont();
     private BitmapFont font5 = new BitmapFont();
+    /// tratar string
+    private String retorno = "";
+    private String retorno2 = "";
+    private boolean flg = false;
+    private boolean flg2 = false;
+    private int k = 0;
+    private int indice = 0;
+    private char[] arrayTexto;
 
 
     public static JogoScreen ref;
-    public JogoScreen() {
+
+    public JogoScreen(AssetManager assetManager) {
+        this.assetManager = assetManager;
 
     }
 
 
-
-    public void show () {
+    public void show() {
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
         img = new Texture("imagens\\bg.jpg");
+
+        //botoes respostas
+        skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
         try {
-            String url = System.getProperty("user.dir") +"\\core\\assets\\dados\\perguntas.json";
+            String url = System.getProperty("user.dir") + "\\core\\assets\\dados\\perguntas.json";
             String json = String.join(" ",
                     Files.readAllLines(
                             Paths.get(url),
@@ -78,67 +108,105 @@ public class JogoScreen implements Screen {
         new MoedaController();
         sacoMoeda = new SacoMoeda();
 
-        sacoMoeda.setX((float) (Gdx.graphics.getWidth()/1.35));
+        sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
 
-        camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
-
-        camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
-        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
+//        camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
+//
+//        camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
+//        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
         questao = dados.getQuestao(jogo.getDificuldade());
 
     }
 
     @Override
-    public void render (float delta) {
+    public void render(float delta) {
         stage.act();
 
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
 
-//        moeda.setY((float) moedaMeio.getY()+10);
-//        moeda.setY((float)  moedaMeio.getY()+10);
-
-        //camera
-        batch.setProjectionMatrix(camera.combined);
-
         batch.draw(img, 0, 0);
         sacoMoeda.draw(batch, delta);
         MoedaController.ref.draw(batch, delta);
 
-        stage.draw();
+        int tabulacao = 40;// todo mudar lá para cima
+        float heightShape =  100;
+        float font1Y = 500;
 
-
-
-        //forma
-
-//        ShapeRenderer shape = new ShapeRenderer();
-//        shape.setProjectionMatrix(camera.combined);
-//        shape.begin(ShapeRenderer.ShapeType.Filled);
-//        shape.setColor(Color.WHITE);
-//        shape.rect(15, (Gdx.graphics.getHeight()/2)-15, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-//        shape.end();
-
-        font1.draw(batch, questao.getPergunta(), 50, 520);
-        font1.getData().setScale((float) 2, (float) 2);
+        font1.draw(batch, tratarString(questao.getPergunta(), tabulacao), 50, font1Y);
+        font1.getData().setScale(1.8f, 1.8f);
         font1.setColor(Color.BLACK);
 
-        font2.draw(batch, questao.getRespostas().get(0).getResposta(), 50, 450);
-        font2.getData().setScale((float) 2, (float) 2);
-        font2.setColor(Color.GRAY);
+        // respostas
 
-        font3.draw(batch, questao.getRespostas().get(1).getResposta(), 50, 400);
-        font3.getData().setScale((float) 2, (float) 2);
-        font3.setColor(Color.GRAY);
+        resposta1 = new TextButton(" 1 - " + questao.getRespostas().get(0).getResposta(), skinBotoesRespostas);
+        resposta1.getLabel().setAlignment(Align.left);
+//        resposta1.getLabel().setFontScale(1.7f);
 
-        font4.draw(batch, questao.getRespostas().get(2).getResposta(), 50, 350);
-        font4.getData().setScale((float) 2, (float) 2);
-        font4.setColor(Color.GRAY);
 
-        font5.draw(batch, questao.getRespostas().get(3).getResposta(), 50, 300);
-        font5.getData().setScale((float) 2, (float) 2);
-        font5.setColor(Color.GRAY);
+        this.resposta1.setSize(Gdx.graphics.getWidth() / 2, 60);
+        this.resposta1.setPosition(15, font1Y - heightShape - 20, Align.left);
+        this.resposta1.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                confirmaResposta(questao.getRespostas().get(0));
+                return true;
+            }
+        });
+        stage.addActor(JogoScreen.this.resposta1);
+
+        resposta2 = new TextButton(" 2 - " + questao.getRespostas().get(1).getResposta(), skinBotoesRespostas);
+        resposta2.getLabel().setAlignment(Align.left);
+
+        this.resposta2.setSize(Gdx.graphics.getWidth() / 2, 60);
+        this.resposta2.setPosition(15, font1Y - heightShape - 80, Align.left);
+        this.resposta2.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                confirmaResposta(questao.getRespostas().get(1));
+                return true;
+            }
+        });
+        stage.addActor(JogoScreen.this.resposta2);
+
+        resposta3 = new TextButton(" 2 - " + questao.getRespostas().get(2).getResposta(), skinBotoesRespostas);
+        resposta3.getLabel().setAlignment(Align.left);
+
+        this.resposta3.setSize(Gdx.graphics.getWidth() / 2, 60);
+        this.resposta3.setPosition(15, font1Y - heightShape - 140, Align.left);
+        this.resposta3.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                confirmaResposta(questao.getRespostas().get(2));
+                return true;
+            }
+        });
+        stage.addActor(JogoScreen.this.resposta3);
+
+        resposta4 = new TextButton(" 2 - " + questao.getRespostas().get(3).getResposta(), skinBotoesRespostas);
+        resposta4.getLabel().setAlignment(Align.left);
+
+        this.resposta4.setSize(Gdx.graphics.getWidth() / 2, 60);
+        this.resposta4.setPosition(15, font1Y - heightShape - 200, Align.left);
+        this.resposta4.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                confirmaResposta(questao.getRespostas().get(3));
+                return true;
+            }
+        });
+        stage.addActor(JogoScreen.this.resposta4);
+
+
+        stage.draw();
+
         batch.end();
 
+        ShapeRenderer shape = new ShapeRenderer();
+        shape.begin(ShapeRenderer.ShapeType.Line);
+        shape.setColor(Color.WHITE);
+        shape.rect(15, Gdx.graphics.getHeight() - heightShape - 15, Gdx.graphics.getWidth() / 1.5f, 100);
+        shape.end();
 //        ShapeRenderer shape = new ShapeRenderer();
 //        shape.setProjectionMatrix(camera.combined);
 //        shape.begin(ShapeRenderer.ShapeType.Filled);
@@ -157,7 +225,6 @@ public class JogoScreen implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width, height);
     }
 
     @Override
@@ -176,8 +243,63 @@ public class JogoScreen implements Screen {
     }
 
     @Override
-    public void dispose () {
+    public void dispose() {
         batch.dispose();
         img.dispose();
     }
+
+
+    private String tratarString(String texto, int tabulacao) {
+        arrayTexto = texto.toCharArray();
+        retorno = "";
+        retorno2 = "";
+        flg = false;
+        flg2 = false;
+        k = 0;
+        indice = 0;
+
+        for (int i = 0; i < arrayTexto.length; i++) {
+
+            if (indice > 0 && indice % tabulacao == 0 || flg) {
+                flg = true;
+                if (arrayTexto[i] == ' ') {
+                    flg2 = true;
+                } else {
+                    if (flg2 && arrayTexto[i] != ' ') {
+                        retorno += "\n";
+                        k++;
+                        flg = false;
+                        flg2 = false;
+                    }
+                }
+            }
+            retorno += arrayTexto[i];
+            k++;
+            indice++;
+        }
+
+        return retorno;
+    }
+
+    private void confirmaResposta(Resposta resposta) {
+        assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
+        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + questao.getRespostas().get(0).getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
+        if (valor == JOptionPane.YES_OPTION) {
+            if (resposta.isCorreta()) {
+                tratarAcerto();
+            } else {
+                tratarErro();
+            }
+        }
+    }
+
+    private void tratarAcerto() {
+        assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
+    }
+
+    private void tratarErro() {
+        assetManager.get("sons/quepenaErrou.mp3", Sound.class).play(1f);
+    }
+
 }

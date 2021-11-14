@@ -58,11 +58,11 @@ public class MainScreen implements Screen {
         //Os recursos são nomeados e podem ser pesquisados  por nome e tipo. Os recursos podem ser descritos em JSON.
         //O skin fornece conversões úteis, como permitir o acesso a regiões no atlas como nove manchas, sprites, drawables, etc
 
-        outputLabel = new Label("Clique para comecar o jogo!", mySkin);
-        outputLabel.setSize(Gdx.graphics.getWidth(), row_height);
-        outputLabel.setPosition(0, row_height);
-        outputLabel.setAlignment(Align.center);
-        stage.addActor(outputLabel);
+//        outputLabel = new Label("Clique para comecar o jogo!", mySkin);
+//        outputLabel.setSize(Gdx.graphics.getWidth(), row_height);
+//        outputLabel.setPosition(0, row_height);
+//        outputLabel.setAlignment(Align.center);
+//        stage.addActor(outputLabel);
 
         ImageTextButton botaoJogar = new ImageTextButton("Jogar", mySkin);
         botaoJogar.setSize(150, 75);
@@ -72,12 +72,8 @@ public class MainScreen implements Screen {
         final Sound sound =  assetManager.get("sons/abertura.wav", Sound.class);
         botaoJogar.addListener(new InputListener() {
             @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                outputLabel.setText("Clique para jogar!");
-            }
-            @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                game.setGameScrean(new JogoScreen());
+                game.setGameScrean(new JogoScreen(assetManager));
                 sound.stop();
                 assetManager.get("sons/vaiComecarOShowDoMilhao.mp3", Sound.class).play(1f);
                 return true;
