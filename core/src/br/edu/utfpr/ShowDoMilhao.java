@@ -7,7 +7,6 @@ import com.badlogic.gdx.assets.AssetManager;
 public class ShowDoMilhao extends Game {
     public static ShowDoMilhao game;
     public AssetManager assetManager;
-
     public static InputMultiplexer multiplexer;
 
     public static void addInputProcessor(InputProcessor inputProcessor) {
@@ -35,7 +34,6 @@ public class ShowDoMilhao extends Game {
     public void setGameScreen(Screen screen) {
         this.setScreen(screen);
     }
-
 
     public void render() {
         super.render();

@@ -1,10 +1,8 @@
 package br.edu.utfpr;
 
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 public class SacoMoedaProcessor implements InputProcessor {
- 
 
     SacoMoedaProcessor() {
         ShowDoMilhao.addInputProcessor(this);
@@ -12,10 +10,8 @@ public class SacoMoedaProcessor implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-
         return false;
     }
-
     @Override
     public boolean keyUp(int keycode) {
         return false;

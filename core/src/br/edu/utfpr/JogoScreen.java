@@ -12,13 +12,16 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -34,16 +37,16 @@ import static br.edu.utfpr.jogo.Jogo.getJogo;
 public class JogoScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
     private AssetManager assetManager;
-    SpriteBatch batch;
-    Texture img;
-    ShapeRenderer shape = new ShapeRenderer();
+    private SpriteBatch batch;
+    private Texture fundo;
+    private ShapeRenderer shape = new ShapeRenderer();
 
     private Stage stage;
     public SacoMoeda sacoMoeda;
     private Moeda moeda;
-    Questao questao;
-    Dados dados;
-    Jogo jogo;
+    private Questao questao;
+    private Dados dados;
+    private Jogo jogo;
     private BitmapFont font1 = new BitmapFont();
     // botoes respostas
     private Skin skinBotoesRespostas;
@@ -51,11 +54,14 @@ public class JogoScreen implements Screen {
     private TextButton resposta2;
     private TextButton resposta3;
     private TextButton resposta4;
+    private ImageTextButton botaoJogar;
+    private TextureRegionDrawable textureRegionDrawable, textureRegionDrawable2, textureRegionDrawable3;
+    private TextureRegion textureRegion, textureRegion2, textureRegion3 ;
     private BitmapFont fontPontuacao = new BitmapFont();
     // ajudas
-    private TextButton btnPular;
+    private ImageTextButton btnPular;
     private TextButton btnEliminar2;
-    private TextButton btnParar;
+    private ImageTextButton btnParar;
     /// tratar string
     private String retorno = "";
     private boolean flg = false;
@@ -63,10 +69,9 @@ public class JogoScreen implements Screen {
     private int k = 0;
     private int indice = 0;
     private char[] arrayTexto;
-    int tabulacao = 40;
-    float heightShape = 100;
-    float font1Y = 500;
-
+    private int tabulacao = 40;
+    private float heightShape = 100;
+    private float font1Y = 500;
 
     public static JogoScreen ref;
 
@@ -80,7 +85,7 @@ public class JogoScreen implements Screen {
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
-        img = assetManager.get("imagens/bg.jpg", Texture.class);
+        fundo = assetManager.get("imagens/bg.jpg", Texture.class);
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
@@ -151,8 +156,12 @@ public class JogoScreen implements Screen {
                 return true;
             }
         });
+
         //botão parar
-        btnParar = new TextButton("Parar", skinBotoesRespostas);
+        btnParar = new ImageTextButton("Parar", skinBotoesRespostas);
+        textureRegion = new TextureRegion(assetManager.get("imagens/parar.jpg", Texture.class));
+        textureRegionDrawable = new TextureRegionDrawable(textureRegion);
+        btnParar.getStyle().imageUp = textureRegionDrawable;
         btnParar.getLabel().setAlignment(Align.left);
         this.btnParar.setSize(100, 60);
         this.btnParar.setPosition(15, font1Y - heightShape - 300, Align.left);
@@ -164,7 +173,10 @@ public class JogoScreen implements Screen {
             }
         });
 
-        btnPular = new TextButton("", skinBotoesRespostas);
+        btnPular = new ImageTextButton("Pular", skinBotoesRespostas);
+        textureRegion2 = new TextureRegion(assetManager.get("imagens/pular.jpg", Texture.class));
+        textureRegionDrawable2 = new TextureRegionDrawable(textureRegion2);
+        btnPular.getStyle().imageUp = textureRegionDrawable2;
         btnPular.getLabel().setAlignment(Align.left);
         this.btnPular.setSize(100, 60);
         this.btnPular.setPosition(130, font1Y - heightShape - 300, Align.left);
@@ -184,11 +196,11 @@ public class JogoScreen implements Screen {
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
 
-        batch.draw(img, 0, 0);
+        batch.draw(fundo, 0, 0);
         fontPontuacao.getData().setScale(1.5f);
         fontPontuacao.draw(batch, "Pontuação: " + jogo.getPontuacao().toString(), 750, 520);
         fontPontuacao.getData().setScale(1.8f);
-        sacoMoeda.draw(batch, delta);
+        sacoMoeda.draw(batch);
         MoedaController.ref.draw(batch, delta);
 
         font1.draw(batch, tratarString(questao.getPergunta(), tabulacao), 50, font1Y);
@@ -334,10 +346,9 @@ public class JogoScreen implements Screen {
         }
     }
 
+
     private void tratarAcerto() {
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-100,(Gdx.graphics.getHeight()/12)+100);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+50);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+75);
+        jogarMoedas();
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
@@ -352,6 +363,12 @@ public class JogoScreen implements Screen {
 
     private Questao sortearNovaQuestao() {
         return dados.getQuestao(jogo.getRodada().getDificuldade());
+    }
+
+    private void jogarMoedas() {
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 150, (Gdx.graphics.getHeight() / 12) + 100);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 200, (Gdx.graphics.getHeight() / 12) + 50);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 250, (Gdx.graphics.getHeight() / 12) + 75);
     }
 
 }
