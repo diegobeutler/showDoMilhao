@@ -32,7 +32,8 @@ public class MainScreen implements Screen {
     public static MainScreen ref;
     private Stage stage;
     public SacoMoeda sacoMoeda;
-
+    public Moeda moeda;
+    private Viewport viewport;
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
@@ -83,6 +84,7 @@ public class MainScreen implements Screen {
         ref = this;
         new MoedaController();
         sacoMoeda = new SacoMoeda();
+        moeda = new Moeda();
     }
 
     @Override

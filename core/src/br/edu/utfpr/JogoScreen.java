@@ -104,7 +104,7 @@ public class JogoScreen implements Screen {
         ref = this;
         new MoedaController();
         sacoMoeda = new SacoMoeda();
-
+        moeda = new Moeda();
         sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
 
     }
@@ -287,9 +287,13 @@ public class JogoScreen implements Screen {
             }
         }
     }
-
+    float delta;
     private void tratarAcerto() {
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
+        assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+150);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-250,(Gdx.graphics.getHeight()/12)+100);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+200);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
         jogo.proximaRodada();
         questao = dados.getQuestao(jogo.getRodada().getDificuldade());
