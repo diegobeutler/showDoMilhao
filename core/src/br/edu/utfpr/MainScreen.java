@@ -31,9 +31,8 @@ public class MainScreen implements Screen {
 
     public static MainScreen ref;
     private Stage stage;
-    private Label outputLabel;
     public SacoMoeda sacoMoeda;
-    private Viewport viewport;
+
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
@@ -73,7 +72,7 @@ public class MainScreen implements Screen {
         botaoJogar.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                game.setGameScrean(new JogoScreen(assetManager));
+                game.setGameScrean(new JogoScreen(assetManager, game));
                 sound.stop();
                 assetManager.get("sons/vaiComecarOShowDoMilhao.mp3", Sound.class).play(1f);
                 return true;
@@ -84,16 +83,6 @@ public class MainScreen implements Screen {
         ref = this;
         new MoedaController();
         sacoMoeda = new SacoMoeda();
-
-
-
-
-        camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
-
-        camera.position.set(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2, 0);
-        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
-
-
     }
 
     @Override
@@ -103,9 +92,6 @@ public class MainScreen implements Screen {
         ScreenUtils.clear(0, 0, 0, 1);
 
         batch.begin();
-        //camera
-        batch.setProjectionMatrix(camera.combined);
-
         batch.draw(img, 0, 0);
         sacoMoeda.draw(batch, delta);
         MoedaController.ref.draw(batch, delta);
@@ -116,19 +102,10 @@ public class MainScreen implements Screen {
 
 
         batch.end();
-
-//        ShapeRenderer shape = new ShapeRenderer();
-//        shape.setProjectionMatrix(camera.combined);
-//        shape.begin(ShapeRenderer.ShapeType.Line);
-//        shape.setColor(Color.GREEN);
-//        shape.rect(0, Gdx.graphics.getHeight()/2, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-//        shape.end();
-
     }
 
     @Override
     public void resize(int width, int height) {
-        viewport.update(width, height);
     }
 
     @Override

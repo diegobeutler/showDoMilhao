@@ -43,13 +43,8 @@ public class JogoScreen implements Screen {
     Texture img;
 
     private Stage stage;
-    private Stage stage2 = new Stage();
-    private Label outputLabel;
     public SacoMoeda sacoMoeda;
-    private OrthographicCamera camera;
-    //    private Viewport viewport;
     private Moeda moeda;
-    private boolean emPergunta;
     Questao questao;
     Dados dados;
     Jogo jogo;
@@ -77,8 +72,9 @@ public class JogoScreen implements Screen {
 
     public static JogoScreen ref;
 
-    public JogoScreen(AssetManager assetManager) {
+    public JogoScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
         this.assetManager = assetManager;
+        this.showDoMilhao = showDoMilhao;
 
     }
 
@@ -111,12 +107,6 @@ public class JogoScreen implements Screen {
 
         sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
 
-//        camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
-//
-//        camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
-//        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
-//        questao = dados.getQuestao(jogo.getDificuldade());
-
     }
 
     @Override
@@ -140,12 +130,8 @@ public class JogoScreen implements Screen {
         font1.setColor(Color.BLACK);
 
         // respostas
-
         resposta1 = new TextButton(" 1 - " + questao.getRespostas().get(0).getResposta(), skinBotoesRespostas);
         resposta1.getLabel().setAlignment(Align.left);
-//        resposta1.getLabel().setFontScale(1.7f);
-
-
         this.resposta1.setSize(Gdx.graphics.getWidth() / 2, 60);
         this.resposta1.setPosition(15, font1Y - heightShape - 20, Align.left);
         this.resposta1.addListener(new InputListener() {
@@ -159,7 +145,6 @@ public class JogoScreen implements Screen {
 
         resposta2 = new TextButton(" 2 - " + questao.getRespostas().get(1).getResposta(), skinBotoesRespostas);
         resposta2.getLabel().setAlignment(Align.left);
-
         this.resposta2.setSize(Gdx.graphics.getWidth() / 2, 60);
         this.resposta2.setPosition(15, font1Y - heightShape - 80, Align.left);
         this.resposta2.addListener(new InputListener() {
@@ -173,7 +158,6 @@ public class JogoScreen implements Screen {
 
         resposta3 = new TextButton(" 3 - " + questao.getRespostas().get(2).getResposta(), skinBotoesRespostas);
         resposta3.getLabel().setAlignment(Align.left);
-
         this.resposta3.setSize(Gdx.graphics.getWidth() / 2, 60);
         this.resposta3.setPosition(15, font1Y - heightShape - 140, Align.left);
         this.resposta3.addListener(new InputListener() {
@@ -187,7 +171,6 @@ public class JogoScreen implements Screen {
 
         resposta4 = new TextButton(" 4 - " + questao.getRespostas().get(3).getResposta(), skinBotoesRespostas);
         resposta4.getLabel().setAlignment(Align.left);
-
         this.resposta4.setSize(Gdx.graphics.getWidth() / 2, 60);
         this.resposta4.setPosition(15, font1Y - heightShape - 200, Align.left);
         this.resposta4.addListener(new InputListener() {
@@ -207,12 +190,7 @@ public class JogoScreen implements Screen {
         this.btnParar.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
-                int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?", "Confirma", JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
-                if (valor == JOptionPane.YES_OPTION) {
-                    jogo.setPontuacao(jogo.getRodada().getParar());
-                }
+              tratarParar();
                 return true;
             }
         });
@@ -226,22 +204,18 @@ public class JogoScreen implements Screen {
         ShapeRenderer shape = new ShapeRenderer();
         shape.begin(ShapeRenderer.ShapeType.Line);
         shape.setColor(Color.WHITE);
-        shape.rect(15, Gdx.graphics.getHeight() - heightShape - 15, Gdx.graphics.getWidth() / 1.5f, 100);
+        shape.rect(15, Gdx.graphics.getHeight() - heightShape - 15, Gdx.graphics.getWidth() / 1.5f, heightShape);
         shape.end();
-//        ShapeRenderer shape = new ShapeRenderer();
-//        shape.setProjectionMatrix(camera.combined);
-//        shape.begin(ShapeRenderer.ShapeType.Filled);
-//        shape.setColor(Color.WHITE);
-//        shape.rect(15, (Gdx.graphics.getHeight()/2)-15, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-//        shape.end();
+    }
 
-//        ShapeRenderer shape2 = new ShapeRenderer();
-//        shape2.setProjectionMatrix(camera.combined);
-//        shape2.begin(ShapeRenderer.ShapeType.Filled);
-//        shape2.setColor(Color.GRAY);
-//        shape2.rect(2, 2, (Gdx.graphics.getWidth()/2)+30, Gdx.graphics.getHeight()/2);
-//        shape2.end();
-
+    private void tratarParar() {
+        assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
+        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?\nPontuação se parar: "+jogo.getRodada().getParar(), "Confirma", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
+        if (valor == JOptionPane.YES_OPTION) {
+            jogo.setPontuacao(jogo.getRodada().getParar());
+            showDoMilhao.setGameScrean(new PararScreen(assetManager, showDoMilhao));
+        }
     }
 
     @Override

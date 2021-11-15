@@ -41,4 +41,8 @@ public class Jogo {
     public void proximaRodada() {
         rodada = rodada.getProximaRodada();
     }
+
+    public void reiniciar() {
+        jogo = null;
+    }
 }

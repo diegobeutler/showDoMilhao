@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum Rodada {
-    RODADA_1 {
+    RODADA_1("Rodada 1") {
         @Override
         public Integer getAcertar() {
             return 1000;
@@ -30,7 +30,7 @@ public enum Rodada {
             return Dificuldade.FACIL;
         }
     },
-    RODADA_2 {
+    RODADA_2("Rodada 2") {
         @Override
         public Integer getAcertar() {
             return 2000;
@@ -56,7 +56,7 @@ public enum Rodada {
             return Dificuldade.FACIL;
         }
     },
-    RODADA_3 {
+    RODADA_3("Rodada 3") {
         @Override
         public Integer getAcertar() {
             return 3000;
@@ -82,7 +82,7 @@ public enum Rodada {
             return Dificuldade.FACIL;
         }
     },
-    RODADA_4 {
+    RODADA_4("Rodada 4") {
         @Override
         public Integer getAcertar() {
             return 4000;
@@ -108,7 +108,7 @@ public enum Rodada {
             return Dificuldade.FACIL;
         }
     },
-    RODADA_5 {
+    RODADA_5("Rodada 5") {
         @Override
         public Integer getAcertar() {
             return 5000;
@@ -134,7 +134,7 @@ public enum Rodada {
             return Dificuldade.FACIL;
         }
     },
-    RODADA_6 {
+    RODADA_6("Rodada 6") {
         @Override
         public Integer getAcertar() {
             return 10000;
@@ -160,7 +160,7 @@ public enum Rodada {
             return Dificuldade.MEDIO;
         }
     },
-    RODADA_7 {
+    RODADA_7("Rodada 7") {
         @Override
         public Integer getAcertar() {
             return 20000;
@@ -186,7 +186,7 @@ public enum Rodada {
             return Dificuldade.MEDIO;
         }
     },
-    RODADA_8 {
+    RODADA_8("Rodada 8") {
         @Override
         public Integer getAcertar() {
             return 30000;
@@ -212,7 +212,7 @@ public enum Rodada {
             return Dificuldade.MEDIO;
         }
     },
-    RODADA_9 {
+    RODADA_9("Rodada 9") {
         @Override
         public Integer getAcertar() {
             return 40000;
@@ -238,7 +238,7 @@ public enum Rodada {
             return Dificuldade.MEDIO;
         }
     },
-    RODADA_10 {
+    RODADA_10("Rodada 10") {
         @Override
         public Integer getAcertar() {
             return 50000;
@@ -264,7 +264,7 @@ public enum Rodada {
             return Dificuldade.MEDIO;
         }
     },
-    RODADA_11 {
+    RODADA_11("Rodada 11") {
         @Override
         public Integer getAcertar() {
             return 100000;
@@ -290,7 +290,7 @@ public enum Rodada {
             return Dificuldade.DIFICIL;
         }
     },
-    RODADA_12 {
+    RODADA_12("Rodada 12") {
         @Override
         public Integer getAcertar() {
             return 200000;
@@ -316,7 +316,7 @@ public enum Rodada {
             return Dificuldade.DIFICIL;
         }
     },
-    RODADA_13 {
+    RODADA_13("Rodada 13") {
         @Override
         public Integer getAcertar() {
             return 300000;
@@ -342,7 +342,7 @@ public enum Rodada {
             return Dificuldade.DIFICIL;
         }
     },
-    RODADA_14 {
+    RODADA_14("Rodada 14") {
         @Override
         public Integer getAcertar() {
             return 400000;
@@ -368,7 +368,7 @@ public enum Rodada {
             return Dificuldade.DIFICIL;
         }
     },
-    RODADA_15 {
+    RODADA_15("Rodada 15") {
         @Override
         public Integer getAcertar() {
             return 500000;
@@ -394,7 +394,7 @@ public enum Rodada {
             return Dificuldade.DIFICIL;
         }
     },
-    RODADA_16 {
+    RODADA_16("Rodada 16") {
         @Override
         public Integer getAcertar() {
             return 1000000;
@@ -421,10 +421,24 @@ public enum Rodada {
         }
     };
 
+
+    public String getLabel() {
+        return label;
+    }
+
     public abstract Integer getAcertar();
+
     public abstract Integer getParar();
+
     public abstract Integer getErrar();
+
     public abstract Rodada getProximaRodada();
+
     public abstract Dificuldade getDificuldade();
 
+    private String label;
+
+    Rodada(String label) {
+        this.label = label;
+    }
 }

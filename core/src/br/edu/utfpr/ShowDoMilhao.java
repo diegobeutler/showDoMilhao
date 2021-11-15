@@ -29,8 +29,8 @@ public class ShowDoMilhao extends Game {
         this.setScreen(new MainScreen(assetManager));
     }
 
-    public void setGameScrean(Screen asdas) {
-        this.setScreen(asdas);
+    public void setGameScrean(Screen screan) {
+        this.setScreen(screan);
     }
 
 
