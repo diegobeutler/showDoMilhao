@@ -1,6 +1,5 @@
 package br.edu.utfpr;
 
-import br.edu.utfpr.enumeration.Rodada;
 import br.edu.utfpr.jogo.Jogo;
 import br.edu.utfpr.json.Dados;
 import br.edu.utfpr.json.Questao;
@@ -10,7 +9,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,14 +16,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.google.gson.Gson;
 
 import javax.swing.*;
@@ -75,7 +70,6 @@ public class JogoScreen implements Screen {
     public JogoScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
         this.assetManager = assetManager;
         this.showDoMilhao = showDoMilhao;
-
     }
 
 
@@ -118,7 +112,7 @@ public class JogoScreen implements Screen {
 
         batch.draw(img, 0, 0);
         fontPontuacao.draw(batch, jogo.getPontuacao().toString(), 800, 520);
-        sacoMoeda.draw(batch, delta);
+        sacoMoeda.draw(batch);
         MoedaController.ref.draw(batch, delta);
 
         int tabulacao = 40;// todo mudar lá para cima
@@ -214,7 +208,7 @@ public class JogoScreen implements Screen {
                 JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
         if (valor == JOptionPane.YES_OPTION) {
             jogo.setPontuacao(jogo.getRodada().getParar());
-            showDoMilhao.setGameScrean(new PararScreen(assetManager, showDoMilhao));
+            showDoMilhao.setGameScreen(new PararScreen(assetManager, showDoMilhao));
         }
     }
 
@@ -287,13 +281,14 @@ public class JogoScreen implements Screen {
             }
         }
     }
-    float delta;
+
     private void tratarAcerto() {
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-100,(Gdx.graphics.getHeight()/12)+100);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+50);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+75);
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+150);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-250,(Gdx.graphics.getHeight()/12)+100);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+200);
+
         jogo.setPontuacao(jogo.getRodada().getAcertar());
         jogo.proximaRodada();
         questao = dados.getQuestao(jogo.getRodada().getDificuldade());
