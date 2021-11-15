@@ -16,12 +16,12 @@ public class SacoMoeda extends Sprite {
     }
 
     public void update (final float delta){
-        if(sacoMoedaProcessor.isWPressed){
-            this.setY(this.getY()+100*delta);
-        }
-        if(sacoMoedaProcessor.isSPressed){
-            this.setY(this.getY()-100*delta);
-        }
+        //if(sacoMoedaProcessor.isWPressed){
+        //    this.setY(this.getY()+100*delta);
+       /// }
+       // if(sacoMoedaProcessor.isSPressed){
+       //     this.setY(this.getY()-100*delta);
+        //}
 
 
     }
