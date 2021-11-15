@@ -31,6 +31,10 @@ import javax.swing.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
 
@@ -72,6 +76,9 @@ public class JogoScreen implements Screen {
     private int tabulacao = 40;
     private float heightShape = 100;
     private float font1Y = 500;
+    // controleInterno ELimina 2
+    private boolean revertElimina2 = false;
+
 
     public static JogoScreen ref;
 
@@ -156,7 +163,6 @@ public class JogoScreen implements Screen {
                 return true;
             }
         });
-
         //botão parar
         btnParar = new ImageTextButton("Parar", skinBotoesRespostas);
         textureRegion = new TextureRegion(assetManager.get("imagens/parar.jpg", Texture.class));
@@ -187,7 +193,20 @@ public class JogoScreen implements Screen {
                 return true;
             }
         });
+
+        btnEliminar2 = new TextButton("Eliminar 2", skinBotoesRespostas);
+        btnEliminar2.getLabel().setAlignment(Align.left);
+        this.btnEliminar2.setSize(100, 60);
+        this.btnEliminar2.setPosition(245, font1Y - heightShape - 300, Align.left);
+        this.btnEliminar2.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                tratarEliminar2();
+                return true;
+            }
+        });
     }
+
 
     @Override
     public void render(float delta) {
@@ -226,6 +245,8 @@ public class JogoScreen implements Screen {
         btnPular.getLabel().setText("Pular " + jogo.getQuantidePulos());
         stage.addActor(JogoScreen.this.btnPular);
 
+        stage.addActor(JogoScreen.this.btnEliminar2);
+
         stage.draw();
 
         batch.end();
@@ -237,12 +258,63 @@ public class JogoScreen implements Screen {
     }
 
     private void tratarPular() {
+        if (revertElimina2) {
+            revertEliminar2();
+            revertElimina2 = false;
+        }
         jogo.setQuantidadePulos((jogo.getQuantidePulos() - 1));
         questao = sortearNovaQuestao();
         if (jogo.getQuantidePulos() == 0) {
             btnPular.setTouchable(Touchable.disabled);
         }
     }
+
+    private void tratarEliminar2() {
+        List listaEmbaralhada = new ArrayList<Integer>();
+        listaEmbaralhada.add(1);
+        listaEmbaralhada.add(2);
+        listaEmbaralhada.add(3);
+        listaEmbaralhada.add(4);
+        Collections.shuffle(listaEmbaralhada);
+        List<Resposta> respostas = questao.getRespostas();
+        for (int i = 0; i < 4; i++) {
+            if (listaEmbaralhada.get(i).toString().equals("1") && !respostas.get(0).isCorreta()) {
+                resposta1.getLabel().setColor(Color.RED);
+                resposta1.setTouchable(Touchable.disabled);
+                listaEmbaralhada.remove((Integer) 1);
+            } else if (listaEmbaralhada.get(i).toString().equals("2") && !respostas.get(1).isCorreta()) {
+                resposta2.getLabel().setColor(Color.RED);
+                resposta2.setTouchable(Touchable.disabled);
+                listaEmbaralhada.remove((Integer) 2);
+            } else if (listaEmbaralhada.get(i).toString().equals("3") && !respostas.get(2).isCorreta()) {
+                resposta3.getLabel().setColor(Color.RED);
+                resposta3.setTouchable(Touchable.disabled);
+                listaEmbaralhada.remove((Integer) 3);
+            } else if (listaEmbaralhada.get(i).toString().equals("4") && !respostas.get(3).isCorreta()) {
+                resposta4.getLabel().setColor(Color.RED);
+                resposta4.setTouchable(Touchable.disabled);
+                listaEmbaralhada.remove((Integer) 4);
+            }
+            if (listaEmbaralhada.size() <= 2) {
+                break;
+            }
+        }
+        jogo.setPossuiElimina2(false);
+        btnEliminar2.setTouchable(Touchable.disabled);
+        revertElimina2 = true;
+    }
+
+    private void revertEliminar2() {
+        resposta1.getLabel().setColor(Color.WHITE);
+        resposta1.setTouchable(Touchable.enabled);
+        resposta2.getLabel().setColor(Color.WHITE);
+        resposta2.setTouchable(Touchable.enabled);
+        resposta3.getLabel().setColor(Color.WHITE);
+        resposta3.setTouchable(Touchable.enabled);
+        resposta4.getLabel().setColor(Color.WHITE);
+        resposta4.setTouchable(Touchable.enabled);
+    }
+
 
     private void tratarParar() {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
@@ -344,8 +416,11 @@ public class JogoScreen implements Screen {
                 tratarErro();
             }
         }
+        if (revertElimina2) {
+            revertEliminar2();
+            revertElimina2 = false;
+        }
     }
-
 
     private void tratarAcerto() {
         jogarMoedas();

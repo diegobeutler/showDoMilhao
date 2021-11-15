@@ -7,10 +7,20 @@ public class Jogo {
     private Integer pontuacao = 0;
     private Rodada rodada;
     private int quantidadePulos;
+    private boolean possuiElimina2;
+
+    public boolean getPossuiElimina2() {
+        return possuiElimina2;
+    }
+
+    public void setPossuiElimina2(boolean possuiElimina2) {
+        this.possuiElimina2 = possuiElimina2;
+    }
 
     private Jogo() {
         this.pontuacao = 0;
         quantidadePulos = 3;
+        possuiElimina2 = true;
         this.rodada = Rodada.RODADA_1;
     }
 

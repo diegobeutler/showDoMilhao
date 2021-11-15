@@ -25,6 +25,7 @@ import static br.edu.utfpr.jogo.Jogo.getJogo;
 public class PararScreen implements Screen {
     private AssetManager assetManager;
     private ShowDoMilhao showDoMilhao;
+
     private SpriteBatch batch;
     private Texture fundo, showlogo;
     private Stage stage;
@@ -33,15 +34,11 @@ public class PararScreen implements Screen {
     private Jogo jogo;
     private TextButton btnReiniciar;
     private BitmapFont font1 = new BitmapFont();
-
     // botoes respostas
     private Skin skinBotoesRespostas;
 
-    float heightShape = 160;
-    float font1Y = 280;
-
-
-    public static PararScreen ref;
+    private float heightShape = 160;
+    private float font1Y = 280;
 
     public PararScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
         this.assetManager = assetManager;
@@ -59,9 +56,26 @@ public class PararScreen implements Screen {
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
         jogo = getJogo();
         showlogo = assetManager.get("imagens/showlogo.png", Texture.class);
-        ref = this;
         sacoMoeda = new SacoMoeda();
         sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
+
+        btnReiniciar = new TextButton("Reiniciar", skinBotoesRespostas);
+        this.btnReiniciar.setSize(120, 60);
+        this.btnReiniciar.setPosition(500, 60, Align.center);
+        this.btnReiniciar.addListener(new InputListener() {
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                jogo.reiniciar();
+                showDoMilhao.setGameScreen(new JogoScreen(assetManager, showDoMilhao));
+            }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                jogo.reiniciar();
+                showDoMilhao.setGameScreen(new JogoScreen(assetManager, showDoMilhao));
+                return true;
+            }
+        });
     }
 
     @Override
@@ -79,23 +93,6 @@ public class PararScreen implements Screen {
         font1.getData().setScale(1.8f, 1.8f);
         font1.setColor(Color.BLACK);
 
-        btnReiniciar = new TextButton("Reiniciar", skinBotoesRespostas);
-        this.btnReiniciar.setSize(120, 60);
-        this.btnReiniciar.setPosition(700, 300, Align.center);
-        this.btnReiniciar.addListener(new InputListener() {
-            @Override
-            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                jogo.reiniciar();
-                showDoMilhao.setGameScreen(new JogoScreen(assetManager, showDoMilhao));
-            }
-
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                jogo.reiniciar();
-                showDoMilhao.setGameScreen(new JogoScreen(assetManager, showDoMilhao));
-                return true;
-            }
-        });
         stage.addActor(this.btnReiniciar);
 
         stage.draw();
@@ -125,13 +122,18 @@ public class PararScreen implements Screen {
 
     @Override
     public void hide() {
-
+        dispose();
     }
 
     @Override
     public void dispose() {
         batch.dispose();
         fundo.dispose();
+        stage.dispose();
+        sacoMoeda = null;
+        btnReiniciar.clear();
+        btnReiniciar = null;
+        font1.dispose();
     }
 
 }
