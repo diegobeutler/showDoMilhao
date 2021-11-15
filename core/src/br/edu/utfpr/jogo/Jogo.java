@@ -1,9 +1,6 @@
 package br.edu.utfpr.jogo;
 
-import br.edu.utfpr.enumeration.Dificuldade;
 import br.edu.utfpr.enumeration.Rodada;
-
-import java.math.BigInteger;
 
 public class Jogo {
     private static Jogo jogo;

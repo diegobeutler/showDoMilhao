@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.*;
+import com.badlogic.gdx.utils.ScreenUtils;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -37,6 +37,7 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("imagens/animacaoMoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/goldbar.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/bg.jpg", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);

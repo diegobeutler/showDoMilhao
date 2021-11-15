@@ -1,8 +1,5 @@
 package br.edu.utfpr.enumeration;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public enum Rodada {
     RODADA_1("Rodada 1") {
         @Override
