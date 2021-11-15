@@ -16,13 +16,13 @@
       {"resposta":"GAUCHINHA", "correta": false},
       {"resposta":"PAULISTINHA", "correta": false},
       {"resposta":"PIMENTINHA", "correta": true},
-      {"resposta":"VAPOROSO", "correta": false}
+      {"resposta":"ANDORINHA", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "4F", "pergunta": "Quem é a namorada do Mickey?", "respostas": [
       {"resposta":"MARGARIDA", "correta": false},
       {"resposta":"MINNIE", "correta": true},
-      {"resposta":"GASOSO", "correta": false},
-      {"resposta":"VAPOROSO", "correta": false}
+      {"resposta":"A PEQUENA SEREIA", "correta": false},
+      {"resposta":"OLÍVIA PALITO", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "5F", "pergunta": "Qual é o personagem do folclore brasileiro que tem uma perna só?", "respostas": [
       {"resposta":"CUCA", "correta": false},

@@ -1,20 +1,18 @@
 package br.edu.utfpr.jogo;
 
 import br.edu.utfpr.enumeration.Dificuldade;
+import br.edu.utfpr.enumeration.Rodada;
 
 import java.math.BigInteger;
 
 public class Jogo {
     private static Jogo jogo;
-    private Dificuldade dificuldade;
-    private Integer pontuacao;
-    private Rodada rodada;
+    private Integer pontuacao = 0;
+    private Rodada rodada;// talvee colocar a dificuldade aqui
 
     private Jogo() {
-        this.dificuldade = Dificuldade.FACIL;
         this.pontuacao = 0;
-        this.rodada = new Rodada(1);
-
+        this.rodada = Rodada.RODADA_1;
     }
 
     public static Jogo getJogo() {
@@ -22,14 +20,6 @@ public class Jogo {
             jogo = new Jogo();
         }
         return jogo;
-    }
-
-    public Dificuldade getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(Dificuldade dificuldade) {
-        this.dificuldade = dificuldade;
     }
 
     public Integer getPontuacao() {
@@ -46,5 +36,9 @@ public class Jogo {
 
     public void setRodada(Rodada rodada) {
         this.rodada = rodada;
+    }
+
+    public void proximaRodada() {
+        rodada = rodada.getProximaRodada();
     }
 }
