@@ -19,7 +19,6 @@ public class LoadingScreen implements Screen {
     private SpriteBatch batch;
     private float originalWidth;
     private ShowDoMilhao showDoMilhao;
-    private Label label;
     private BitmapFont font = new BitmapFont();
     Texture img;
 
@@ -102,6 +101,9 @@ public class LoadingScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        showDoMilhao.dispose();
+        font.dispose();
+        img.dispose();
     }
 }

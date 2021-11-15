@@ -1,9 +1,9 @@
 package br.edu.utfpr.enumeration;
 
 public enum Dificuldade {
-    FACIL("Facil"),
-    MEDIO("Medio"),
-    DIFICIL("Dificil");
+    FACIL("Fácil"),
+    MEDIO("Médio"),
+    DIFICIL("Difícil");
 
     private String value;
 

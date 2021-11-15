@@ -5,10 +5,12 @@ import br.edu.utfpr.enumeration.Rodada;
 public class Jogo {
     private static Jogo jogo;
     private Integer pontuacao = 0;
-    private Rodada rodada;// talvee colocar a dificuldade aqui
+    private Rodada rodada;
+    private int quantidadePulos;
 
     private Jogo() {
         this.pontuacao = 0;
+        quantidadePulos = 3;
         this.rodada = Rodada.RODADA_1;
     }
 
@@ -41,5 +43,13 @@ public class Jogo {
 
     public void reiniciar() {
         jogo = null;
+    }
+
+    public int getQuantidePulos() {
+        return quantidadePulos;
+    }
+
+    public void setQuantidadePulos(int quantidadePulos) {
+        this.quantidadePulos = quantidadePulos;
     }
 }

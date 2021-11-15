@@ -16,6 +16,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
@@ -33,9 +34,9 @@ import static br.edu.utfpr.jogo.Jogo.getJogo;
 public class JogoScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
     private AssetManager assetManager;
-
     SpriteBatch batch;
     Texture img;
+    ShapeRenderer shape = new ShapeRenderer();
 
     private Stage stage;
     public SacoMoeda sacoMoeda;
@@ -51,7 +52,6 @@ public class JogoScreen implements Screen {
     private TextButton resposta3;
     private TextButton resposta4;
     private BitmapFont fontPontuacao = new BitmapFont();
-
     // ajudas
     private TextButton btnPular;
     private TextButton btnEliminar2;
@@ -63,6 +63,9 @@ public class JogoScreen implements Screen {
     private int k = 0;
     private int indice = 0;
     private char[] arrayTexto;
+    int tabulacao = 40;
+    float heightShape = 100;
+    float font1Y = 500;
 
 
     public static JogoScreen ref;
@@ -78,7 +81,7 @@ public class JogoScreen implements Screen {
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
-        img = new Texture("imagens\\bg.jpg");
+        img = assetManager.get("imagens/bg.jpg", Texture.class);
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
@@ -91,7 +94,7 @@ public class JogoScreen implements Screen {
             );
             dados = new Gson().fromJson(json, Dados.class);
             jogo = getJogo();
-            questao = dados.getQuestao(jogo.getRodada().getDificuldade());
+            questao = sortearNovaQuestao();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,30 +105,7 @@ public class JogoScreen implements Screen {
         moeda = new Moeda();
         sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
 
-    }
-
-    @Override
-    public void render(float delta) {
-        stage.act();
-
-        ScreenUtils.clear(0, 0, 0, 1);
-        batch.begin();
-
-        batch.draw(img, 0, 0);
-        fontPontuacao.draw(batch, jogo.getPontuacao().toString(), 800, 520);
-        sacoMoeda.draw(batch, delta);
-        MoedaController.ref.draw(batch, delta);
-
-        int tabulacao = 40;// todo mudar lá para cima
-        float heightShape = 100;
-        float font1Y = 500;
-
-        font1.draw(batch, tratarString(questao.getPergunta(), tabulacao), 50, font1Y);
-        font1.getData().setScale(1.8f, 1.8f);
-        font1.setColor(Color.BLACK);
-
-        // respostas
-        resposta1 = new TextButton(" 1 - " + questao.getRespostas().get(0).getResposta(), skinBotoesRespostas);
+        resposta1 = new TextButton("", skinBotoesRespostas);
         resposta1.getLabel().setAlignment(Align.left);
         this.resposta1.setSize(Gdx.graphics.getWidth() / 2, 60);
         this.resposta1.setPosition(15, font1Y - heightShape - 20, Align.left);
@@ -136,7 +116,6 @@ public class JogoScreen implements Screen {
                 return true;
             }
         });
-        stage.addActor(JogoScreen.this.resposta1);
 
         resposta2 = new TextButton(" 2 - " + questao.getRespostas().get(1).getResposta(), skinBotoesRespostas);
         resposta2.getLabel().setAlignment(Align.left);
@@ -149,7 +128,6 @@ public class JogoScreen implements Screen {
                 return true;
             }
         });
-        stage.addActor(JogoScreen.this.resposta2);
 
         resposta3 = new TextButton(" 3 - " + questao.getRespostas().get(2).getResposta(), skinBotoesRespostas);
         resposta3.getLabel().setAlignment(Align.left);
@@ -162,7 +140,6 @@ public class JogoScreen implements Screen {
                 return true;
             }
         });
-        stage.addActor(JogoScreen.this.resposta3);
 
         resposta4 = new TextButton(" 4 - " + questao.getRespostas().get(3).getResposta(), skinBotoesRespostas);
         resposta4.getLabel().setAlignment(Align.left);
@@ -175,37 +152,90 @@ public class JogoScreen implements Screen {
                 return true;
             }
         });
-        stage.addActor(JogoScreen.this.resposta4);
-
+        //botão parar
         btnParar = new TextButton("Parar", skinBotoesRespostas);
         btnParar.getLabel().setAlignment(Align.left);
-
-        this.btnParar.setSize(Gdx.graphics.getWidth() / 2, 60);
+        this.btnParar.setSize(100, 60);
         this.btnParar.setPosition(15, font1Y - heightShape - 300, Align.left);
         this.btnParar.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-              tratarParar();
+                tratarParar();
                 return true;
             }
         });
+
+        btnPular = new TextButton("", skinBotoesRespostas);
+        btnPular.getLabel().setAlignment(Align.left);
+        this.btnPular.setSize(100, 60);
+        this.btnPular.setPosition(130, font1Y - heightShape - 300, Align.left);
+        this.btnPular.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                tratarPular();
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public void render(float delta) {
+        stage.act();
+
+        ScreenUtils.clear(0, 0, 0, 1);
+        batch.begin();
+
+        batch.draw(img, 0, 0);
+        fontPontuacao.getData().setScale(1.5f);
+        fontPontuacao.draw(batch, "Pontuação: " + jogo.getPontuacao().toString(), 750, 520);
+        fontPontuacao.getData().setScale(1.8f);
+        sacoMoeda.draw(batch, delta);
+        MoedaController.ref.draw(batch, delta);
+
+        font1.draw(batch, tratarString(questao.getPergunta(), tabulacao), 50, font1Y);
+        font1.getData().setScale(1.8f, 1.8f);
+        font1.setColor(Color.BLACK);
+
+        // respostas
+        resposta1.getLabel().setText(" 1 - " + questao.getRespostas().get(0).getResposta());
+        stage.addActor(JogoScreen.this.resposta1);
+
+        resposta2.getLabel().setText(" 2 - " + questao.getRespostas().get(1).getResposta());
+        stage.addActor(JogoScreen.this.resposta2);
+
+        resposta3.getLabel().setText(" 3 - " + questao.getRespostas().get(2).getResposta());
+        stage.addActor(JogoScreen.this.resposta3);
+
+        resposta4.getLabel().setText(" 4 - " + questao.getRespostas().get(3).getResposta());
+        stage.addActor(JogoScreen.this.resposta4);
+
         stage.addActor(JogoScreen.this.btnParar);
 
+
+        btnPular.getLabel().setText("Pular " + jogo.getQuantidePulos());
+        stage.addActor(JogoScreen.this.btnPular);
 
         stage.draw();
 
         batch.end();
 
-        ShapeRenderer shape = new ShapeRenderer();
         shape.begin(ShapeRenderer.ShapeType.Line);
         shape.setColor(Color.WHITE);
         shape.rect(15, Gdx.graphics.getHeight() - heightShape - 15, Gdx.graphics.getWidth() / 1.5f, heightShape);
         shape.end();
     }
 
+    private void tratarPular() {
+        jogo.setQuantidadePulos((jogo.getQuantidePulos() - 1));
+        questao = sortearNovaQuestao();
+        if (jogo.getQuantidePulos() == 0) {
+            btnPular.setTouchable(Touchable.disabled);
+        }
+    }
+
     private void tratarParar() {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
-        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?\nPontuação se parar: "+jogo.getRodada().getParar(), "Confirma", JOptionPane.YES_NO_OPTION,
+        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?\nPontuação se parar: " + jogo.getRodada().getParar(), "Confirma", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
         if (valor == JOptionPane.YES_OPTION) {
             jogo.setPontuacao(jogo.getRodada().getParar());
@@ -229,13 +259,35 @@ public class JogoScreen implements Screen {
 
     @Override
     public void hide() {
-
+        dispose();
     }
 
     @Override
     public void dispose() {
         batch.dispose();
-        img.dispose();
+        stage.dispose();
+        sacoMoeda = null;
+        moeda = null;
+        questao = null;
+        dados = null;
+        font1.dispose();
+        resposta1.clear();
+        resposta1 = null;
+        resposta2.clear();
+        resposta2 = null;
+        resposta3.clear();
+        resposta3 = null;
+        resposta4.clear();
+        resposta4 = null;
+        fontPontuacao.dispose();
+        btnPular.clear();
+        btnPular = null;
+        btnEliminar2.clear();
+        btnEliminar2 = null;
+        btnParar.clear();
+        btnParar = null;
+        retorno = null;
+        arrayTexto = null;
     }
 
 
@@ -282,21 +334,27 @@ public class JogoScreen implements Screen {
             }
         }
     }
+
     float delta;
+
     private void tratarAcerto() {
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+150);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-250,(Gdx.graphics.getHeight()/12)+100);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+200);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 300, (Gdx.graphics.getHeight() / 12) + 150);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 250, (Gdx.graphics.getHeight() / 12) + 100);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 200, (Gdx.graphics.getHeight() / 12) + 200);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
         jogo.proximaRodada();
-        questao = dados.getQuestao(jogo.getRodada().getDificuldade());
+        questao = sortearNovaQuestao();
     }
 
     private void tratarErro() {
         assetManager.get("sons/quepenaErrou.mp3", Sound.class).play(1f);
         jogo.setPontuacao(jogo.getRodada().getErrar());
+    }
+
+    private Questao sortearNovaQuestao() {
+        return dados.getQuestao(jogo.getRodada().getDificuldade());
     }
 
 }

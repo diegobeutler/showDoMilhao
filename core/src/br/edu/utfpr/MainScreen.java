@@ -32,12 +32,13 @@ public class MainScreen implements Screen {
     private Stage stage;
     public SacoMoeda sacoMoeda;
     public Moeda moeda;
-    private Viewport viewport;
+    private ImageTextButton botaoJogar;
+    private TextureRegionDrawable textureRegionDrawable;
+    private TextureRegion textureRegion;
+
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
-    private ShapeRenderer shapeRenderer;
-    private OrthographicCamera camera;
 
     public void show () {
         batch = new SpriteBatch();
@@ -57,15 +58,11 @@ public class MainScreen implements Screen {
         //Os recursos são nomeados e podem ser pesquisados  por nome e tipo. Os recursos podem ser descritos em JSON.
         //O skin fornece conversões úteis, como permitir o acesso a regiões no atlas como nove manchas, sprites, drawables, etc
 
-//        outputLabel = new Label("Clique para comecar o jogo!", mySkin);
-//        outputLabel.setSize(Gdx.graphics.getWidth(), row_height);
-//        outputLabel.setPosition(0, row_height);
-//        outputLabel.setAlignment(Align.center);
-//        stage.addActor(outputLabel);
-
-        ImageTextButton botaoJogar = new ImageTextButton("Jogar", mySkin);
+        botaoJogar = new ImageTextButton("Jogar", mySkin);
         botaoJogar.setSize(150, 75);
-        botaoJogar.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
+        textureRegion = new TextureRegion(img2);
+        textureRegionDrawable = new TextureRegionDrawable(textureRegion);
+        botaoJogar.getStyle().imageUp = textureRegionDrawable;
         //textureRegionDrawable ->  A região da textura deve ser definida antes do uso.
         botaoJogar.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
         final Sound sound =  assetManager.get("sons/abertura.wav", Sound.class);
@@ -89,19 +86,11 @@ public class MainScreen implements Screen {
     @Override
     public void render (float delta) {
         stage.act();
-
         ScreenUtils.clear(0, 0, 0, 1);
-
         batch.begin();
         batch.draw(img, 0, 0);
         sacoMoeda.draw(batch, delta);
-        //MoedaController.ref.draw(batch, delta);
-
         stage.draw();
-
-        //forma
-
-
         batch.end();
     }
 
@@ -121,12 +110,20 @@ public class MainScreen implements Screen {
 
     @Override
     public void hide() {
-
+        dispose();
     }
 
     @Override
     public void dispose () {
         batch.dispose();
         img.dispose();
+        img2.dispose();
+        stage.dispose();
+        sacoMoeda = null;
+        moeda = null;
+        botaoJogar.clear();
+        botaoJogar = null;
+        textureRegionDrawable = null;
+        textureRegion = null;
     }
 }
