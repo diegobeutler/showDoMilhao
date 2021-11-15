@@ -415,10 +415,10 @@ public class JogoScreen implements Screen {
             } else {
                 tratarErro();
             }
-        }
-        if (revertElimina2) {
-            revertEliminar2();
-            revertElimina2 = false;
+            if (revertElimina2) {
+                revertEliminar2();
+                revertElimina2 = false;
+            }
         }
     }
 
