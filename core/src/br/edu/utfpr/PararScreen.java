@@ -128,7 +128,6 @@ public class PararScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
-        fundo.dispose();
         stage.dispose();
         sacoMoeda = null;
         btnReiniciar.clear();
