@@ -3,9 +3,10 @@ package br.edu.utfpr;
 import com.badlogic.gdx.InputProcessor;
 
 public class MoedaProcessor implements InputProcessor {
-    MoedaProcessor(){
+    MoedaProcessor() {
         ShowDoMilhao.addInputProcessor(this);
     }
+
     @Override
     public boolean keyDown(int keycode) {
         return false;
@@ -14,7 +15,6 @@ public class MoedaProcessor implements InputProcessor {
     @Override
     public boolean keyUp(int keycode) {
         return false;
-
     }
 
     @Override

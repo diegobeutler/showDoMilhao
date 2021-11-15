@@ -73,7 +73,6 @@ public class JogoScreen implements Screen {
     public JogoScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
         this.assetManager = assetManager;
         this.showDoMilhao = showDoMilhao;
-
     }
 
 
@@ -239,7 +238,7 @@ public class JogoScreen implements Screen {
                 JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
         if (valor == JOptionPane.YES_OPTION) {
             jogo.setPontuacao(jogo.getRodada().getParar());
-            showDoMilhao.setGameScrean(new PararScreen(assetManager, showDoMilhao));
+            showDoMilhao.setGameScreen(new PararScreen(assetManager, showDoMilhao));
         }
     }
 
@@ -335,14 +334,12 @@ public class JogoScreen implements Screen {
         }
     }
 
-    float delta;
-
     private void tratarAcerto() {
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-100,(Gdx.graphics.getHeight()/12)+100);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+50);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+75);
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 300, (Gdx.graphics.getHeight() / 12) + 150);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 250, (Gdx.graphics.getHeight() / 12) + 100);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth() - 200, (Gdx.graphics.getHeight() / 12) + 200);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
         jogo.proximaRodada();
         questao = sortearNovaQuestao();

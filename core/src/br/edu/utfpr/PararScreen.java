@@ -43,8 +43,6 @@ public class PararScreen implements Screen {
     float font1Y = 280;
 
 
-
-
     public static PararScreen ref;
 
     public PararScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
@@ -77,10 +75,10 @@ public class PararScreen implements Screen {
         batch.begin();
 
         batch.draw(img, 0, 0);
-        batch.draw(showlogo,270, Gdx.graphics.getHeight() - showlogo.getHeight()-20 );
+        batch.draw(showlogo, 270, Gdx.graphics.getHeight() - showlogo.getHeight() - 20);
         sacoMoeda.draw(batch, delta);
 
-        font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao()+"\nVocê parou na "+jogo.getRodada().getLabel()+" / 16", 300, font1Y);
+        font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao() + "\nVocê parou na " + jogo.getRodada().getLabel() + " / 16", 300, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
         font1.setColor(Color.BLACK);
 
@@ -96,8 +94,8 @@ public class PararScreen implements Screen {
 
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-               jogo.reiniciar();
-               showDoMilhao.setGameScrean(new JogoScreen(assetManager, showDoMilhao));
+                jogo.reiniciar();
+                showDoMilhao.setGameScreen(new JogoScreen(assetManager, showDoMilhao));
                 return true;
             }
         });
@@ -110,7 +108,7 @@ public class PararScreen implements Screen {
         ShapeRenderer shape = new ShapeRenderer();
         shape.begin(ShapeRenderer.ShapeType.Line);
         shape.setColor(Color.WHITE);
-        shape.rect(Gdx.graphics.getWidth() /2 - 200 , Gdx.graphics.getHeight() - heightShape - 230, Gdx.graphics.getWidth() /2.2f, heightShape);
+        shape.rect(Gdx.graphics.getWidth() / 2 - 200, Gdx.graphics.getHeight() - heightShape - 230, Gdx.graphics.getWidth() / 2.2f, heightShape);
         shape.end();
     }
 

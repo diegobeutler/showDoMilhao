@@ -4,29 +4,20 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 public class SacoMoedaProcessor implements InputProcessor {
-    public boolean isSPressed = false, isWPressed=false;
+ 
+
     SacoMoedaProcessor() {
         ShowDoMilhao.addInputProcessor(this);
     }
+
     @Override
     public boolean keyDown(int keycode) {
-        if(keycode == Input.Keys.S){
-            isSPressed=true;
-        }
-        if(keycode == Input.Keys.W){isSPressed=true;
-            isWPressed = true;
-        }
+
         return false;
     }
 
     @Override
     public boolean keyUp(int keycode) {
-        if(keycode == Input.Keys.S){
-            isSPressed=false;
-        }
-        if(keycode == Input.Keys.W){
-            isWPressed = false;
-        }
         return false;
     }
 

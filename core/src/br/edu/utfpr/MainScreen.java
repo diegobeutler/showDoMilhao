@@ -40,7 +40,7 @@ public class MainScreen implements Screen {
         this.assetManager = assetManager;
     }
 
-    public void show () {
+    public void show() {
         batch = new SpriteBatch();
 
         assetManager.get("sons/abertura.wav", Sound.class).play(0.5f);
@@ -69,7 +69,7 @@ public class MainScreen implements Screen {
         botaoJogar.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                game.setGameScrean(new JogoScreen(assetManager, game));
+                game.setGameScreen(new JogoScreen(assetManager, game));
                 sound.stop();
                 assetManager.get("sons/vaiComecarOShowDoMilhao.mp3", Sound.class).play(1f);
                 return true;
@@ -84,12 +84,12 @@ public class MainScreen implements Screen {
     }
 
     @Override
-    public void render (float delta) {
+    public void render(float delta) {
         stage.act();
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
         batch.draw(img, 0, 0);
-        sacoMoeda.draw(batch, delta);
+        sacoMoeda.draw(batch);
         stage.draw();
         batch.end();
     }
@@ -114,7 +114,7 @@ public class MainScreen implements Screen {
     }
 
     @Override
-    public void dispose () {
+    public void dispose() {
         batch.dispose();
         img.dispose();
         img2.dispose();
