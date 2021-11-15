@@ -96,7 +96,7 @@ public class MainScreen implements Screen {
         batch.begin();
         batch.draw(img, 0, 0);
         sacoMoeda.draw(batch, delta);
-        MoedaController.ref.draw(batch, delta);
+        //MoedaController.ref.draw(batch, delta);
 
         stage.draw();
 
