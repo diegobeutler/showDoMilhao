@@ -1,5 +1,6 @@
 package br.edu.utfpr;
 
+import br.edu.utfpr.enumeration.Rodada;
 import br.edu.utfpr.jogo.Jogo;
 import br.edu.utfpr.json.Dados;
 import br.edu.utfpr.json.Questao;
@@ -59,13 +60,14 @@ public class JogoScreen implements Screen {
     private TextButton resposta2;
     private TextButton resposta3;
     private TextButton resposta4;
-    private BitmapFont font2 = new BitmapFont();
-    private BitmapFont font3 = new BitmapFont();
-    private BitmapFont font4 = new BitmapFont();
-    private BitmapFont font5 = new BitmapFont();
+    private BitmapFont fontPontuacao = new BitmapFont();
+
+    // ajudas
+    private TextButton btnPular;
+    private TextButton btnEliminar2;
+    private TextButton btnParar;
     /// tratar string
     private String retorno = "";
-    private String retorno2 = "";
     private boolean flg = false;
     private boolean flg2 = false;
     private int k = 0;
@@ -98,8 +100,7 @@ public class JogoScreen implements Screen {
             );
             dados = new Gson().fromJson(json, Dados.class);
             jogo = getJogo();
-            questao = dados.getQuestao(jogo.getDificuldade());
-            System.out.println(questao.getKey());
+            questao = dados.getQuestao(jogo.getRodada().getDificuldade());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,7 +115,7 @@ public class JogoScreen implements Screen {
 //
 //        camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
 //        viewport = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), camera);
-        questao = dados.getQuestao(jogo.getDificuldade());
+//        questao = dados.getQuestao(jogo.getDificuldade());
 
     }
 
@@ -126,11 +127,12 @@ public class JogoScreen implements Screen {
         batch.begin();
 
         batch.draw(img, 0, 0);
+        fontPontuacao.draw(batch, jogo.getPontuacao().toString(), 800, 520);
         sacoMoeda.draw(batch, delta);
         MoedaController.ref.draw(batch, delta);
 
         int tabulacao = 40;// todo mudar lá para cima
-        float heightShape =  100;
+        float heightShape = 100;
         float font1Y = 500;
 
         font1.draw(batch, tratarString(questao.getPergunta(), tabulacao), 50, font1Y);
@@ -169,7 +171,7 @@ public class JogoScreen implements Screen {
         });
         stage.addActor(JogoScreen.this.resposta2);
 
-        resposta3 = new TextButton(" 2 - " + questao.getRespostas().get(2).getResposta(), skinBotoesRespostas);
+        resposta3 = new TextButton(" 3 - " + questao.getRespostas().get(2).getResposta(), skinBotoesRespostas);
         resposta3.getLabel().setAlignment(Align.left);
 
         this.resposta3.setSize(Gdx.graphics.getWidth() / 2, 60);
@@ -183,7 +185,7 @@ public class JogoScreen implements Screen {
         });
         stage.addActor(JogoScreen.this.resposta3);
 
-        resposta4 = new TextButton(" 2 - " + questao.getRespostas().get(3).getResposta(), skinBotoesRespostas);
+        resposta4 = new TextButton(" 4 - " + questao.getRespostas().get(3).getResposta(), skinBotoesRespostas);
         resposta4.getLabel().setAlignment(Align.left);
 
         this.resposta4.setSize(Gdx.graphics.getWidth() / 2, 60);
@@ -196,6 +198,25 @@ public class JogoScreen implements Screen {
             }
         });
         stage.addActor(JogoScreen.this.resposta4);
+
+        btnParar = new TextButton("Parar", skinBotoesRespostas);
+        btnParar.getLabel().setAlignment(Align.left);
+
+        this.btnParar.setSize(Gdx.graphics.getWidth() / 2, 60);
+        this.btnParar.setPosition(15, font1Y - heightShape - 300, Align.left);
+        this.btnParar.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
+                int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?", "Confirma", JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
+                if (valor == JOptionPane.YES_OPTION) {
+                    jogo.setPontuacao(jogo.getRodada().getParar());
+                }
+                return true;
+            }
+        });
+        stage.addActor(JogoScreen.this.btnParar);
 
 
         stage.draw();
@@ -239,7 +260,6 @@ public class JogoScreen implements Screen {
     private String tratarString(String texto, int tabulacao) {
         arrayTexto = texto.toCharArray();
         retorno = "";
-        retorno2 = "";
         flg = false;
         flg2 = false;
         k = 0;
@@ -270,7 +290,7 @@ public class JogoScreen implements Screen {
 
     private void confirmaResposta(Resposta resposta) {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
-        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + questao.getRespostas().get(0).getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
+        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + resposta.getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
         if (valor == JOptionPane.YES_OPTION) {
             if (resposta.isCorreta()) {
@@ -288,13 +308,14 @@ public class JogoScreen implements Screen {
         MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+150);
         MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-250,(Gdx.graphics.getHeight()/12)+100);
         MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+200);
-
-
-
+        jogo.setPontuacao(jogo.getRodada().getAcertar());
+        jogo.proximaRodada();
+        questao = dados.getQuestao(jogo.getRodada().getDificuldade());
     }
 
     private void tratarErro() {
         assetManager.get("sons/quepenaErrou.mp3", Sound.class).play(1f);
+        jogo.setPontuacao(jogo.getRodada().getErrar());
     }
 
 }
