@@ -1,16 +1,12 @@
 package br.edu.utfpr;
 
-import br.edu.utfpr.enumeration.Rodada;
 import br.edu.utfpr.jogo.Jogo;
 import br.edu.utfpr.json.Dados;
 import br.edu.utfpr.json.Questao;
-import br.edu.utfpr.json.Resposta;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -18,18 +14,11 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.google.gson.Gson;
-
-import javax.swing.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
 
@@ -97,7 +86,7 @@ public class PararScreen implements Screen {
 
         btnReiniciar = new TextButton("Reiniciar", skinBotoesRespostas);
         this.btnReiniciar.setSize(120, 60);
-        this.btnReiniciar.setPosition(500, 60, Align.center);
+        this.btnReiniciar.setPosition(700, 300, Align.center);
         this.btnReiniciar.addListener(new InputListener() {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {

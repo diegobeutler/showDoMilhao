@@ -2,7 +2,6 @@ package br.edu.utfpr;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
-import java.util.*;
 
 public class ShowDoMilhao extends Game {
     public static ShowDoMilhao game;

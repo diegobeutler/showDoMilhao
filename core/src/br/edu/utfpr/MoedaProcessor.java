@@ -1,7 +1,5 @@
 package br.edu.utfpr;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
 public class MoedaProcessor implements InputProcessor {
