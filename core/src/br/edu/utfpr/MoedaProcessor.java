@@ -12,9 +12,9 @@ public class MoedaProcessor implements InputProcessor {
     @Override
     public boolean keyDown(int keycode) {
 
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,MainScreen.ref.moeda.getY()+150);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-250,MainScreen.ref.moeda.getY()+100);
-        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,MainScreen.ref.moeda.getY()+200);
+        //MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,MainScreen.ref.moeda.getY()+150);
+        //MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-250,MainScreen.ref.moeda.getY()+100);
+       // MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,MainScreen.ref.moeda.getY()+200);
         return false;
     }
 
