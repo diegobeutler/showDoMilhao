@@ -246,6 +246,10 @@ public class JogoScreen implements Screen {
     }
 
     private void tratarPular() {
+        if (revertElimina2) {
+            revertEliminar2();
+            revertElimina2 = false;
+        }
         jogo.setQuantidadePulos((jogo.getQuantidePulos() - 1));
         questao = sortearNovaQuestao();
         if (jogo.getQuantidePulos() == 0) {
@@ -284,6 +288,7 @@ public class JogoScreen implements Screen {
             }
         }
         jogo.setPossuiElimina2(false);
+        btnEliminar2.setTouchable(Touchable.disabled);
         revertElimina2 = true;
     }
 
