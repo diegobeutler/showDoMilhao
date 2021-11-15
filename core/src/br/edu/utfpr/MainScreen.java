@@ -33,6 +33,7 @@ public class MainScreen implements Screen {
     private Stage stage;
     private Label outputLabel;
     public SacoMoeda sacoMoeda;
+    public Moeda moeda;
     private Viewport viewport;
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -84,7 +85,7 @@ public class MainScreen implements Screen {
         ref = this;
         new MoedaController();
         sacoMoeda = new SacoMoeda();
-
+        moeda = new Moeda();
 
 
 

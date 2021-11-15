@@ -7,12 +7,12 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 public class Moeda extends Sprite {
-
+    private MoedaProcessor moedaProcessor;
     public Moeda() {
         super(ShowDoMilhao.game.getAssetManager().get("imagens/animacaoMoeda.png", Texture.class), 0, 0 , 2500, 2500);
-        this.setSize(this.getWidth()/12, this.getHeight()/12);
-        sacoMoedaProcessor = new SacoMoedaProcessor();
-        ShowDoMilhao.addInputProcessor(sacoMoedaProcessor);
+        this.setSize(this.getWidth()/14, this.getHeight()/14);
+        moedaProcessor = new MoedaProcessor();
+        ShowDoMilhao.addInputProcessor(moedaProcessor);
     }
 
     public float getCenterX(){
@@ -30,12 +30,15 @@ public class Moeda extends Sprite {
      public void draw(SpriteBatch batch, float delta) {
             update(delta);
             super.draw(batch);
-            this.setX(this.getX() + 110 * delta);
+            this.setY(this.getY() + 110*delta);
      }
     private float timer;
     private int idRegion = 0;
 
     public void update (final float delta){
+
+
+
         //if(moedaProcessor.isWPressed || moedaProcessor.isSPressed){
             timer +=delta;
             if (timer > 0.2){

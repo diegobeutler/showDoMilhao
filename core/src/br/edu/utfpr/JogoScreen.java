@@ -108,7 +108,7 @@ public class JogoScreen implements Screen {
         ref = this;
         new MoedaController();
         sacoMoeda = new SacoMoeda();
-
+        moeda = new Moeda();
         sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
 
 //        camera = new OrthographicCamera(222, 20 * (Gdx.graphics.getWidth() / Gdx.graphics.getHeight()));
@@ -228,19 +228,6 @@ public class JogoScreen implements Screen {
         shape.setColor(Color.WHITE);
         shape.rect(15, Gdx.graphics.getHeight() - heightShape - 15, Gdx.graphics.getWidth() / 1.5f, 100);
         shape.end();
-//        ShapeRenderer shape = new ShapeRenderer();
-//        shape.setProjectionMatrix(camera.combined);
-//        shape.begin(ShapeRenderer.ShapeType.Filled);
-//        shape.setColor(Color.WHITE);
-//        shape.rect(15, (Gdx.graphics.getHeight()/2)-15, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
-//        shape.end();
-
-//        ShapeRenderer shape2 = new ShapeRenderer();
-//        shape2.setProjectionMatrix(camera.combined);
-//        shape2.begin(ShapeRenderer.ShapeType.Filled);
-//        shape2.setColor(Color.GRAY);
-//        shape2.rect(2, 2, (Gdx.graphics.getWidth()/2)+30, Gdx.graphics.getHeight()/2);
-//        shape2.end();
 
     }
 
@@ -307,15 +294,20 @@ public class JogoScreen implements Screen {
                 JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
         if (valor == JOptionPane.YES_OPTION) {
             if (resposta.isCorreta()) {
+
                 tratarAcerto();
             } else {
                 tratarErro();
             }
         }
     }
-
+    float delta;
     private void tratarAcerto() {
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
+        assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-300,(Gdx.graphics.getHeight()/12)+150);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-250,(Gdx.graphics.getHeight()/12)+100);
+        MoedaController.ref.addNewBullet(Gdx.graphics.getWidth()-200,(Gdx.graphics.getHeight()/12)+200);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
         jogo.proximaRodada();
         questao = dados.getQuestao(jogo.getRodada().getDificuldade());

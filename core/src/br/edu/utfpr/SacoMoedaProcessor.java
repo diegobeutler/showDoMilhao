@@ -13,7 +13,7 @@ public class SacoMoedaProcessor implements InputProcessor {
         if(keycode == Input.Keys.S){
             isSPressed=true;
         }
-        if(keycode == Input.Keys.W){
+        if(keycode == Input.Keys.W){isSPressed=true;
             isWPressed = true;
         }
         return false;
