@@ -8,51 +8,41 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Moeda extends Sprite {
     private MoedaProcessor moedaProcessor;
+    private float timer;
+    private int idRegion = 0;
+
     public Moeda() {
-        super(ShowDoMilhao.game.getAssetManager().get("imagens/animacaoMoeda.png", Texture.class), 0, 0 , 2500, 2500);
-        this.setSize(this.getWidth()/14, this.getHeight()/14);
+        super(ShowDoMilhao.game.getAssetManager().get("imagens/animacaoMoeda.png", Texture.class), 0, 0, 2500, 2500);
+        this.setSize(this.getWidth() / 16, this.getHeight() / 16);
         moedaProcessor = new MoedaProcessor();
         ShowDoMilhao.addInputProcessor(moedaProcessor);
     }
 
-    public float getCenterX(){
-        return this.getX()+this.getWidth()/3;
+    public float getCenterX() {
+        return this.getX() + this.getWidth() / 3;
     }
 
-    public float getCenterY(){
-        return this.getY()+this.getHeight()/3;
+    public float getCenterY() {
+        return this.getY() + this.getHeight() / 3;
     }
 
-     public boolean isOutOfScreen(){
-            return (this.getCenterX()<0 || this.getCenterX() > Gdx.graphics.getWidth() || this.getCenterY()<0 || this.getCenterY() >Gdx.graphics.getHeight());
-     }
-    private SacoMoedaProcessor sacoMoedaProcessor;
-     public void draw(SpriteBatch batch, float delta) {
-            update(delta);
-            super.draw(batch);
-            this.setY(this.getY() + 110*delta);
-     }
-    private float timer;
-    private int idRegion = 0;
+    public boolean isOutOfScreen() {
+        return (this.getCenterX() < 0 || this.getCenterX() > Gdx.graphics.getWidth() || this.getCenterY() < 0 || this.getCenterY() > Gdx.graphics.getHeight());
+    }
 
-    public void update (final float delta){
+    public void draw(SpriteBatch batch, float delta) {
+        update(delta);
+        super.draw(batch);
+        this.setY(this.getY() + 110 * delta);
+    }
 
-
-
-        //if(moedaProcessor.isWPressed || moedaProcessor.isSPressed){
-            timer +=delta;
-            if (timer > 0.2){
-                timer -= 0.2;
-                idRegion++;
-                if(idRegion>=6) idRegion = 0;
-                this.setRegion(idRegion*2500, 0 , 2500, 2500);
-            }
-
-       // }else{
-      //      idRegion = 0 ;
-       //}
-
-
-
+    public void update(final float delta) {
+        timer += delta;
+        if (timer > 0.2) {
+            timer -= 0.2;
+            idRegion++;
+            if (idRegion >= 6) idRegion = 0;
+            this.setRegion(idRegion * 2500, 0, 2500, 2500);
+        }
     }
 }

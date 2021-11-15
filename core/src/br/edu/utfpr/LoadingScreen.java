@@ -32,6 +32,7 @@ public class LoadingScreen implements Screen {
         sprite.setCenter(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2);
         batch = new SpriteBatch();
         originalWidth = sprite.getWidth();
+
         // load
         showDoMilhao.getAssetManager().load("imagens/animacaoMoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
@@ -56,12 +57,10 @@ public class LoadingScreen implements Screen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);
-
-
         float progress = showDoMilhao.getAssetManager().getProgress();
 
         if (showDoMilhao.getAssetManager().update()) {
-            showDoMilhao.setGameScrean();
+            showDoMilhao.setGameScreen();
         }
 
         sprite.setRegion(0, 0, (int) (originalWidth * progress), (int) (sprite.getHeight() * progress));

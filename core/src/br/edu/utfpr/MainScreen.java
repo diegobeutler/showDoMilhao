@@ -33,13 +33,15 @@ public class MainScreen implements Screen {
     public SacoMoeda sacoMoeda;
     public Moeda moeda;
     private Viewport viewport;
+
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
     }
+
     private ShapeRenderer shapeRenderer;
     private OrthographicCamera camera;
 
-    public void show () {
+    public void show() {
         batch = new SpriteBatch();
 
         assetManager.get("sons/abertura.wav", Sound.class).play(0.5f);
@@ -57,22 +59,17 @@ public class MainScreen implements Screen {
         //Os recursos são nomeados e podem ser pesquisados  por nome e tipo. Os recursos podem ser descritos em JSON.
         //O skin fornece conversões úteis, como permitir o acesso a regiões no atlas como nove manchas, sprites, drawables, etc
 
-//        outputLabel = new Label("Clique para comecar o jogo!", mySkin);
-//        outputLabel.setSize(Gdx.graphics.getWidth(), row_height);
-//        outputLabel.setPosition(0, row_height);
-//        outputLabel.setAlignment(Align.center);
-//        stage.addActor(outputLabel);
-
         ImageTextButton botaoJogar = new ImageTextButton("Jogar", mySkin);
         botaoJogar.setSize(150, 75);
         botaoJogar.getStyle().imageUp = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("imagens\\jogar.png"))));
-        //textureRegionDrawable ->  A região da textura deve ser definida antes do uso.
-        botaoJogar.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
-        final Sound sound =  assetManager.get("sons/abertura.wav", Sound.class);
+
+        botaoJogar.setPosition((float) (Gdx.graphics.getWidth() / 2), row_height, Align.center);
+
+        final Sound sound = assetManager.get("sons/abertura.wav", Sound.class);
         botaoJogar.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                game.setGameScrean(new JogoScreen(assetManager, game));
+                game.setGameScreen(new JogoScreen(assetManager, game));
                 sound.stop();
                 assetManager.get("sons/vaiComecarOShowDoMilhao.mp3", Sound.class).play(1f);
                 return true;
@@ -87,21 +84,13 @@ public class MainScreen implements Screen {
     }
 
     @Override
-    public void render (float delta) {
+    public void render(float delta) {
         stage.act();
-
         ScreenUtils.clear(0, 0, 0, 1);
-
         batch.begin();
         batch.draw(img, 0, 0);
-        sacoMoeda.draw(batch, delta);
-        //MoedaController.ref.draw(batch, delta);
-
+        sacoMoeda.draw(batch);
         stage.draw();
-
-        //forma
-
-
         batch.end();
     }
 
@@ -125,7 +114,7 @@ public class MainScreen implements Screen {
     }
 
     @Override
-    public void dispose () {
+    public void dispose() {
         batch.dispose();
         img.dispose();
     }
