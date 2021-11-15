@@ -68,7 +68,7 @@ public class PararScreen implements Screen {
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
-        img = new Texture("imagens\\bg.jpg");
+        img = assetManager.get("imagens/bg.jpg", Texture.class);
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
@@ -99,6 +99,12 @@ public class PararScreen implements Screen {
         this.btnReiniciar.setSize(120, 60);
         this.btnReiniciar.setPosition(500, 60, Align.center);
         this.btnReiniciar.addListener(new InputListener() {
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                jogo.reiniciar();
+                showDoMilhao.setGameScrean(new JogoScreen(assetManager, showDoMilhao));
+            }
+
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
                jogo.reiniciar();
