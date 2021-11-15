@@ -27,7 +27,7 @@ public class PararScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
 
     private SpriteBatch batch;
-    private Texture img, showlogo;
+    private Texture fundo, showlogo;
     private Stage stage;
     public SacoMoeda sacoMoeda;
 
@@ -50,14 +50,13 @@ public class PararScreen implements Screen {
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
-        img = assetManager.get("imagens/bg.jpg", Texture.class);
+        fundo = assetManager.get("imagens/bg.jpg", Texture.class);
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
         jogo = getJogo();
         showlogo = assetManager.get("imagens/showlogo.png", Texture.class);
         sacoMoeda = new SacoMoeda();
-
         sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
 
         btnReiniciar = new TextButton("Reiniciar", skinBotoesRespostas);
@@ -86,7 +85,7 @@ public class PararScreen implements Screen {
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
 
-        batch.draw(img, 0, 0);
+        batch.draw(fundo, 0, 0);
         batch.draw(showlogo, 270, Gdx.graphics.getHeight() - showlogo.getHeight() - 20);
         sacoMoeda.draw(batch, delta);
 

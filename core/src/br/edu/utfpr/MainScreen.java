@@ -4,11 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -18,16 +16,14 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 
 import static br.edu.utfpr.ShowDoMilhao.game;
 
 public class MainScreen implements Screen {
 
     public AssetManager assetManager;
-    SpriteBatch batch;
-    Texture img, img2;
-
+    private SpriteBatch batch;
+    private Texture imgShowDoMilhao, imagemJogar;
     public static MainScreen ref;
     private Stage stage;
     public SacoMoeda sacoMoeda;
@@ -35,6 +31,9 @@ public class MainScreen implements Screen {
     private ImageTextButton botaoJogar;
     private TextureRegionDrawable textureRegionDrawable;
     private TextureRegion textureRegion;
+    private int row_height12 = Gdx.graphics.getWidth() / 12;
+    private int row_height2 = Gdx.graphics.getWidth() / 2;
+
 
     public MainScreen(AssetManager assetManager) {
         this.assetManager = assetManager;
@@ -44,13 +43,11 @@ public class MainScreen implements Screen {
         batch = new SpriteBatch();
 
         assetManager.get("sons/abertura.wav", Sound.class).play(0.5f);
-        img = new Texture("imagens\\show-do-milhao.jpg");
-        img2 = new Texture("imagens\\jogar.png");
+        imgShowDoMilhao = assetManager.get("imagens/show-do-milhao.jpg", Texture.class);
+        imagemJogar = assetManager.get("imagens/jogar.png", Texture.class);
 
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
-
-        int row_height = Gdx.graphics.getWidth() / 12;
 
         Skin mySkin = assetManager.get("skin/neon-ui.json", Skin.class);
         //skin ->
@@ -60,12 +57,13 @@ public class MainScreen implements Screen {
 
         botaoJogar = new ImageTextButton("Jogar", mySkin);
         botaoJogar.setSize(150, 75);
-        textureRegion = new TextureRegion(img2);
+        textureRegion = new TextureRegion(imagemJogar);
         textureRegionDrawable = new TextureRegionDrawable(textureRegion);
         botaoJogar.getStyle().imageUp = textureRegionDrawable;
         //textureRegionDrawable ->  A região da textura deve ser definida antes do uso.
-        botaoJogar.setPosition((float) (Gdx.graphics.getWidth()/2), row_height, Align.center);
-        final Sound sound =  assetManager.get("sons/abertura.wav", Sound.class);
+        botaoJogar.setPosition(row_height2, row_height12, Align.center);
+
+        final Sound sound = assetManager.get("sons/abertura.wav", Sound.class);
         botaoJogar.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -88,7 +86,7 @@ public class MainScreen implements Screen {
         stage.act();
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
-        batch.draw(img, 0, 0);
+        batch.draw(imgShowDoMilhao, 0, 0);
         sacoMoeda.draw(batch);
         stage.draw();
         batch.end();
@@ -116,8 +114,8 @@ public class MainScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
-        img.dispose();
-        img2.dispose();
+        imgShowDoMilhao.dispose();
+        imagemJogar.dispose();
         stage.dispose();
         sacoMoeda = null;
         moeda = null;
