@@ -23,34 +23,37 @@ import javax.swing.*;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
 
-public class PararScreen implements Screen {
+public class GameOverScreen implements Screen {
     private AssetManager assetManager;
     private ShowDoMilhao showDoMilhao;
 
     private SpriteBatch batch;
-    private Texture fundo, showlogo, goldBar;
+    private Texture fundo, showlogo, gameOver;
     private Stage stage;
-    private ImageIcon imageIconGoldBar = new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png");
+    public Texture goldBar;
 
     private Jogo jogo;
     private TextButton btnReiniciar;
     private TextButton btnSair;
     private BitmapFont font1 = new BitmapFont();
+    private ImageIcon imageIconGoldBar = new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png");
     private Skin skinBotoesRespostas;
 
     private float heightShape = 160;
     private float font1Y = 280;
 
-    public PararScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
+    public GameOverScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
         this.assetManager = assetManager;
         this.showDoMilhao = showDoMilhao;
     }
+
 
     public void show() {
         batch = new SpriteBatch();
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
         fundo = assetManager.get("imagens/bg.jpg", Texture.class);
+        gameOver = assetManager.get("imagens/gameOver.png", Texture.class);
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
@@ -90,10 +93,11 @@ public class PararScreen implements Screen {
         batch.begin();
 
         batch.draw(fundo, 0, 0);
-        batch.draw(showlogo, 253, Gdx.graphics.getHeight() - showlogo.getHeight() - 20);
+        batch.draw(showlogo, 750, Gdx.graphics.getHeight()- 120, Gdx.graphics.getWidth() *0.2f,Gdx.graphics.getHeight()*0.2f);
+        batch.draw(gameOver, 225, Gdx.graphics.getHeight() - 380);
         batch.draw(goldBar, 740, 50);
 
-        font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao() + "\nVocê parou na " + jogo.getRodada().getLabel() + " / 16", 283, font1Y);
+        font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao() + "\nVocê errou na " + jogo.getRodada().getLabel() + " / 16", 283, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
         font1.setColor(Color.BLACK);
 

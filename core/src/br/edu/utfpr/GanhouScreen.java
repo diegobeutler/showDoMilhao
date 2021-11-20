@@ -23,7 +23,7 @@ import javax.swing.*;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
 
-public class PararScreen implements Screen {
+public class GanhouScreen implements Screen {
     private AssetManager assetManager;
     private ShowDoMilhao showDoMilhao;
 
@@ -41,10 +41,11 @@ public class PararScreen implements Screen {
     private float heightShape = 160;
     private float font1Y = 280;
 
-    public PararScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
+    public GanhouScreen(AssetManager assetManager, ShowDoMilhao showDoMilhao) {
         this.assetManager = assetManager;
         this.showDoMilhao = showDoMilhao;
     }
+
 
     public void show() {
         batch = new SpriteBatch();
@@ -93,7 +94,7 @@ public class PararScreen implements Screen {
         batch.draw(showlogo, 253, Gdx.graphics.getHeight() - showlogo.getHeight() - 20);
         batch.draw(goldBar, 740, 50);
 
-        font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao() + "\nVocê parou na " + jogo.getRodada().getLabel() + " / 16", 283, font1Y);
+        font1.draw(batch, "Parabéns você ganhou!!!\nPontuação: " + jogo.getPontuacao() + "\n"+ jogo.getRodada().getLabel() + " / 16", 283, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
         font1.setColor(Color.BLACK);
 
@@ -112,7 +113,6 @@ public class PararScreen implements Screen {
     }
 
     private void tratarSair() {
-        System.out.println(System.getProperty("user.dir") + "\\core\\assets\\imagens\\sair.png");
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
         int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?", "Sair", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);

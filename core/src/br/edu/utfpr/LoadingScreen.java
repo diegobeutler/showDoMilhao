@@ -38,9 +38,12 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("imagens/eliminar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/parar.jpg", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/pular.jpg", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/sair.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/gameOver.png", Texture.class);
 
         showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/goldbar.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/goldbar_ori.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/bg.jpg", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/show-do-milhao.jpg", Texture.class);

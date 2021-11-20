@@ -1,5 +1,6 @@
 package br.edu.utfpr;
 
+import br.edu.utfpr.enumeration.Rodada;
 import br.edu.utfpr.jogo.Jogo;
 import br.edu.utfpr.json.Dados;
 import br.edu.utfpr.json.Questao;
@@ -60,8 +61,10 @@ public class JogoScreen implements Screen {
     private TextButton resposta4;
     private ImageTextButton botaoJogar;
     private TextureRegionDrawable textureRegionDrawable, textureRegionDrawable2, textureRegionDrawable3;
-    private TextureRegion textureRegion, textureRegion2, textureRegion3 ;
+    private TextureRegion textureRegion, textureRegion2, textureRegion3;
     private BitmapFont fontPontuacao = new BitmapFont();
+    private BitmapFont fontRodada = new BitmapFont();
+    private ImageIcon imageIconGoldBar = new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png");
     // ajudas
     private ImageTextButton btnPular;
     private TextButton btnEliminar2;
@@ -216,9 +219,10 @@ public class JogoScreen implements Screen {
         batch.begin();
 
         batch.draw(fundo, 0, 0);
-        fontPontuacao.getData().setScale(1.5f);
         fontPontuacao.draw(batch, "Pontuação: " + jogo.getPontuacao().toString(), 750, 520);
         fontPontuacao.getData().setScale(1.8f);
+        fontRodada.draw(batch, "Rodada: " + jogo.getRodada().getLabel().replaceAll("[\\D]", "") + " / 16", 750, 470);
+        fontRodada.getData().setScale(1.8f);
         sacoMoeda.draw(batch);
         MoedaController.ref.draw(batch, delta);
 
@@ -319,7 +323,7 @@ public class JogoScreen implements Screen {
     private void tratarParar() {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
         int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?\nPontuação se parar: " + jogo.getRodada().getParar(), "Confirma", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
+                JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
         if (valor == JOptionPane.YES_OPTION) {
             jogo.setPontuacao(jogo.getRodada().getParar());
             showDoMilhao.setGameScreen(new PararScreen(assetManager, showDoMilhao));
@@ -371,6 +375,7 @@ public class JogoScreen implements Screen {
         btnParar = null;
         retorno = null;
         arrayTexto = null;
+        imageIconGoldBar = null;
     }
 
 
@@ -408,17 +413,18 @@ public class JogoScreen implements Screen {
     private void confirmaResposta(Resposta resposta) {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
         int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + resposta.getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png"));
+                JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
         if (valor == JOptionPane.YES_OPTION) {
             if (resposta.isCorreta()) {
                 tratarAcerto();
+                if (revertElimina2) {
+                    revertEliminar2();
+                    revertElimina2 = false;
+                }
             } else {
                 tratarErro();
             }
-            if (revertElimina2) {
-                revertEliminar2();
-                revertElimina2 = false;
-            }
+
         }
     }
 
@@ -427,13 +433,19 @@ public class JogoScreen implements Screen {
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
-        jogo.proximaRodada();
-        questao = sortearNovaQuestao();
+        if(jogo.getRodada().equals(Rodada.RODADA_16)){
+            showDoMilhao.setGameScreen(new GanhouScreen(assetManager, showDoMilhao));
+        } else {
+            jogo.proximaRodada();
+            questao = sortearNovaQuestao();
+        }
+
     }
 
     private void tratarErro() {
         assetManager.get("sons/quepenaErrou.mp3", Sound.class).play(1f);
         jogo.setPontuacao(jogo.getRodada().getErrar());
+        showDoMilhao.setGameScreen(new GameOverScreen(assetManager, showDoMilhao));
     }
 
     private Questao sortearNovaQuestao() {
