@@ -140,7 +140,7 @@
       {"resposta":"BRUTUS", "correta": false},
       {"resposta":"CALÍGULA", "correta": false}
     ] },
-    { "dificuldade": "medio", "key": "4M", "pergunta": "A cidade de Pompéia, que foi soterrada por um vulcão fica em qual países países?", "respostas": [
+    { "dificuldade": "medio", "key": "4M", "pergunta": "A cidade de Pompéia, que foi soterrada por um vulcão fica em qual país?", "respostas": [
       {"resposta":"JAPÃO", "correta": false},
       {"resposta":"MÉXICO", "correta": false},
       {"resposta":"ITÁLIA", "correta": true},
