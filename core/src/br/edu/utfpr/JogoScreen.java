@@ -32,10 +32,8 @@ import javax.swing.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.Timer;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
 
@@ -64,6 +62,8 @@ public class JogoScreen implements Screen {
     private TextureRegion textureRegion, textureRegion2, textureRegion3;
     private BitmapFont fontPontuacao = new BitmapFont();
     private BitmapFont fontRodada = new BitmapFont();
+    private BitmapFont fontTempo = new BitmapFont();
+    private int tempo = 45;
     private ImageIcon imageIconGoldBar = new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png");
     // ajudas
     private ImageTextButton btnPular;
@@ -81,6 +81,8 @@ public class JogoScreen implements Screen {
     private float font1Y = 500;
     // controleInterno ELimina 2
     private boolean revertElimina2 = false;
+    private float timeSeconds = 0f;
+    private float period = 1f;
 
 
     public static JogoScreen ref;
@@ -217,12 +219,14 @@ public class JogoScreen implements Screen {
 
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
-
         batch.draw(fundo, 0, 0);
-        fontPontuacao.draw(batch, "Pontuação: " + jogo.getPontuacao().toString(), 750, 520);
+        fontTempo.draw(batch, "Tempo: " + tempo, 700, 520);
+        fontTempo.getData().setScale(1.8f);
+        fontPontuacao.draw(batch, "Pontuação: " + jogo.getPontuacao().toString(), 700, 470);
         fontPontuacao.getData().setScale(1.8f);
-        fontRodada.draw(batch, "Rodada: " + jogo.getRodada().getLabel().replaceAll("[\\D]", "") + " / 16", 750, 470);
+        fontRodada.draw(batch, "Rodada: " + jogo.getRodada().getLabel().replaceAll("[\\D]", "") + " / 16", 700, 420);
         fontRodada.getData().setScale(1.8f);
+
         sacoMoeda.draw(batch);
         MoedaController.ref.draw(batch, delta);
 
@@ -259,6 +263,15 @@ public class JogoScreen implements Screen {
         shape.setColor(Color.WHITE);
         shape.rect(15, Gdx.graphics.getHeight() - heightShape - 15, Gdx.graphics.getWidth() / 1.5f, heightShape);
         shape.end();
+        timeSeconds +=Gdx.graphics.getRawDeltaTime();
+        if(timeSeconds > period){
+            timeSeconds-=period;
+            if(tempo <=0) {
+                tratarFimTempo();
+            } else{
+                tempo --;
+            }
+        }
     }
 
     private void tratarPular() {
@@ -448,7 +461,14 @@ public class JogoScreen implements Screen {
         showDoMilhao.setGameScreen(new GameOverScreen(assetManager, showDoMilhao));
     }
 
+    private void tratarFimTempo() {
+        assetManager.get("sons/tempoAcabou.mp3", Sound.class).play(1f);
+        jogo.setPontuacao(jogo.getRodada().getErrar());
+        showDoMilhao.setGameScreen(new GameOverScreen(assetManager, showDoMilhao));
+    }
+
     private Questao sortearNovaQuestao() {
+        tempo = 45;
         return dados.getQuestao(jogo.getRodada().getDificuldade());
     }
 

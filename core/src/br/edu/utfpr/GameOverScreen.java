@@ -97,7 +97,7 @@ public class GameOverScreen implements Screen {
         batch.draw(gameOver, 225, Gdx.graphics.getHeight() - 380);
         batch.draw(goldBar, 740, 50);
 
-        font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao() + "\nVocê errou na " + jogo.getRodada().getLabel() + " / 16", 283, font1Y);
+        font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao() + "\nVocê perdeu na " + jogo.getRodada().getLabel() + " / 16", 283, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
         font1.setColor(Color.BLACK);
 
@@ -148,7 +148,6 @@ public class GameOverScreen implements Screen {
     public void dispose() {
         batch.dispose();
         stage.dispose();
-        goldBar.dispose();
         btnReiniciar.clear();
         btnReiniciar = null;
         btnSair.clear();

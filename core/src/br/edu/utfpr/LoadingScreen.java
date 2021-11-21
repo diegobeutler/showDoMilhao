@@ -40,13 +40,13 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("imagens/pular.jpg", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/sair.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/gameOver.png", Texture.class);
-
         showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/goldbar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/goldbar_ori.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/bg.jpg", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/show-do-milhao.jpg", Texture.class);
+
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/boaSorte.mp3", Sound.class);
@@ -59,6 +59,8 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("1milhao.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/trilhaSuspense.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/vaiComecarOShowDoMilhao.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/tempoAcabou.mp3", Sound.class);
+
         showDoMilhao.getAssetManager().load("skin/neon-ui.json", Skin.class);
     }
 

@@ -24,15 +24,22 @@ public class Dados {
 
 
     public Questao getQuestao(Dificuldade dificuldade) {
+        Questao questao;
         switch (dificuldade) {
             case FACIL:
-                return faceis.get(new Random().nextInt(faceis.size()));
+                questao = faceis.get(new Random().nextInt(faceis.size()));
+                faceis.remove(questao);
+                return questao;
 
             case MEDIO:
-                return medias.get(new Random().nextInt(medias.size()));
+                questao = medias.get(new Random().nextInt(medias.size()));
+                medias.remove(questao);
+                return questao;
 
             case DIFICIL:
-                return dificeis.get(new Random().nextInt(dificeis.size()));
+                questao = dificeis.get(new Random().nextInt(dificeis.size()));
+                dificeis.remove(questao);
+                return questao;
             default: throw new IllegalStateException("Unexpected value: " + dificuldade);
         }
     }

@@ -144,7 +144,6 @@ public class GanhouScreen implements Screen {
     public void dispose() {
         batch.dispose();
         stage.dispose();
-        goldBar.dispose();
         btnReiniciar.clear();
         btnReiniciar = null;
         btnSair.clear();
