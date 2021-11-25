@@ -4,11 +4,11 @@
       {"resposta":"RIO DE JANEIRO", "correta": false},
       {"resposta":"RIO GRANDE DO SUL", "correta": true},
       {"resposta":"SANTA CATARINA", "correta": false},
-      {"resposta":"GOIÁS", "correta": false}
+      {"resposta":"GOIAS", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "2F", "pergunta": "Qual é o nome dado ao estado da água em forma de gelo?", "respostas": [
-      {"resposta":"LÍQUIDO", "correta": false},
-      {"resposta":"SÓLIDO", "correta": true},
+      {"resposta":"LIQUIDO", "correta": false},
+      {"resposta":"SOLIDO", "correta": true},
       {"resposta":"GASOSO", "correta": false},
       {"resposta":"VAPOROSO", "correta": false}
     ] },
@@ -22,19 +22,19 @@
       {"resposta":"MARGARIDA", "correta": false},
       {"resposta":"MINNIE", "correta": true},
       {"resposta":"A PEQUENA SEREIA", "correta": false},
-      {"resposta":"OLÍVIA PALITO", "correta": false}
+      {"resposta":"OLIVIA PALITO", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "5F", "pergunta": "Qual é o personagem do folclore brasileiro que tem uma perna só?", "respostas": [
       {"resposta":"CUCA", "correta": false},
       {"resposta":"NEGRINHO DO PASTOREIO", "correta": false},
-      {"resposta":"BOITATÁ", "correta": false},
-      {"resposta":"SACI-PERERÊ", "correta": true}
+      {"resposta":"BOITATA", "correta": false},
+      {"resposta":"SACI-PERERE", "correta": true}
     ] },
     { "dificuldade": "facil", "key": "6F", "pergunta": "Fidel Castro nasceu em que país?", "respostas": [
       {"resposta":"JAMAICA", "correta": false},
       {"resposta":"CUBA", "correta": true},
       {"resposta":"EL SALVADOR", "correta": false},
-      {"resposta":"MÉXICO", "correta": false}
+      {"resposta":"MEXICO", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "7F", "pergunta": "Quem proclamou a república no Brasil em 1889?", "respostas": [
       {"resposta":"DUQUE DE CAXIAS", "correta": false},
@@ -44,27 +44,27 @@
     ] },
     { "dificuldade": "facil", "key": "8F", "pergunta": "Quem é o patrono do exército brasileiro?", "respostas": [
       {"resposta":"MARECHAL DEODORO", "correta": false},
-      {"resposta":"BARÃO DE MAUÁ", "correta": false},
+      {"resposta":"BARAO DE MAUA", "correta": false},
       {"resposta":"DUQUE DE CAXIAS", "correta": true},
-      {"resposta":"MARQUÊS DE POMBAL", "correta": false}
+      {"resposta":"MARQUES DE POMBAL", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "9F", "pergunta": "Quem era o apresentador que reprovava os calouros tocando uma buzina?", "respostas": [
       {"resposta":"RAUL GIL", "correta": false},
       {"resposta":"BOLINHA", "correta": false},
-      {"resposta":"FLÁVIO CAVALCANTI", "correta": false},
+      {"resposta":"FLAVIO CAVALCANTI", "correta": false},
       {"resposta":"CHACRINHA", "correta": true}
     ] },
     { "dificuldade": "facil", "key": "10F", "pergunta": "O que era Frankenstein, de Mary Shelley?", "respostas": [
       {"resposta":"MONSTRO", "correta": true},
       {"resposta":"GORILA", "correta": false},
-      {"resposta":"PRÍNCIPE", "correta": false},
+      {"resposta":"PRINCIPE", "correta": false},
       {"resposta":"SAPO", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "11F", "pergunta": "Qual é o signo do zodíaco de quem nasce no dia do ano-novo?", "respostas": [
       {"resposta":"VIRGEM", "correta": false},
-      {"resposta":"AQUÁRIO", "correta": false},
-      {"resposta":"CAPRICÓRNIO", "correta": true},
-      {"resposta":"ÁRIES", "correta": false}
+      {"resposta":"AQUARIO", "correta": false},
+      {"resposta":"CAPRICORNIO", "correta": true},
+      {"resposta":"ARIES", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "12F", "pergunta": "Quem fundou uma fábrica de automóveis Ford?", "respostas": [
       {"resposta":"HARRISON FORD", "correta": false},
@@ -92,15 +92,15 @@
     ] },
     { "dificuldade": "facil", "key": "16F", "pergunta": "Qual lugar é também chamado de Santa Sé?", "respostas": [
       {"resposta":"VENEZA", "correta": false},
-      {"resposta":"VITÓRIA", "correta": false},
+      {"resposta":"VITORIA", "correta": false},
       {"resposta":"VANCOUVER", "correta": false},
       {"resposta":"VATICANO", "correta": true}
     ] },
     { "dificuldade": "facil", "key": "17F", "pergunta": "Quem tem por lema uma frase: “Sempre alerta”?", "respostas": [
-      {"resposta":"MÉDICOS", "correta": false},
+      {"resposta":"MEDICOS", "correta": false},
       {"resposta":"ESCOTEIROS", "correta": true},
       {"resposta":"BOMBEIROS", "correta": false},
-      {"resposta":"POLÍTICAS", "correta": false}
+      {"resposta":"POLITICAS", "correta": false}
     ] },
     { "dificuldade": "facil", "key": "18F", "pergunta": "Quem foi o grande amor de Julieta?", "respostas": [
       {"resposta":"ROMEU", "correta": true},
@@ -115,9 +115,9 @@
       {"resposta":"DOZE", "correta": true}
     ] },
     { "dificuldade": "facil", "key": "20F", "pergunta": "Vatapá é uma comida típica de qual estado?", "respostas": [
-      {"resposta":"PARANÁ", "correta": false},
+      {"resposta":"PARANA", "correta": false},
       {"resposta":"SANTA CATARINA", "correta": false},
-      {"resposta":"SÃO PAULO", "correta": false},
+      {"resposta":"SAO PAULO", "correta": false},
       {"resposta":"BAHIA", "correta": true}
     ] }
   ],
@@ -138,19 +138,19 @@
       {"resposta":"TRAJANO", "correta": false},
       {"resposta":"NERO", "correta": true},
       {"resposta":"BRUTUS", "correta": false},
-      {"resposta":"CALÍGULA", "correta": false}
+      {"resposta":"CALIGULA", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "4M", "pergunta": "A cidade de Pompéia, que foi soterrada por um vulcão fica em qual país?", "respostas": [
-      {"resposta":"JAPÃO", "correta": false},
-      {"resposta":"MÉXICO", "correta": false},
-      {"resposta":"ITÁLIA", "correta": true},
+      {"resposta":"JAPAO", "correta": false},
+      {"resposta":"MEXICO", "correta": false},
+      {"resposta":"ITALIA", "correta": true},
       {"resposta":"ESTADOS UNIDOS", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "5M", "pergunta": "Como é chamado quem nasce em Milão, na Itália?", "respostas": [
       {"resposta":"MILANENSE", "correta": false},
       {"resposta":"MILANOSO", "correta": false},
       {"resposta":"MILISTA", "correta": false},
-      {"resposta":"MILANÊS", "correta": true}
+      {"resposta":"MILANES", "correta": true}
     ] },
     { "dificuldade": "medio", "key": "6M", "pergunta": "Que profissional usa uma ferramenta chamada formão?", "respostas": [
       {"resposta":"CARPINTEIRO", "correta": true},
@@ -161,32 +161,32 @@
     { "dificuldade": "medio", "key": "7M", "pergunta": "Em qual estádio Pelé marcou seu milésimo gol?", "respostas": [
       {"resposta":"MORUMBI", "correta": false},
       {"resposta":"PACAEMBU", "correta": false},
-      {"resposta":"MARACANÃ", "correta": true},
-      {"resposta":"MINEIRÃO", "correta": false}
+      {"resposta":"MARACANA", "correta": true},
+      {"resposta":"MINEIRAO", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "8M", "pergunta": "O que é um oboé?", "respostas": [
-      {"resposta":"VULCÃO", "correta": false},
+      {"resposta":"VULCAO", "correta": false},
       {"resposta":"COMIDA", "correta": false},
       {"resposta":"INSTRUMENTO MUSICAL", "correta": true},
-      {"resposta":"TRIBO INDÍGENA", "correta": false}
+      {"resposta":"TRIBO INDIGENA", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "9M", "pergunta": "Como eram chamados de pilotos suicidas da Segunda Guerra?", "respostas": [
       {"resposta":"CAMICASES", "correta": true},
       {"resposta":"SASHIMIS", "correta": false},
       {"resposta":"HARAQUIRIS", "correta": false},
-      {"resposta":"SUMÔS", "correta": false}
+      {"resposta":"SUMOS", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "10M", "pergunta": "O que é gôndola?", "respostas": [
-      {"resposta":"EMBARCAÇÃO", "correta": true},
+      {"resposta":"EMBARCACAO", "correta": true},
       {"resposta":"BRINQUEDO", "correta": false},
-      {"resposta":"MÚSICA", "correta": false},
-      {"resposta":"SÍMBOLO", "correta": false}
+      {"resposta":"MUSICA", "correta": false},
+      {"resposta":"SIMBOLO", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "11M", "pergunta": "Sashimi é um prato originário de qual país?", "respostas": [
-      {"resposta":"JAPÃO", "correta": true},
+      {"resposta":"JAPAO", "correta": true},
       {"resposta":"CHINA", "correta": false},
-      {"resposta":"ÍNDIA", "correta": false},
-      {"resposta":"INDONÉSIA", "correta": false}
+      {"resposta":"INDIA", "correta": false},
+      {"resposta":"INDONESIA", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "12M", "pergunta": "Como é chamada a cantora que representa o papel principal em uma ópera?", "respostas": [
       {"resposta":"PRIMEIRA DAMA", "correta": false},
@@ -196,7 +196,7 @@
     ] },
     { "dificuldade": "medio", "key": "13M", "pergunta": "Peroba é uma espécie de?", "respostas": [
       {"resposta":"INSETO", "correta": false},
-      {"resposta":"ÁRVORE", "correta": true},
+      {"resposta":"ARVORE", "correta": true},
       {"resposta":"VERME", "correta": false},
       {"resposta":"VERDURA", "correta": false}
     ] },
@@ -219,18 +219,18 @@
       {"resposta":"MONT BLANC", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "17M", "pergunta": "Que rio corta a cidade de Londres, na Inglaterra?", "respostas": [
-      {"resposta":"TÂMISA", "correta": true},
+      {"resposta":"TAMISA", "correta": true},
       {"resposta":"SENA", "correta": false},
       {"resposta":"RENO", "correta": false},
       {"resposta":"AUBE", "correta": false}
     ] },
     { "dificuldade": "medio", "key": "18M", "pergunta": "Qual é a raça do personagem principal do filme “Beethoven”?", "respostas": [
       {"resposta":"FILA", "correta": false},
-      {"resposta":"PASTOR ALEMÃO", "correta": false},
+      {"resposta":"PASTOR ALEMAO", "correta": false},
       {"resposta":"POODLE", "correta": false},
-      {"resposta":"SÃO-BERNARDO", "correta": true}
+      {"resposta":"SAO-BERNARDO", "correta": true}
     ] },
-    { "dificuldade": "medio", "key": "19M", "pergunta": "Quem foi eleito presidente da África do Sul em 1994?", "respostas": [
+    { "dificuldade": "medio", "key": "19M", "pergunta": "Quem foi eleito presidente da Africa do Sul em 1994?", "respostas": [
       {"resposta":"NELSON PIQUET", "correta": false},
       {"resposta":"NELSON MANDELA", "correta": true},
       {"resposta":"NELSON NED", "correta": false},
@@ -247,7 +247,7 @@
     { "dificuldade": "dificil", "key": "1D", "pergunta": "Em qual espécie o macho choca os ovos ea fêmea procura alimento?", "respostas": [
       {"resposta":"ANDORINHA", "correta": false},
       {"resposta":"PATO SELVAGEM", "correta": false},
-      {"resposta":"PINGÜIM", "correta": true},
+      {"resposta":"PINGUIM", "correta": true},
       {"resposta":"MARRECO", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "2D", "pergunta": "Em qual país está localizado o “Muro das lamentações”?", "respostas": [
@@ -256,10 +256,10 @@
       {"resposta":"VENEZUELA", "correta": false},
       {"resposta":"ISRAEL", "correta": true}
     ] },
-    { "dificuldade": "dificil", "key": "3D", "pergunta": "Qual desses países não fica na Ásia?", "respostas": [
-      {"resposta":"PAQUISTÃO", "correta": false},
-      {"resposta":"JAPÃO", "correta": false},
-      {"resposta":"TAILÂNDIA", "correta": false},
+    { "dificuldade": "dificil", "key": "3D", "pergunta": "Qual desses países não fica na Asia?", "respostas": [
+      {"resposta":"PAQUISTAO", "correta": false},
+      {"resposta":"JAPAO", "correta": false},
+      {"resposta":"TAILANDIA", "correta": false},
       {"resposta":"EGITO", "correta": true}
     ] },
     { "dificuldade": "dificil", "key": "4D", "pergunta": "Qual desses astros de filmes de ação é belga?", "respostas": [
@@ -275,9 +275,9 @@
       {"resposta":"MARSELHA", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "6D", "pergunta": "Onde nasceu Van Gogh, o grande pintor impressionista?", "respostas": [
-      {"resposta":"POLÔNIA", "correta": false},
-      {"resposta":"FRANÇA", "correta": false},
-      {"resposta":"ITÁLIA", "correta": false},
+      {"resposta":"POLONIA", "correta": false},
+      {"resposta":"FRANCA", "correta": false},
+      {"resposta":"ITALIA", "correta": false},
       {"resposta":"HOLANDA", "correta": true}
     ] },
     { "dificuldade": "dificil", "key": "7D", "pergunta": "Qual é a primeira letra do alfabeto grego?", "respostas": [
@@ -289,24 +289,24 @@
     { "dificuldade": "dificil", "key": "8D", "pergunta": "Qual presidente brasileiro instituiu o AI-5?", "respostas": [
       {"resposta":"COSTA E SILVA", "correta": true},
       {"resposta":"ERNESTO GEISEL", "correta": false},
-      {"resposta":"JOÃO FIGUEIREDO", "correta": false},
+      {"resposta":"JOAO FIGUEIREDO", "correta": false},
       {"resposta":"ITAMAR FRANCO", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "9D", "pergunta": "O que significa literalmente Perestroika?", "respostas": [
-      {"resposta":"CONVERSÃO", "correta": false},
-      {"resposta":"INVOLUÇÃO", "correta": false},
-      {"resposta":"REESTRUTURAÇÃO", "correta": true},
-      {"resposta":"REGRESSÃO", "correta": false}
+      {"resposta":"CONVERSAO", "correta": false},
+      {"resposta":"INVOLUCAO", "correta": false},
+      {"resposta":"REESTRUTURACAO", "correta": true},
+      {"resposta":"REGRESSAO", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "10D", "pergunta": "Qual dessas quatro pesos é o mais leve?", "respostas": [
-      {"resposta":"ONÇAS", "correta": false},
+      {"resposta":"ONCAS", "correta": false},
       {"resposta":"GRAMAS", "correta": true},
       {"resposta":"QUILOS", "correta": false},
       {"resposta":"LIBRAS", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "11D", "pergunta": "Brahma é o deus de que religião?", "respostas": [
-      {"resposta":"HINDUÍSMO", "correta": true},
-      {"resposta":"XINTOÍSMO", "correta": false},
+      {"resposta":"HINDUISMO", "correta": true},
+      {"resposta":"XINTOISMO", "correta": false},
       {"resposta":"BUDISMO", "correta": false},
       {"resposta":"ISLAMISMO", "correta": false}
     ] },
@@ -323,28 +323,28 @@
       {"resposta":"MUAR", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "14D", "pergunta": "Qual oceano tem o maior volume de água?", "respostas": [
-      {"resposta":"ATLÂNTICO", "correta": false},
-      {"resposta":"PACÍFICO", "correta": true},
-      {"resposta":"ÍNDICO", "correta": false},
-      {"resposta":"ÁRTICO", "correta": false}
+      {"resposta":"ATLANTICO", "correta": false},
+      {"resposta":"PACIFICO", "correta": true},
+      {"resposta":"INDICO", "correta": false},
+      {"resposta":"ARTICO", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "15D", "pergunta": "Qual foi o último presidente militar do Brasil?", "respostas": [
       {"resposta":"FERNANDO COLLOR", "correta": false},
-      {"resposta":"JOÃO FIGUEIREDO", "correta": true},
+      {"resposta":"JOAO FIGUEIREDO", "correta": true},
       {"resposta":"TANCREDO NEVES", "correta": false},
-      {"resposta":"JOÃO GOULART", "correta": false}
+      {"resposta":"JOAO GOULART", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "16D", "pergunta": "Que conflito ideológico envolveu os EUA e a União Soviética?", "respostas": [
       {"resposta":"GUERRA FRIA", "correta": true},
-      {"resposta":"GUERRA DO VIETNÃ", "correta": false},
+      {"resposta":"GUERRA DO VIETNA", "correta": false},
       {"resposta":"GUERRA NAS ESTRELAS", "correta": false},
-      {"resposta":"GUERRA DA CORÉIA", "correta": false}
+      {"resposta":"GUERRA DA COREIA", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "17D", "pergunta": "O trapézio é um músculo que está situado:", "respostas": [
-      {"resposta":"NO PESCOÇO", "correta": false},
+      {"resposta":"NO PESCOCO", "correta": false},
       {"resposta":"NO OMBRO", "correta": true},
-      {"resposta":"NA CABEÇA", "correta": false},
-      {"resposta":"NO BRAÇO", "correta": false}
+      {"resposta":"NA CABECA", "correta": false},
+      {"resposta":"NO BRACO", "correta": false}
     ] },
     { "dificuldade": "dificil", "key": "18D", "pergunta": "Quem escreveu o livro “A sangue frio” em 1966?", "respostas": [
       {"resposta":"CAPOTE TRUMANO", "correta": true},
