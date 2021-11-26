@@ -35,8 +35,9 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("imagens/animacaoMoeda.png", Texture.class);
 
         showDoMilhao.getAssetManager().load("imagens/eliminar.png", Texture.class);
-        showDoMilhao.getAssetManager().load("imagens/parar.jpg", Texture.class);
-        showDoMilhao.getAssetManager().load("imagens/pular.jpg", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/parar.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/pular.png", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/reiniciar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/sair.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/gameOver.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/showlogo.png", Texture.class);
@@ -61,6 +62,8 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/tempoAcabou.mp3", Sound.class);
 
         showDoMilhao.getAssetManager().load("skin/neon-ui.json", Skin.class);
+        showDoMilhao.getAssetManager().load("skin2/neon-ui.json", Skin.class);
+        showDoMilhao.getAssetManager().load("skin3/neon-ui.json", Skin.class);
     }
 
     @Override
