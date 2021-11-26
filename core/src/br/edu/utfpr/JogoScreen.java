@@ -38,7 +38,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
-
 public class JogoScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
     private AssetManager assetManager;
@@ -55,6 +54,8 @@ public class JogoScreen implements Screen {
     private BitmapFont font1 = new BitmapFont();
     // botoes respostas
     private Skin skinBotoesRespostas;
+    private Skin skinBotoesRespostas2;
+    private Skin skinBotoesRespostas3;
     private TextButton resposta1;
     private TextButton resposta2;
     private TextButton resposta3;
@@ -69,7 +70,7 @@ public class JogoScreen implements Screen {
     private ImageIcon imageIconGoldBar = new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png");
     // ajudas
     private ImageTextButton btnPular;
-    private TextButton btnEliminar2;
+    private ImageTextButton btnEliminar2;
     private ImageTextButton btnParar;
     /// tratar string
     private String retorno = "";
@@ -103,6 +104,9 @@ public class JogoScreen implements Screen {
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
+        skinBotoesRespostas2 = assetManager.get("skin2/neon-ui.json", Skin.class);
+        skinBotoesRespostas3 = assetManager.get("skin3/neon-ui.json", Skin.class);
+
         try {
             String url = System.getProperty("user.dir") + "\\core\\assets\\dados\\perguntas.json";
             String json = String.join(" ",
@@ -172,12 +176,12 @@ public class JogoScreen implements Screen {
         });
         //botão parar
         btnParar = new ImageTextButton("Parar", skinBotoesRespostas);
-        textureRegion = new TextureRegion(assetManager.get("imagens/parar.jpg", Texture.class));
+        textureRegion = new TextureRegion(assetManager.get("imagens/parar.png", Texture.class));
         textureRegionDrawable = new TextureRegionDrawable(textureRegion);
         btnParar.getStyle().imageUp = textureRegionDrawable;
         btnParar.getLabel().setAlignment(Align.left);
-        this.btnParar.setSize(100, 60);
-        this.btnParar.setPosition(15, font1Y - heightShape - 300, Align.left);
+        this.btnParar.setSize(140, 80);
+        this.btnParar.setPosition(25, font1Y - heightShape - 300, Align.left);
         this.btnParar.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -186,13 +190,14 @@ public class JogoScreen implements Screen {
             }
         });
 
-        btnPular = new ImageTextButton("Pular", skinBotoesRespostas);
-        textureRegion2 = new TextureRegion(assetManager.get("imagens/pular.jpg", Texture.class));
+
+        btnPular = new ImageTextButton("Pular", skinBotoesRespostas2);
+        textureRegion2 = new TextureRegion(assetManager.get("imagens/pular.png", Texture.class));
         textureRegionDrawable2 = new TextureRegionDrawable(textureRegion2);
         btnPular.getStyle().imageUp = textureRegionDrawable2;
         btnPular.getLabel().setAlignment(Align.left);
-        this.btnPular.setSize(100, 60);
-        this.btnPular.setPosition(130, font1Y - heightShape - 300, Align.left);
+        this.btnPular.setSize(140, 80);
+        this.btnPular.setPosition(btnParar.getX()+160, font1Y - heightShape - 300, Align.left);
         this.btnPular.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -201,10 +206,14 @@ public class JogoScreen implements Screen {
             }
         });
 
-        btnEliminar2 = new TextButton("Eliminar 2", skinBotoesRespostas);
+
+        btnEliminar2 = new ImageTextButton("Eliminar 2", skinBotoesRespostas3);
+        textureRegion3 = new TextureRegion(assetManager.get("imagens/eliminar.png", Texture.class));
+        textureRegionDrawable3 = new TextureRegionDrawable(textureRegion3);
+        btnEliminar2.getStyle().imageUp = textureRegionDrawable3;
         btnEliminar2.getLabel().setAlignment(Align.left);
-        this.btnEliminar2.setSize(100, 60);
-        this.btnEliminar2.setPosition(245, font1Y - heightShape - 300, Align.left);
+        this.btnEliminar2.setSize(140, 80);
+        this.btnEliminar2.setPosition(btnPular.getX()+160, font1Y - heightShape - 300, Align.left);
         this.btnEliminar2.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -274,6 +283,7 @@ public class JogoScreen implements Screen {
                 tempo --;
             }
         }
+
     }
 
     private void tratarPular() {
@@ -320,6 +330,7 @@ public class JogoScreen implements Screen {
         }
         jogo.setPossuiElimina2(false);
         btnEliminar2.setTouchable(Touchable.disabled);
+        btnEliminar2.setColor(Color.GRAY);
         revertElimina2 = true;
     }
 

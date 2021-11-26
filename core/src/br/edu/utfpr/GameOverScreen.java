@@ -9,12 +9,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -33,11 +35,14 @@ public class GameOverScreen implements Screen {
     public Texture goldBar;
 
     private Jogo jogo;
-    private TextButton btnReiniciar;
-    private TextButton btnSair;
+    private ImageTextButton btnReiniciar;
+    private ImageTextButton btnSair;
     private BitmapFont font1 = new BitmapFont();
     private ImageIcon imageIconGoldBar = new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png");
     private Skin skinBotoesRespostas;
+    private Skin skinBotoesRespostas2;
+    private TextureRegionDrawable textureRegionDrawable, textureRegionDrawable2;
+    private TextureRegion textureRegion, textureRegion2;
 
     private float heightShape = 160;
     private float font1Y = 280;
@@ -57,12 +62,16 @@ public class GameOverScreen implements Screen {
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
+        skinBotoesRespostas2 = assetManager.get("skin2/neon-ui.json", Skin.class);
         jogo = getJogo();
         showlogo = assetManager.get("imagens/showlogo.png", Texture.class);
         goldBar = assetManager.get("imagens/goldbar_ori.png", Texture.class);
 
-        btnReiniciar = new TextButton("Reiniciar", skinBotoesRespostas);
-        this.btnReiniciar.setSize(120, 60);
+        btnReiniciar = new ImageTextButton("Reiniciar", skinBotoesRespostas);
+        textureRegion = new TextureRegion(assetManager.get("imagens/reiniciar.png", Texture.class));
+        textureRegionDrawable = new TextureRegionDrawable(textureRegion);
+        btnReiniciar.getStyle().imageUp = textureRegionDrawable;
+        this.btnReiniciar.setSize(140, 80);
         this.btnReiniciar.setPosition(400, 60, Align.center);
         this.btnReiniciar.addListener(new InputListener() {
             @Override
@@ -73,9 +82,12 @@ public class GameOverScreen implements Screen {
             }
         });
 
-        btnSair = new TextButton("Sair", skinBotoesRespostas);
-        this.btnSair.setSize(120, 60);
-        this.btnSair.setPosition(535, 60, Align.center);
+        btnSair = new ImageTextButton("Sair", skinBotoesRespostas2);
+        textureRegion2 = new TextureRegion(assetManager.get("imagens/sair.png", Texture.class));
+        textureRegionDrawable2 = new TextureRegionDrawable(textureRegion2);
+        btnSair.getStyle().imageUp = textureRegionDrawable2;
+        this.btnSair.setSize(140, 80);
+        this.btnSair.setPosition(btnReiniciar.getX()+200, 60, Align.center);
         this.btnSair.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
