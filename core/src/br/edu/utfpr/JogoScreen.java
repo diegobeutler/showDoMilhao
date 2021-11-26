@@ -295,6 +295,8 @@ public class JogoScreen implements Screen {
         questao = sortearNovaQuestao();
         if (jogo.getQuantidePulos() == 0) {
             btnPular.setTouchable(Touchable.disabled);
+            btnPular.setColor(Color.GRAY);
+            btnPular.getLabel().setColor(Color.GRAY);
         }
     }
 
@@ -331,6 +333,7 @@ public class JogoScreen implements Screen {
         jogo.setPossuiElimina2(false);
         btnEliminar2.setTouchable(Touchable.disabled);
         btnEliminar2.setColor(Color.GRAY);
+        btnEliminar2.getLabel().setColor(Color.GRAY);
         revertElimina2 = true;
     }
 
