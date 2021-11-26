@@ -8,6 +8,7 @@ import br.edu.utfpr.json.Resposta;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -429,6 +430,7 @@ public class JogoScreen implements Screen {
         int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + resposta.getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
         if (valor == JOptionPane.YES_OPTION) {
+            tempo= 45;
             if (resposta.isCorreta()) {
                 tratarAcerto();
                 if (revertElimina2) {
@@ -451,6 +453,9 @@ public class JogoScreen implements Screen {
             showDoMilhao.setGameScreen(new GanhouScreen(assetManager, showDoMilhao));
         } else {
             jogo.proximaRodada();
+            if(jogo.getRodada().getSom() != null){
+                assetManager.get(jogo.getRodada().getSom(), Sound.class).play(1f);
+            }
             questao = sortearNovaQuestao();
         }
 
