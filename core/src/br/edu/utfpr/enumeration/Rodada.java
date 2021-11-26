@@ -26,6 +26,11 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.FACIL;
         }
+
+        @Override
+        public String getSom() {
+            return null;
+        }
     },
     RODADA_2("Rodada 2") {
         @Override
@@ -52,6 +57,12 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.FACIL;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/1Rodada.mp3";// todo mudar para a segunda rodada....
+        }
+
     },
     RODADA_3("Rodada 3") {
         @Override
@@ -78,6 +89,12 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.FACIL;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
+
     },
     RODADA_4("Rodada 4") {
         @Override
@@ -103,6 +120,11 @@ public enum Rodada {
         @Override
         public Dificuldade getDificuldade() {
             return Dificuldade.FACIL;
+        }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
         }
     },
     RODADA_5("Rodada 5") {
@@ -130,6 +152,12 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.FACIL;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
+
     },
     RODADA_6("Rodada 6") {
         @Override
@@ -156,6 +184,12 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.MEDIO;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
+
     },
     RODADA_7("Rodada 7") {
         @Override
@@ -181,6 +215,11 @@ public enum Rodada {
         @Override
         public Dificuldade getDificuldade() {
             return Dificuldade.MEDIO;
+        }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
         }
     },
     RODADA_8("Rodada 8") {
@@ -208,6 +247,12 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.MEDIO;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
+
     },
     RODADA_9("Rodada 9") {
         @Override
@@ -233,6 +278,11 @@ public enum Rodada {
         @Override
         public Dificuldade getDificuldade() {
             return Dificuldade.MEDIO;
+        }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
         }
     },
     RODADA_10("Rodada 10") {
@@ -260,6 +310,11 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.MEDIO;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
     },
     RODADA_11("Rodada 11") {
         @Override
@@ -285,6 +340,11 @@ public enum Rodada {
         @Override
         public Dificuldade getDificuldade() {
             return Dificuldade.DIFICIL;
+        }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
         }
     },
     RODADA_12("Rodada 12") {
@@ -312,6 +372,11 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.DIFICIL;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
     },
     RODADA_13("Rodada 13") {
         @Override
@@ -337,6 +402,11 @@ public enum Rodada {
         @Override
         public Dificuldade getDificuldade() {
             return Dificuldade.DIFICIL;
+        }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
         }
     },
     RODADA_14("Rodada 14") {
@@ -364,6 +434,11 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.DIFICIL;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
     },
     RODADA_15("Rodada 15") {
         @Override
@@ -389,6 +464,11 @@ public enum Rodada {
         @Override
         public Dificuldade getDificuldade() {
             return Dificuldade.DIFICIL;
+        }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
         }
     },
     RODADA_16("Rodada 16") {
@@ -416,6 +496,11 @@ public enum Rodada {
         public Dificuldade getDificuldade() {
             return Dificuldade.DIFICIL;
         }
+
+        @Override
+        public String getSom() {
+            return "sons/quepenaErrou.mp3";
+        }
     };
 
 
@@ -426,6 +511,8 @@ public enum Rodada {
     public abstract Integer getAcertar();
 
     public abstract Integer getParar();
+
+    public abstract String getSom();
 
     public abstract Integer getErrar();
 
