@@ -94,7 +94,7 @@ public class GanhouScreen implements Screen {
         batch.draw(showlogo, 253, Gdx.graphics.getHeight() - showlogo.getHeight() - 20);
         batch.draw(goldBar, 740, 50);
 
-        font1.draw(batch, "Parabéns você ganhou!!!\nPontuação: " + jogo.getPontuacao() + "\n"+ jogo.getRodada().getLabel() + " / 16", 283, font1Y);
+        font1.draw(batch, "Parabéns você ganhou!!!\nPontuação: " + jogo.getPontuacao() + "\n" + jogo.getRodada().getLabel() + " / 16", 283, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
         font1.setColor(Color.BLACK);
 

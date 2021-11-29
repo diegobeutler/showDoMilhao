@@ -12,6 +12,7 @@ public class SacoMoedaProcessor implements InputProcessor {
     public boolean keyDown(int keycode) {
         return false;
     }
+
     @Override
     public boolean keyUp(int keycode) {
         return false;

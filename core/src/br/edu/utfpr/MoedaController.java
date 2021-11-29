@@ -30,11 +30,11 @@ public class MoedaController {
 //            Moeda b = deadBullets.get(id);
 //            bullets.put(id, b);
 //        } else {
-            Moeda b = new Moeda();
-            b.setPosition(x, y);
-            bullets.put(count, b);
-            count++;
-       // }
+        Moeda b = new Moeda();
+        b.setPosition(x, y);
+        bullets.put(count, b);
+        count++;
+        // }
     }
 
     public void draw(final SpriteBatch batch, float delta) {
