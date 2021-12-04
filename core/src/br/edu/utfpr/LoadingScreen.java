@@ -63,6 +63,19 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/tempoAcabou.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/1Rodada.mp3", Sound.class);
 
+        showDoMilhao.getAssetManager().load("sons/1MilhaoCortado.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/2Rodada.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/3Rodada.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/200milCortado.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/300milCortado.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/400milCortado.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/500milCortado.mp3", Sound.class);
+
+        showDoMilhao.getAssetManager().load("sons/trilhaSonoraAgitado.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/trilhaSonoraCalmo.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/trilhaSonoraMeio.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/trilhaSuspense.mp3", Sound.class);
+
         showDoMilhao.getAssetManager().load("skin/neon-ui.json", Skin.class);
         showDoMilhao.getAssetManager().load("skin2/neon-ui.json", Skin.class);
         showDoMilhao.getAssetManager().load("skin3/neon-ui.json", Skin.class);

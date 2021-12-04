@@ -87,7 +87,7 @@ public class GameOverScreen implements Screen {
         textureRegionDrawable2 = new TextureRegionDrawable(textureRegion2);
         btnSair.getStyle().imageUp = textureRegionDrawable2;
         this.btnSair.setSize(140, 80);
-        this.btnSair.setPosition(btnReiniciar.getX()+200, 60, Align.center);
+        this.btnSair.setPosition(btnReiniciar.getX() + 200, 60, Align.center);
         this.btnSair.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -105,7 +105,7 @@ public class GameOverScreen implements Screen {
         batch.begin();
 
         batch.draw(fundo, 0, 0);
-        batch.draw(showlogo, 750, Gdx.graphics.getHeight()- 120, Gdx.graphics.getWidth() *0.2f,Gdx.graphics.getHeight()*0.2f);
+        batch.draw(showlogo, 750, Gdx.graphics.getHeight() - 120, Gdx.graphics.getWidth() * 0.2f, Gdx.graphics.getHeight() * 0.2f);
         batch.draw(gameOver, 225, Gdx.graphics.getHeight() - 380);
         batch.draw(goldBar, 740, 50);
 

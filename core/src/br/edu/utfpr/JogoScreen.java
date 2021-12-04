@@ -38,6 +38,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static br.edu.utfpr.jogo.Jogo.getJogo;
+
 public class JogoScreen implements Screen {
     private ShowDoMilhao showDoMilhao;
     private AssetManager assetManager;
@@ -197,7 +198,7 @@ public class JogoScreen implements Screen {
         btnPular.getStyle().imageUp = textureRegionDrawable2;
         btnPular.getLabel().setAlignment(Align.left);
         this.btnPular.setSize(140, 80);
-        this.btnPular.setPosition(btnParar.getX()+160, font1Y - heightShape - 300, Align.left);
+        this.btnPular.setPosition(btnParar.getX() + 160, font1Y - heightShape - 300, Align.left);
         this.btnPular.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -213,7 +214,7 @@ public class JogoScreen implements Screen {
         btnEliminar2.getStyle().imageUp = textureRegionDrawable3;
         btnEliminar2.getLabel().setAlignment(Align.left);
         this.btnEliminar2.setSize(140, 80);
-        this.btnEliminar2.setPosition(btnPular.getX()+160, font1Y - heightShape - 300, Align.left);
+        this.btnEliminar2.setPosition(btnPular.getX() + 160, font1Y - heightShape - 300, Align.left);
         this.btnEliminar2.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -274,13 +275,13 @@ public class JogoScreen implements Screen {
         shape.setColor(Color.WHITE);
         shape.rect(15, Gdx.graphics.getHeight() - heightShape - 15, Gdx.graphics.getWidth() / 1.5f, heightShape);
         shape.end();
-        timeSeconds +=Gdx.graphics.getRawDeltaTime();
-        if(timeSeconds > period){
-            timeSeconds-=period;
-            if(tempo <=0) {
+        timeSeconds += Gdx.graphics.getRawDeltaTime();
+        if (timeSeconds > period) {
+            timeSeconds -= period;
+            if (tempo <= 0) {
                 tratarFimTempo();
-            } else{
-                tempo --;
+            } else {
+                tempo--;
             }
         }
 
@@ -444,7 +445,7 @@ public class JogoScreen implements Screen {
         int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + resposta.getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
         if (valor == JOptionPane.YES_OPTION) {
-            tempo= 45;
+            tempo = 45;
             if (resposta.isCorreta()) {
                 tratarAcerto();
                 if (revertElimina2) {
@@ -463,11 +464,11 @@ public class JogoScreen implements Screen {
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
-        if(jogo.getRodada().equals(Rodada.RODADA_16)){
+        if (jogo.getRodada().equals(Rodada.RODADA_16)) {
             showDoMilhao.setGameScreen(new GanhouScreen(assetManager, showDoMilhao));
         } else {
             jogo.proximaRodada();
-            if(jogo.getRodada().getSom() != null){
+            if (jogo.getRodada().getSom() != null) {
                 assetManager.get(jogo.getRodada().getSom(), Sound.class).play(1f);
             }
             questao = sortearNovaQuestao();

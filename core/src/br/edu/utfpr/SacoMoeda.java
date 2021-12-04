@@ -13,10 +13,10 @@ public class SacoMoeda extends Sprite {
         sacoMoedaProcessor = new SacoMoedaProcessor();
         ShowDoMilhao.addInputProcessor(sacoMoedaProcessor);
     }
+
     public void draw(SpriteBatch batch) {
         super.draw(batch);
     }
-
 
 
 }

@@ -60,7 +60,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/1Rodada.mp3";// todo mudar para a segunda rodada....
+            return "sons/2Rodada.mp3";
         }
 
     },
@@ -92,7 +92,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/3Rodada.mp3";
         }
 
     },
@@ -124,7 +124,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSonoraAgitado.mp3";
         }
     },
     RODADA_5("Rodada 5") {
@@ -155,7 +155,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSonoraMeio.mp3";
         }
 
     },
@@ -187,7 +187,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSuspense.mp3";
         }
 
     },
@@ -219,7 +219,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSonoraAgitado.mp3";
         }
     },
     RODADA_8("Rodada 8") {
@@ -250,7 +250,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSuspense.mp3";
         }
 
     },
@@ -282,7 +282,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSuspense.mp3";
         }
     },
     RODADA_10("Rodada 10") {
@@ -313,7 +313,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSonoraCalmo.mp3";
         }
     },
     RODADA_11("Rodada 11") {
@@ -375,7 +375,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/200milCortado.mp3";
         }
     },
     RODADA_13("Rodada 13") {
@@ -406,7 +406,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/300milCortado.mp3";
         }
     },
     RODADA_14("Rodada 14") {
@@ -437,7 +437,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/400milCortado.mp3";
         }
     },
     RODADA_15("Rodada 15") {
@@ -468,7 +468,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/500milCortado.mp3";
         }
     },
     RODADA_16("Rodada 16") {
@@ -499,7 +499,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/1milhaoCortado.mp3";
         }
     };
 

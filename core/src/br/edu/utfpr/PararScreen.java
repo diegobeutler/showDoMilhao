@@ -64,7 +64,6 @@ public class PararScreen implements Screen {
         goldBar = assetManager.get("imagens/goldbar_ori.png", Texture.class);
 
 
-
         btnReiniciar = new ImageTextButton("Reiniciar", skinBotoesRespostas);
         textureRegion = new TextureRegion(assetManager.get("imagens/reiniciar.png", Texture.class));
         textureRegionDrawable = new TextureRegionDrawable(textureRegion);
@@ -85,7 +84,7 @@ public class PararScreen implements Screen {
         textureRegionDrawable2 = new TextureRegionDrawable(textureRegion2);
         btnSair.getStyle().imageUp = textureRegionDrawable2;
         this.btnSair.setSize(140, 80);
-        this.btnSair.setPosition(btnReiniciar.getX()+200, 60, Align.center);
+        this.btnSair.setPosition(btnReiniciar.getX() + 200, 60, Align.center);
         this.btnSair.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
