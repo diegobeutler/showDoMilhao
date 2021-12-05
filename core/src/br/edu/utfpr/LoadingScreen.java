@@ -47,6 +47,7 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("imagens/bg.jpg", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/jogar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/show-do-milhao.jpg", Texture.class);
+        showDoMilhao.getAssetManager().load("imagens/dialogbox.png", Texture.class);
 
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);

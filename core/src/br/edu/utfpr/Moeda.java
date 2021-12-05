@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Moeda extends Sprite {
     private MoedaProcessor moedaProcessor;
+    private Moeda moeda;
     private float timer;
     private int idRegion = 0;
 
@@ -31,8 +32,13 @@ public class Moeda extends Sprite {
     }
 
     public void draw(SpriteBatch batch, float delta) {
+
         update(delta);
         super.draw(batch);
+
+        if (hasHitPipe()) {
+            ShowDoMilhao.game.setScreen(new GameOverScreen());
+        }
         this.setY(this.getY() + 110 * delta);
     }
 
@@ -45,4 +51,17 @@ public class Moeda extends Sprite {
             this.setRegion(idRegion * 2500, 0, 2500, 2500);
         }
     }
+
+    public boolean hasHitPipe(){
+        return MoedaController.verifyHit(this);
+    }
+
+    public boolean verifyPointHit(float x, float y) {
+        return this.moeda.getX() < x && this.moeda.getY() < y
+                && x < this.moeda.getX()+this.moeda.getWidth() && y < this.moeda.getY()+this.moeda.getHeight()
+                ;
+    }
+
 }
+
+

@@ -3,12 +3,14 @@ package br.edu.utfpr;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MoedaController {
     public static MoedaController ref;
     private HashMap<Integer, Moeda> bullets, deadBullets;
     private int count = 0;
+    private static ArrayList<Moeda> moedaList;
 
     MoedaController() {
         ref = this;
@@ -16,6 +18,8 @@ public class MoedaController {
     }
 
     public void init() {
+        Moeda moeda = new Moeda();
+        moedaList = new ArrayList<Moeda>(2);
         if (bullets == null) {
             bullets = new HashMap<Integer, Moeda>(100);
             deadBullets = new HashMap<Integer, Moeda>(100);
@@ -52,6 +56,21 @@ public class MoedaController {
             });
 
         }
+    }
+
+    public static boolean verifyHit(Moeda moeda) {
+        return verifyPointHit(moeda.getCenterX(), moeda.getCenterY());
+    }
+
+    static boolean verifyPointHit(float x, float y) {
+        boolean hit = false;
+        for (Moeda moeda: moedaList) {
+            hit = moeda.verifyPointHit(x, y);
+            if(hit){
+                return hit;
+            }
+        }
+        return false;
     }
 
 

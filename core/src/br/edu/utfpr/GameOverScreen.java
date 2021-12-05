@@ -52,6 +52,10 @@ public class GameOverScreen implements Screen {
         this.showDoMilhao = showDoMilhao;
     }
 
+    public GameOverScreen() {
+
+    }
+
 
     public void show() {
         batch = new SpriteBatch();
