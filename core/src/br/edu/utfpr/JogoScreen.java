@@ -11,10 +11,6 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -39,7 +35,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static br.edu.utfpr.ShowDoMilhao.game;
 import static br.edu.utfpr.jogo.Jogo.getJogo;
 
 public class JogoScreen implements Screen {
@@ -75,10 +70,7 @@ public class JogoScreen implements Screen {
     // ajudas
     private ImageTextButton btnPular;
     private ImageTextButton btnEliminar2;
-    private NinePatchDrawable btnPatch;
-    private NinePatchDrawable btnPatch2;
     private ImageTextButton btnParar;
-    /// tratar string
     private String retorno = "";
     private boolean flg = false;
     private boolean flg2 = false;
@@ -88,7 +80,6 @@ public class JogoScreen implements Screen {
     private int tabulacao = 40;
     private float heightShape = 100;
     private float font1Y = 500;
-    // controleInterno ELimina 2
     private boolean revertElimina2 = false;
     private float timeSeconds = 0f;
     private float period = 1f;
@@ -365,7 +356,7 @@ public class JogoScreen implements Screen {
          //       JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
 
         //patch = new NinePatch(assetManager.get("imagens/dialogbox.png", Texture.class), 12, 12, 12, 12);
-         patch = new NinePatch(new Texture(Gdx.files.internal("skin/dialogbox.png")), 12, 12, 12, 12);
+        patch = new NinePatch(new Texture(Gdx.files.internal("skin/dialogbox.png")), 12, 12, 12, 12);
         patchDrawable = new NinePatchDrawable(patch);
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("skin/neon-ui.atlas"));
         skinBotoesRespostas.addRegions(atlas);
