@@ -62,4 +62,8 @@ public class Jogo {
     public void setQuantidadePulos(int quantidadePulos) {
         this.quantidadePulos = quantidadePulos;
     }
+
+
 }
+
+

@@ -11,10 +11,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.ParticleEffect;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -23,6 +20,7 @@ import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -61,7 +59,7 @@ public class JogoScreen implements Screen {
     private TextButton resposta2;
     private TextButton resposta3;
     private TextButton resposta4;
-    private ImageTextButton botaoJogar;
+    private TextButton botaoPara;
     private TextureRegionDrawable textureRegionDrawable, textureRegionDrawable2, textureRegionDrawable3;
     private TextureRegion textureRegion, textureRegion2, textureRegion3;
     private BitmapFont fontPontuacao = new BitmapFont();
@@ -73,7 +71,6 @@ public class JogoScreen implements Screen {
     private ImageTextButton btnPular;
     private ImageTextButton btnEliminar2;
     private ImageTextButton btnParar;
-    /// tratar string
     private String retorno = "";
     private boolean flg = false;
     private boolean flg2 = false;
@@ -83,10 +80,11 @@ public class JogoScreen implements Screen {
     private int tabulacao = 40;
     private float heightShape = 100;
     private float font1Y = 500;
-    // controleInterno ELimina 2
     private boolean revertElimina2 = false;
     private float timeSeconds = 0f;
     private float period = 1f;
+    private NinePatch patch;
+    private NinePatchDrawable patchDrawable;
     private ParticleEffect effect = new ParticleEffect();
 
 
@@ -354,12 +352,65 @@ public class JogoScreen implements Screen {
 
     private void tratarParar() {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
-        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?\nPontuação se parar: " + jogo.getRodada().getParar(), "Confirma", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
-        if (valor == JOptionPane.YES_OPTION) {
-            jogo.setPontuacao(jogo.getRodada().getParar());
-            showDoMilhao.setGameScreen(new PararScreen(assetManager, showDoMilhao));
-        }
+        //int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?\nPontuação se parar: " + jogo.getRodada().getParar(), "Confirma", JOptionPane.YES_NO_OPTION,
+         //       JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
+
+        //patch = new NinePatch(assetManager.get("imagens/dialogbox.png", Texture.class), 12, 12, 12, 12);
+        patch = new NinePatch(new Texture(Gdx.files.internal("skin/dialogbox.png")), 12, 12, 12, 12);
+        patchDrawable = new NinePatchDrawable(patch);
+        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("skin/neon-ui.atlas"));
+        skinBotoesRespostas.addRegions(atlas);
+
+        BitmapFont font32 = new BitmapFont(Gdx.files.internal("skin/abc.fnt"));
+
+        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+        buttonStyle.font = font32;
+        buttonStyle.fontColor = Color.WHITE;
+        buttonStyle.up = new NinePatchDrawable(skinBotoesRespostas.getPatch("button"));
+        buttonStyle.down = new NinePatchDrawable(skinBotoesRespostas.getPatch("button"));
+        buttonStyle.pressedOffsetX = -2;
+
+        botaoPara = new TextButton("Está certo disso? \n Pontuação se parar: " + jogo.getRodada().getParar(), buttonStyle);
+        botaoPara.setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+
+        TextButton.TextButtonStyle style = new TextButton.TextButtonStyle(patchDrawable, patchDrawable, patchDrawable, font32);
+        style.fontColor = Color.WHITE; style.pressedOffsetX = -2;
+        style.overFontColor = Color.BLUE;
+
+
+        final TextButton buttonSim = new TextButton("Sim", style);
+        buttonSim.setPosition(botaoPara.getX()+80, 200);
+        buttonSim.setColor(Color.YELLOW);
+
+
+        final TextButton buttonNao = new TextButton("Não", style);
+        buttonNao.setPosition(buttonSim.getX()+100, 200);
+        buttonNao.setColor(Color.GREEN);
+
+        buttonSim.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                jogo.setPontuacao(jogo.getRodada().getParar());
+                showDoMilhao.setGameScreen(new PararScreen(assetManager, showDoMilhao));
+                return true;
+            }
+        });
+
+        buttonNao.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                botaoPara.remove();
+                buttonSim.remove();
+                buttonNao.remove();
+                return true;
+            }
+        });
+
+        stage.addActor(botaoPara);
+        stage.addActor(buttonSim);
+        stage.addActor(buttonNao);
+
+
     }
 
     @Override
