@@ -2,7 +2,6 @@ package br.edu.utfpr;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -34,7 +33,6 @@ public class LoadingScreen implements Screen {
 
         // load
         showDoMilhao.getAssetManager().load("imagens/animacaoMoeda.png", Texture.class);
-
         showDoMilhao.getAssetManager().load("imagens/eliminar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/parar.png", Texture.class);
         showDoMilhao.getAssetManager().load("imagens/pular.png", Texture.class);
@@ -50,6 +48,7 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("imagens/dialogbox.png", Texture.class);
 
         showDoMilhao.getAssetManager().load("imagens/sacodemoeda.png", Texture.class);
+
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/boaSorte.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/moedaGanho.mp3", Sound.class);
@@ -63,7 +62,6 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/vaiComecarOShowDoMilhao.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/tempoAcabou.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/1Rodada.mp3", Sound.class);
-
         showDoMilhao.getAssetManager().load("sons/1MilhaoCortado.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/2Rodada.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/3Rodada.mp3", Sound.class);
@@ -71,7 +69,6 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/300milCortado.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/400milCortado.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/500milCortado.mp3", Sound.class);
-
         showDoMilhao.getAssetManager().load("sons/trilhaSonoraAgitado.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/trilhaSonoraCalmo.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/trilhaSonoraMeio.mp3", Sound.class);
@@ -80,6 +77,9 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("skin/neon-ui.json", Skin.class);
         showDoMilhao.getAssetManager().load("skin2/neon-ui.json", Skin.class);
         showDoMilhao.getAssetManager().load("skin3/neon-ui.json", Skin.class);
+
+
+
     }
 
     @Override

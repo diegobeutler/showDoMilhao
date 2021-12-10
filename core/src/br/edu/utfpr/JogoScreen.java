@@ -11,6 +11,10 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -90,6 +94,8 @@ public class JogoScreen implements Screen {
     private float period = 1f;
     private NinePatch patch;
     private NinePatchDrawable patchDrawable;
+    private ParticleEffect effect = new ParticleEffect();
+
 
     public static JogoScreen ref;
 
@@ -101,10 +107,10 @@ public class JogoScreen implements Screen {
 
     public void show() {
         batch = new SpriteBatch();
-        //patch = new NinePatch();
         stage = new Stage(new ScreenViewport());
         ShowDoMilhao.addInputProcessor(stage);
         fundo = assetManager.get("imagens/bg.jpg", Texture.class);
+        effect.load(Gdx.files.internal("particles/myparticle.p"), Gdx.files.internal("particles"));
 
         //botoes respostas
         skinBotoesRespostas = assetManager.get("skin/neon-ui.json", Skin.class);
@@ -138,7 +144,7 @@ public class JogoScreen implements Screen {
         this.resposta1.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                confirmaResposta(questao.getRespostas().get(0));
+                confirmaResposta(0);
                 return true;
             }
         });
@@ -150,7 +156,7 @@ public class JogoScreen implements Screen {
         this.resposta2.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                confirmaResposta(questao.getRespostas().get(1));
+                confirmaResposta(1);
                 return true;
             }
         });
@@ -162,7 +168,7 @@ public class JogoScreen implements Screen {
         this.resposta3.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                confirmaResposta(questao.getRespostas().get(2));
+                confirmaResposta(2);
                 return true;
             }
         });
@@ -174,7 +180,7 @@ public class JogoScreen implements Screen {
         this.resposta4.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                confirmaResposta(questao.getRespostas().get(3));
+                confirmaResposta(3);
                 return true;
             }
         });
@@ -234,7 +240,6 @@ public class JogoScreen implements Screen {
 
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
-
         batch.draw(fundo, 0, 0);
         fontTempo.draw(batch, "Tempo: " + tempo, 700, 520);
         fontTempo.getData().setScale(1.8f);
@@ -245,8 +250,6 @@ public class JogoScreen implements Screen {
 
         sacoMoeda.draw(batch);
         MoedaController.ref.draw(batch, delta);
-
-        //patch.draw(batch, 9, 9, 9, 9);
 
         font1.draw(batch, tratarString(questao.getPergunta(), tabulacao), 50, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
@@ -274,7 +277,7 @@ public class JogoScreen implements Screen {
         stage.addActor(JogoScreen.this.btnEliminar2);
 
         stage.draw();
-
+        effect.draw(batch, delta);
         batch.end();
 
         shape.begin(ShapeRenderer.ShapeType.Line);
@@ -465,6 +468,7 @@ public class JogoScreen implements Screen {
         retorno = null;
         arrayTexto = null;
         imageIconGoldBar = null;
+        effect.dispose();
     }
 
 
@@ -499,14 +503,15 @@ public class JogoScreen implements Screen {
         return retorno;
     }
 
-    private void confirmaResposta(Resposta resposta) {
+    private void confirmaResposta(int i) {
+        Resposta resposta = questao.getRespostas().get(i);
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
         int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + resposta.getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
         if (valor == JOptionPane.YES_OPTION) {
             tempo = 45;
             if (resposta.isCorreta()) {
-                tratarAcerto();
+                tratarAcerto(i);
                 if (revertElimina2) {
                     revertEliminar2();
                     revertElimina2 = false;
@@ -518,8 +523,9 @@ public class JogoScreen implements Screen {
         }
     }
 
-    private void tratarAcerto() {
+    private void tratarAcerto(int i) {
         jogarMoedas();
+        jogarParticulas(i);
         assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
@@ -533,6 +539,27 @@ public class JogoScreen implements Screen {
             questao = sortearNovaQuestao();
         }
 
+    }
+
+    private void jogarParticulas(int i) {
+        float laguraBotaoSobre2 = resposta1.getWidth() / 2;
+        switch (i) {
+            case 0:
+                effect.setPosition(resposta1.getX() + laguraBotaoSobre2, resposta1.getY());
+                effect.start();
+                break;
+            case 1:
+                effect.setPosition(resposta2.getX() + laguraBotaoSobre2, resposta2.getY());
+                effect.start();
+                break;
+            case 2:
+                effect.setPosition(resposta3.getX() + laguraBotaoSobre2, resposta3.getY());
+                effect.start();
+                break;
+            case 3:
+                effect.setPosition(resposta4.getX() + laguraBotaoSobre2, resposta4.getY());
+                effect.start();
+        }
     }
 
     private void tratarErro() {
