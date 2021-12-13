@@ -144,7 +144,7 @@ public class PararScreen implements Screen {
         buttonStyle.pressedOffsetX = -2;
 
         botaoPara = new TextButton("Está certo disso?" , buttonStyle);
-        botaoPara.setPosition(700, 500);
+        botaoPara.setPosition(350, 140);
 
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle(patchDrawable, patchDrawable, patchDrawable, font32);
         style.fontColor = Color.WHITE; style.pressedOffsetX = -2;
@@ -152,12 +152,12 @@ public class PararScreen implements Screen {
 
 
         final TextButton buttonSim = new TextButton("Sim", style);
-        buttonSim.setPosition(700, 450);
+        buttonSim.setPosition(400, 96);
         buttonSim.setColor(Color.YELLOW);
 
 
         final TextButton buttonNao = new TextButton("Não", style);
-        buttonNao.setPosition(buttonSim.getX()+100, 450);
+        buttonNao.setPosition(470, 96);
         buttonNao.setColor(Color.GREEN);
 
         buttonSim.addListener(new InputListener() {

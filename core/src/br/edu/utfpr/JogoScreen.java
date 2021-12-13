@@ -351,10 +351,7 @@ public class JogoScreen implements Screen {
 
     private void tratarParar() {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
-        //int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?\nPontuação se parar: " + jogo.getRodada().getParar(), "Confirma", JOptionPane.YES_NO_OPTION,
-         //       JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
 
-        //patch = new NinePatch(assetManager.get("imagens/dialogbox.png", Texture.class), 12, 12, 12, 12);
         patch = new NinePatch(new Texture(Gdx.files.internal("skin/dialogbox.png")), 12, 12, 12, 12);
         patchDrawable = new NinePatchDrawable(patch);
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("skin/neon-ui.atlas"));
@@ -378,12 +375,12 @@ public class JogoScreen implements Screen {
 
 
         final TextButton buttonSim = new TextButton("Sim", style);
-        buttonSim.setPosition(botaoPara.getX()+80, 200);
+        buttonSim.setPosition(botaoPara.getX()+85, botaoPara.getY()-50);
         buttonSim.setColor(Color.YELLOW);
 
 
         final TextButton buttonNao = new TextButton("Não", style);
-        buttonNao.setPosition(buttonSim.getX()+100, 200);
+        buttonNao.setPosition(buttonSim.getX()+70, botaoPara.getY()-50);
         buttonNao.setColor(Color.GREEN);
 
         buttonSim.addListener(new InputListener() {
@@ -496,9 +493,7 @@ public class JogoScreen implements Screen {
     private void confirmaResposta(final int i) {
         final Resposta resposta = questao.getRespostas().get(i);
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
-        //int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?" + "\n" + resposta.getResposta(), "Confirma", JOptionPane.YES_NO_OPTION,
-              //  JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
-        //if (valor == JOptionPane.YES_OPTION) {
+
         patch = new NinePatch(new Texture(Gdx.files.internal("skin/dialogbox.png")), 12, 12, 12, 12);
         patchDrawable = new NinePatchDrawable(patch);
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("skin/neon-ui.atlas"));
@@ -522,12 +517,12 @@ public class JogoScreen implements Screen {
 
 
         final TextButton buttonSim = new TextButton("Sim", style);
-        buttonSim.setPosition(botaoPara.getX()+80, 200);
+        buttonSim.setPosition(botaoPara.getX()+50, botaoPara.getY()-50);
         buttonSim.setColor(Color.YELLOW);
 
 
         final TextButton buttonNao = new TextButton("Não", style);
-        buttonNao.setPosition(buttonSim.getX()+100, 200);
+        buttonNao.setPosition(buttonSim.getX()+70, botaoPara.getY()-50);
         buttonNao.setColor(Color.GREEN);
 
         buttonSim.addListener(new InputListener() {
