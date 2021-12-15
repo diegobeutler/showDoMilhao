@@ -58,8 +58,7 @@ public class Moeda extends Sprite {
 
     public boolean verifyPointHit(float x, float y) {
         return this.moeda.getX() < x && this.moeda.getY() < y
-                && x < this.moeda.getX()+this.moeda.getWidth() && y < this.moeda.getY()+this.moeda.getHeight()
-                ;
+                && x < this.moeda.getX()+this.moeda.getWidth() && y < this.moeda.getY()+this.moeda.getHeight();
     }
 
 }
