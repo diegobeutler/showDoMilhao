@@ -564,7 +564,7 @@ public class JogoScreen implements Screen {
     private void tratarAcerto(int i) {
         jogarMoedas();
         jogarParticulas(i);
-        assetManager.get("sons/certaResposta.mp3", Sound.class).play(1f);
+        assetManager.get("sons/certaResposta.wav", Sound.class).play(1f);
         assetManager.get("sons/moedaGanho.mp3", Sound.class).play(1f);
         jogo.setPontuacao(jogo.getRodada().getAcertar());
         if (jogo.getRodada().equals(Rodada.RODADA_16)) {

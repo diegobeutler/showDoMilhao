@@ -52,7 +52,7 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/abertura.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/boaSorte.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/moedaGanho.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons/certaResposta.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/certaResposta.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/quepenaErrou.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/estaCertoDisso.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/trilhaSonoraMeio.mp3", Sound.class);
@@ -63,8 +63,8 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/tempoAcabou.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/1Rodada.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/1MilhaoCortado.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons/2Rodada.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons/3Rodada.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/2Rodada.wav", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/3Rodada.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/200milCortado.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/300milCortado.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/400milCortado.mp3", Sound.class);

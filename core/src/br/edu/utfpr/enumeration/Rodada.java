@@ -60,7 +60,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/2Rodada.mp3";
+            return "sons/2Rodada.wav";
         }
 
     },
@@ -92,7 +92,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/3Rodada.mp3";
+            return "sons/3Rodada.wav";
         }
 
     },
