@@ -274,7 +274,7 @@
       {"resposta":"CAPRI", "correta": false},
       {"resposta":"MARSELHA", "correta": false}
     ] },
-    { "dificuldade": "dificil", "key": "6D", "pergunta": "Onde nasceu Van Gogh, o grande pintor impressionista?", "respostas": [
+    { "dificuldade": "dificil", "key": "6D", "pergunta": "Onde nasceu Van Gogh, o grande pintor que foi impressionista?", "respostas": [
       {"resposta":"POLONIA", "correta": false},
       {"resposta":"FRANCA", "correta": false},
       {"resposta":"ITALIA", "correta": false},

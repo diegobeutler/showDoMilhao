@@ -62,7 +62,7 @@ public class LoadingScreen implements Screen {
         showDoMilhao.getAssetManager().load("sons/vaiComecarOShowDoMilhao.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/tempoAcabou.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/1Rodada.mp3", Sound.class);
-        showDoMilhao.getAssetManager().load("sons/1MilhaoCortado.mp3", Sound.class);
+        showDoMilhao.getAssetManager().load("sons/1milhaoCortado.mp3", Sound.class);
         showDoMilhao.getAssetManager().load("sons/2Rodada.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/3Rodada.wav", Sound.class);
         showDoMilhao.getAssetManager().load("sons/200milCortado.mp3", Sound.class);

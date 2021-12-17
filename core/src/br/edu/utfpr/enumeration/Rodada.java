@@ -344,7 +344,7 @@ public enum Rodada {
 
         @Override
         public String getSom() {
-            return "sons/quepenaErrou.mp3";
+            return "sons/trilhaSuspense.mp3";
         }
     },
     RODADA_12("Rodada 12") {
