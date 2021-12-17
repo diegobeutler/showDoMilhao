@@ -7,14 +7,15 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -31,12 +32,17 @@ public class GanhouScreen implements Screen {
     private Texture fundo, showlogo, goldBar;
     private Stage stage;
     private ImageIcon imageIconGoldBar = new ImageIcon(System.getProperty("user.dir") + "\\core\\assets\\imagens\\goldbar.png");
-
+    private Skin skinBotoesRespostas;
+    private Skin skinBotoesRespostas2;
+    private TextButton botaoPara;
+    private TextureRegionDrawable textureRegionDrawable, textureRegionDrawable2, textureRegionDrawable3;
+    private TextureRegion textureRegion, textureRegion2, textureRegion3;
+    private NinePatch patch;
+    private NinePatchDrawable patchDrawable;
     private Jogo jogo;
     private TextButton btnReiniciar;
     private TextButton btnSair;
     private BitmapFont font1 = new BitmapFont();
-    private Skin skinBotoesRespostas;
 
     private float heightShape = 160;
     private float font1Y = 280;
@@ -114,11 +120,58 @@ public class GanhouScreen implements Screen {
 
     private void tratarSair() {
         assetManager.get("sons/estaCertoDisso.mp3", Sound.class).play(1f);
-        int valor = JOptionPane.showConfirmDialog(null, "Está certo disso?", "Sair", JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE, imageIconGoldBar);
-        if (valor == JOptionPane.YES_OPTION) {
-            Gdx.app.exit();
-        }
+        patch = new NinePatch(new Texture(Gdx.files.internal("skin/dialogbox.png")), 12, 12, 12, 12);
+        patchDrawable = new NinePatchDrawable(patch);
+        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("skin/neon-ui.atlas"));
+        skinBotoesRespostas.addRegions(atlas);
+
+        BitmapFont font32 = new BitmapFont(Gdx.files.internal("skin/abc.fnt"));
+
+        TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
+        buttonStyle.font = font32;
+        buttonStyle.fontColor = Color.WHITE;
+        buttonStyle.up = new NinePatchDrawable(skinBotoesRespostas.getPatch("button"));
+        buttonStyle.down = new NinePatchDrawable(skinBotoesRespostas.getPatch("button"));
+        buttonStyle.pressedOffsetX = -2;
+
+        botaoPara = new TextButton("Está certo disso? ", buttonStyle);
+        botaoPara.setPosition(350, 140);
+
+        TextButton.TextButtonStyle style = new TextButton.TextButtonStyle(patchDrawable, patchDrawable, patchDrawable, font32);
+        style.fontColor = Color.WHITE; style.pressedOffsetX = -2;
+        style.overFontColor = Color.BLUE;
+
+
+        final TextButton buttonSim = new TextButton("Sim", style);
+        buttonSim.setPosition(400, 96);
+        buttonSim.setColor(Color.YELLOW);
+
+
+        final TextButton buttonNao = new TextButton("Não", style);
+        buttonNao.setPosition(470, 96);
+        buttonNao.setColor(Color.GREEN);
+
+        buttonSim.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                Gdx.app.exit();
+                return true;
+            }
+        });
+
+        buttonNao.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                botaoPara.remove();
+                buttonSim.remove();
+                buttonNao.remove();
+                return true;
+            }
+        });
+
+        stage.addActor(botaoPara);
+        stage.addActor(buttonSim);
+        stage.addActor(buttonNao);
     }
 
     @Override
