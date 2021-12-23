@@ -26,6 +26,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.google.gson.Gson;
+import sun.java2d.pipe.OutlineTextRenderer;
 
 import javax.swing.*;
 import java.nio.charset.StandardCharsets;
@@ -129,6 +130,7 @@ public class JogoScreen implements Screen {
         sacoMoeda.setX((float) (Gdx.graphics.getWidth() / 1.35));
 
         resposta1 = new TextButton("", skinBotoesRespostas);
+
         resposta1.getLabel().setAlignment(Align.left);
         this.resposta1.setSize(Gdx.graphics.getWidth() / 2, 60);
         this.resposta1.setPosition(15, font1Y - heightShape - 20, Align.left);
@@ -244,7 +246,7 @@ public class JogoScreen implements Screen {
 
         font1.draw(batch, tratarString(questao.getPergunta(), tabulacao), 50, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
-        font1.setColor(Color.BLACK);
+        font1.setColor(Color.WHITE);
 
         // respostas
         resposta1.getLabel().setText(" 1 - " + questao.getRespostas().get(0).getResposta());
@@ -354,35 +356,41 @@ public class JogoScreen implements Screen {
 
         patch = new NinePatch(new Texture(Gdx.files.internal("skin/dialogbox.png")), 12, 12, 12, 12);
         patchDrawable = new NinePatchDrawable(patch);
+        patch.setColor(Color.WHITE);
         TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("skin/neon-ui.atlas"));
         skinBotoesRespostas.addRegions(atlas);
 
+
+
         BitmapFont font32 = new BitmapFont(Gdx.files.internal("skin/abc.fnt"));
+        font32.setColor(Color.WHITE);
+
 
         TextButton.TextButtonStyle buttonStyle = new TextButton.TextButtonStyle();
         buttonStyle.font = font32;
         buttonStyle.fontColor = Color.WHITE;
         buttonStyle.up = new NinePatchDrawable(skinBotoesRespostas.getPatch("button"));
-        buttonStyle.down = new NinePatchDrawable(skinBotoesRespostas.getPatch("button"));
         buttonStyle.pressedOffsetX = -2;
 
+
         botaoPara = new TextButton("Está certo disso? \n Pontuação se parar: " + jogo.getRodada().getParar(), buttonStyle);
-        botaoPara.setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+        botaoPara.setPosition((Gdx.graphics.getWidth()/2)+20, (Gdx.graphics.getHeight()/2)+2);
+
 
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle(patchDrawable, patchDrawable, patchDrawable, font32);
         style.fontColor = Color.WHITE; style.pressedOffsetX = -2;
-        style.overFontColor = Color.BLUE;
+        style.overFontColor = Color.WHITE;
 
 
         final TextButton buttonSim = new TextButton("Sim", style);
-        buttonSim.setPosition(botaoPara.getX()+85, botaoPara.getY()-50);
-        buttonSim.setColor(Color.YELLOW);
+        buttonSim.setPosition(botaoPara.getX()+85, botaoPara.getY()-65);
+
+        buttonSim.setSize(75,75);
 
 
         final TextButton buttonNao = new TextButton("Não", style);
-        buttonNao.setPosition(buttonSim.getX()+70, botaoPara.getY()-50);
-        buttonNao.setColor(Color.GREEN);
-
+        buttonNao.setPosition(buttonSim.getX()+90, botaoPara.getY()-65);
+        buttonNao.setSize(75,75);
         buttonSim.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -512,18 +520,19 @@ public class JogoScreen implements Screen {
         botaoPara.setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
 
         TextButton.TextButtonStyle style = new TextButton.TextButtonStyle(patchDrawable, patchDrawable, patchDrawable, font32);
-        style.fontColor = Color.WHITE; style.pressedOffsetX = -2;
-        style.overFontColor = Color.BLUE;
 
+        style.pressedOffsetX = -2;
+        style.focusedFontColor = Color.WHITE;
+        style.fontColor = Color.WHITE;
 
         final TextButton buttonSim = new TextButton("Sim", style);
-        buttonSim.setPosition(botaoPara.getX()+50, botaoPara.getY()-50);
-        buttonSim.setColor(Color.YELLOW);
-
+        buttonSim.setPosition(botaoPara.getX()+40, botaoPara.getY()-65);
+        buttonSim.setSize(75,75);
 
         final TextButton buttonNao = new TextButton("Não", style);
-        buttonNao.setPosition(buttonSim.getX()+70, botaoPara.getY()-50);
-        buttonNao.setColor(Color.GREEN);
+        buttonNao.setPosition(buttonSim.getX()+75, botaoPara.getY()-65);
+        buttonNao.setSize(75,75);
+
 
         buttonSim.addListener(new InputListener() {
             @Override

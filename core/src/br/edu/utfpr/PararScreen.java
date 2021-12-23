@@ -110,7 +110,7 @@ public class PararScreen implements Screen {
 
         font1.draw(batch, "Fim de Jogo\nPontuação: " + jogo.getPontuacao() + "\nVocê parou na " + jogo.getRodada().getLabel() + " / 16", 283, font1Y);
         font1.getData().setScale(1.8f, 1.8f);
-        font1.setColor(Color.BLACK);
+        font1.setColor(Color.WHITE);
 
         stage.addActor(this.btnReiniciar);
         stage.addActor(this.btnSair);
@@ -152,13 +152,13 @@ public class PararScreen implements Screen {
 
 
         final TextButton buttonSim = new TextButton("Sim", style);
-        buttonSim.setPosition(400, 96);
-        buttonSim.setColor(Color.YELLOW);
-
+        buttonSim.setPosition(390, 80);
+        buttonSim.setSize(75,75);
 
         final TextButton buttonNao = new TextButton("Não", style);
-        buttonNao.setPosition(470, 96);
-        buttonNao.setColor(Color.GREEN);
+        buttonNao.setPosition(470, 80);
+        buttonNao.setSize(75,75);
+
 
         buttonSim.addListener(new InputListener() {
             @Override
